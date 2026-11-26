@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
+<title>@Cheers Bar Card</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+[hidden]{display:none!important}
+/* Layout: one narrow column like a chalk scoreboard card; picks on top, big start numbers below, the math tucked under each result. */
+:root{
+  --bg:#dfe5dd; --card:#ffffff; --fg:#111512; --muted:#454e48; --line:#b9c3b6;
+  --red:#c0102b; --green:#06703a; --amber:#9a5b00; --num:#1450b4; --tile-bg:var(--band); --tile-fg:var(--band-fg); --tile-line:var(--band-line); --amber-bg:#fff1d6; --chip:#dde4da;
+  --w-body:500; --w-label:700; --w-disp:700; --w-mid:600;
+  --band:#a3b39f; --band-fg:#0c100d; --band-chip:#ffffff8c; --band-line:#0c100d59; --red-tint:#f7d6dc; --green-tint:#cfeadb;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1210; --card:#1a1f1b; --fg:#eef0ec; --muted:#a3aca5; --line:#2c342e;
+  --red:#ff5a6e; --green:#43c47c; --amber:#f0b04a; --num:#7fb2ff; --tile-bg:var(--band); --tile-fg:var(--band-fg); --tile-line:#ffffff2e; --amber-bg:#2e2410; --chip:#252b27;
+  --w-body:400; --w-label:600; --w-disp:600; --w-mid:500; --band:#060807; --band-fg:#f4efe2; --band-chip:#ffffff14; --band-line:#ffffff55; --red-tint:#3a1820; --green-tint:#12301f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1210; --card:#1a1f1b; --fg:#eef0ec; --muted:#a3aca5; --line:#2c342e;
+  --red:#ff5a6e; --green:#43c47c; --amber:#f0b04a; --num:#7fb2ff; --tile-bg:var(--band); --tile-fg:var(--band-fg); --tile-line:#ffffff2e; --amber-bg:#2e2410; --chip:#252b27;
+  --w-body:400; --w-label:600; --w-disp:600; --w-mid:500; --band:#060807; --band-fg:#f4efe2; --band-chip:#ffffff14; --band-line:#ffffff55; --red-tint:#3a1820; --green-tint:#12301f; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-weight:var(--w-body);font-size:15px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 40px}
+main{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.hero{background:var(--band);color:var(--band-fg);border-radius:14px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.beta{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.1em;vertical-align:middle;margin-left:8px;padding:2px 7px;border-radius:999px;background:var(--red);color:#fff;position:relative;top:-3px}
+.betanote{border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:13px;color:var(--muted)}
+.league{font-weight:var(--w-mid);display:block;color:var(--band-fg);text-decoration:underline;text-decoration-color:var(--band-line);text-underline-offset:3px;font-size:13px;opacity:.85;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dartboard{position:absolute;right:-40px;top:-40px;width:140px;height:140px;filter:drop-shadow(0 2px 6px #00000055);pointer-events:none}
+.toprow{display:flex;justify-content:space-between;align-items:center;gap:10px;position:relative;z-index:1}
+.theme{position:relative;z-index:1;font:inherit;font-size:12.5px;font-weight:600;background:transparent;color:var(--band-fg);border:1px solid var(--band-line);border-radius:999px;padding:5px 11px;cursor:pointer;margin-right:90px}
+.hero .banner{background:var(--band-chip);color:var(--band-fg);position:relative;z-index:1}
+.hero .banner.stale{background:var(--amber-bg);color:var(--amber)}
+.tile{border-radius:10px;padding:10px 12px}
+.tile.r{background:var(--red-tint)} .tile.g{background:var(--green-tint)} .tile.s{background:var(--chip)}
+.home-c{color:var(--green)} .away-c{color:var(--red)}
+.ell{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+h1{font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:.01em;margin:0;line-height:1}
+h1 span{color:var(--red)} h1{color:var(--band-fg)}
+h2{font-family:var(--display);font-weight:var(--w-disp);font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
+.banner{border-radius:10px;padding:10px 12px;background:var(--chip);font-size:13.5px;display:flex;flex-direction:column;gap:2px}
+.banner b{font-weight:600}
+.banner.stale{background:var(--amber-bg);color:var(--amber)}
+.panel{background:var(--card);border:1px solid var(--line);box-shadow:0 1px 2px #0000000f;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px}
+label{font-size:12.5px;font-weight:var(--w-label);color:var(--muted);display:block;margin-bottom:4px}
+select,input[type=text]{width:100%;font:inherit;font-size:16px;padding:11px 12px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--fg);box-sizing:border-box}
+select:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid2>div{min-width:0}
+.teamhead{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.1;margin:0 0 8px}
+.note{font-size:12.5px;color:var(--muted)}
+.warn{font-size:13px;color:var(--amber);background:var(--amber-bg);border-radius:8px;padding:8px 10px}
+.boardline{font-size:14px;color:var(--muted)} .boardline b{color:var(--fg);font-family:var(--display);font-size:20px;font-weight:700}
+.makeup{font-size:13.5px;color:var(--amber);background:var(--amber-bg);border-radius:8px;padding:8px 10px;font-weight:500}
+.result{display:flex;flex-direction:column;gap:4px}
+.fmt{background:var(--tile-bg);color:var(--tile-fg);border-radius:4px;padding:0 5px;margin-left:2px;letter-spacing:.06em}
+.rlabel{font-size:12px;font-weight:var(--w-label);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.big{font-family:var(--display);font-weight:var(--w-disp);font-size:26px;line-height:1.1}
+.big .n{font-weight:700;font-size:34px;color:var(--num);font-variant-numeric:tabular-nums}
+.big.even{color:var(--green)}
+.singles{display:flex;flex-direction:column;gap:8px}
+.sg{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:8px;align-items:center}
+.rowr{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.rowr>span:first-child{min-width:0}
+.pstat{font-size:12px;margin-top:5px;background:var(--chip);border-radius:7px;padding:4px 8px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pstat.assumed{background:var(--amber-bg);color:var(--amber)}
+.sg .g{font-family:var(--display);font-weight:700;font-size:15px;color:var(--muted)}
+.sg .who{min-width:0}
+.sg .line{font-weight:var(--w-label)}
+.sg .start{font-family:var(--display);font-size:22px;font-weight:var(--w-disp)}
+.sg .start .n{color:var(--num);font-weight:700;font-variant-numeric:tabular-nums}
+.sg .start.even{color:var(--green)}
+.big .n,.sg .n{display:inline-block;font-family:var(--display);font-weight:700;font-variant-numeric:tabular-nums;background:var(--tile-bg);color:var(--tile-fg);border:1px solid var(--tile-line);border-radius:7px;padding:1px 9px 0;line-height:1.1;letter-spacing:.02em;box-shadow:inset 0 -2px 0 #ffffff12}
+.sg .n{padding:1px 8px 0;font-size:24px;justify-self:end}
+.hgrid{display:grid;column-gap:10px;row-gap:3px;align-items:center}
+.hgrid.dbl{grid-template-columns:minmax(0,max-content) auto 1fr}
+.hgrid.sgl{grid-template-columns:36px minmax(0,max-content) auto 1fr}
+.hgrid .g{grid-column:1;grid-row:span 2;font-family:var(--display);font-weight:700;font-size:15px;color:var(--muted)}
+.hgrid .ml{display:flex;gap:5px;min-width:0;font-weight:var(--w-label);grid-column:1 / -1;padding-top:8px}
+.hgrid.sgl .ml{grid-column:2 / -1}
+.hgrid .ml:first-child,.hgrid .g:first-child+.ml{padding-top:0}
+.hgrid.sgl .g{padding-top:8px}.hgrid.sgl .g:first-child{padding-top:0}
+.hgrid .st{display:flex;gap:6px;min-width:0;align-items:baseline;font-family:var(--display);font-size:22px;font-weight:var(--w-disp)}
+.hgrid .vb{white-space:nowrap}
+.hgrid .ev{grid-column:1 / -1;font-family:var(--display);font-size:22px;font-weight:var(--w-disp);color:var(--green)}
+.hgrid.sgl .ev{grid-column:2 / -1}
+.hgrid .n{display:inline-block;justify-self:start;font-family:var(--display);font-weight:700;font-size:24px;font-variant-numeric:tabular-nums;background:var(--tile-bg);color:var(--tile-fg);border:1px solid var(--tile-line);border-radius:7px;padding:1px 8px 0;line-height:1.1;letter-spacing:.02em}
+.hgrid .sub{grid-column:1 / -1;font-size:13px;color:var(--muted)}
+details{font-size:13px;color:var(--muted)}
+summary{cursor:pointer;color:var(--fg);font-weight:var(--w-mid);font-size:13px;padding:2px 0}
+details .math{padding:6px 0 2px;display:flex;flex-direction:column;gap:3px;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;background:var(--chip);border-radius:999px;padding:3px 9px}
+.chip.assumed{background:var(--amber-bg);color:var(--amber)}
+a{color:var(--red)}
+.foot{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.btnlink{display:block;text-align:center;font-weight:600;text-decoration:none;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;padding:12px}
+@media (prefers-reduced-motion:no-preference){.big .n,.sg .n{transition:color .2s}}
+</style>
+
+</head>
+<body>
+<main>
+  <header class="hero">
+    <svg class="dartboard" id="dboard" viewBox="-230 -230 460 460" aria-hidden="true"></svg>
+    <div class="toprow"><div style="min-width:0"><h1>@Cheers <span>Bar Card</span><b class="beta" id="betaTag" hidden>BETA</b></h1><a class="league" id="league" target="_blank" rel="noopener"></a></div><button type="button" class="theme" id="themeBtn">Dark</button></div>
+    <div id="banner" class="banner" role="status"></div>
+  </header>
+
+  <section class="panel" aria-labelledby="h-match">
+    <h2 id="h-match">Match</h2>
+    <div>
+      <label for="night">Night</label>
+      <select id="night"></select>
+    </div>
+    <div>
+      <label for="matchup">Matchup (home v away)</label>
+      <select id="matchup"></select>
+    </div>
+    <div id="customTeams" class="grid2" hidden>
+      <div><label for="homeTeam">Home team</label><select id="homeTeam"></select></div>
+      <div><label for="awayTeam">Away team</label><select id="awayTeam"></select></div>
+    </div>
+    <div id="board" class="boardline"></div>
+    <div id="makeup" class="makeup" hidden></div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-lineup">
+    <h2 id="h-lineup">Lineup tonight</h2>
+    <p class="note" style="margin:0">Captains set Player 1 and Player 2. That order decides the singles. Pick a sub if someone is out.</p>
+    <div class="grid2">
+      <div>
+        <p class="teamhead home-c ell" id="homeName">Home</p>
+        <label for="h1">Player 1</label><select id="h1"></select>
+        <input type="text" id="h1new" placeholder="New player's name" hidden style="margin-top:6px"><div class="pstat" id="h1stat"></div>
+        <label for="h2" style="margin-top:8px">Player 2</label><select id="h2"></select>
+        <input type="text" id="h2new" placeholder="New player's name" hidden style="margin-top:6px"><div class="pstat" id="h2stat"></div>
+      </div>
+      <div>
+        <p class="teamhead away-c ell" id="awayName">Away</p>
+        <label for="a1">Player 1</label><select id="a1"></select>
+        <input type="text" id="a1new" placeholder="New player's name" hidden style="margin-top:6px"><div class="pstat" id="a1stat"></div>
+        <label for="a2" style="margin-top:8px">Player 2</label><select id="a2"></select>
+        <input type="text" id="a2new" placeholder="New player's name" hidden style="margin-top:6px"><div class="pstat" id="a2stat"></div>
+      </div>
+    </div>
+    <div id="lineupWarn" class="warn" hidden></div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-res" id="results">
+    <h2 id="h-res">Handicaps</h2>
+    <div class="result tile r">
+      <div class="rlabel">501 doubles <span class="fmt"></span> · games 3 &amp; 7</div>
+      <div id="r501"></div>
+      <details><summary>How it's worked out</summary><div class="math" id="m501"></div></details>
+    </div>
+    <div class="result tile g">
+      <div class="rlabel">Cricket doubles · games 1, 2, 5 &amp; 9</div>
+      <div id="rcr"></div>
+      <details><summary>How it's worked out</summary><div class="math" id="mcr"></div></details>
+    </div>
+    <div class="result tile s">
+      <div class="rlabel">501 singles <span class="fmt"></span> · games 4, 6, 8 &amp; 10</div>
+      <div id="rsg"></div>
+      <details><summary>How it's worked out</summary><div class="math" id="msg"></div></details>
+    </div>
+    <div class="result tile">
+      <div class="rlabel">701 doubles <span class="fmt"></span> · game 11</div>
+      <div class="big even">Scratch · both start at 701</div>
+    </div>
+    <p class="note" style="margin:0">Who throws first in each leg is decided at the board.</p>
+  </section>
+
+  <a class="btnlink" href="https://my.dartconnect.com/league/schedule/CheersMonDDL/26422" target="_blank" rel="noopener">Contact opponent or reschedule (DartConnect)</a>
+
+  <div class="betanote" id="betaNote" hidden></div>
+
+  <section class="foot" aria-labelledby="h-rules">
+    <h2 id="h-rules">The rules in brief</h2>
+    <div>501 doubles: each team's average 3DA is (Player 1 + Player 2) ÷ 2. The difference sets the spot: under 3.0 none, then 25 points per 3.0, up to 175. The lower team starts at 501 minus the spot.</div>
+    <div>Cricket: each team's MPR is Player 1 + Player 2 (added). The difference sets free marks: under 0.50 none, then 1 mark per 0.50, up to 5. Free marks count toward closing only and don't count in anyone's MPR.</div>
+    <div>Singles: lower 3DA ÷ higher 3DA gives a percentage. The lower player starts at 501 × that percentage, rounded. The higher player starts at 501.</div>
+    <div>A player with fewer than 9 legs of stats is treated as a strong player: the league's top-quarter 3DA and MPR. Their singles are scratch.</div>
+    <div id="fmtRule"></div>
+    <div>Makeup matches use the handicaps from the night they were scheduled.</div>
+    <div id="srcNote"></div>
+  </section>
+</main>
+
+<script>
+const DATA = {"updated":"2026-11-25","teams":{"180 Proof":["Zeitz, K","Dirks, J"],"2 Nips 1 Tip":["Cordrey, S","Rensch, S"],"Dart Chocolate":["Jallah, K","Nelson, P"],"Darts & Recreation":["Shaw, L","Chavez, J"],"Diverted Flights":["Bieber, T","Bieber, J"],"Granny's Bananas":["Shattuck, L","Lindholm, H"],"Love at First Flight":["Mejeur, S","Mejeur, M"],"One Hit Wonders":["Baluja, L","Shaw, J"],"Savages Vol 2":["Larson, D","Guerrero, B"],"The Dartly Couple":["Rosenbach, A","Rosenbach, K"],"Total Bulls Hit":["Meyer, M","Lapthorne, A"]},"subs":["Cochran, S"],"snapshots":[{"through":"2026-11-23","label":"Mon Nov 23","nights":2,"players":{"Baluja, L":[241,2894,10,256,64,8],"Bieber, J":[216,3928,10,200,135,8],"Bieber, T":[238,3006,10,195,97,8],"Chavez, J":[224,3157,10,178,76,8],"Cochran, S":[183,1615,5,111,36,4],"Cordrey, S":[233,3204,10,182,114,8],"Dirks, J":[237,3152,10,183,86,8],"Guerrero, B":[133,1961,5,144,45,4],"Jallah, K":[314,3418,10,303,99,8],"Lapthorne, A":[238,3106,10,160,81,8],"Larson, D":[158,1655,5,141,54,4],"Lindholm, H":[126,1692,5,110,45,4],"Mejeur, M":[320,2907,10,270,46,8],"Mejeur, S":[308,3431,10,276,118,8],"Meyer, M":[208,3780,10,154,102,8],"Nelson, P":[290,3392,10,303,95,8],"Rensch, S":[234,3379,10,184,93,8],"Rosenbach, A":[126,1662,5,149,37,4],"Rosenbach, K":[113,1910,5,153,87,4],"Shattuck, L":[256,3850,10,217,150,8],"Shaw, J":[239,3545,10,254,160,8],"Shaw, L":[243,3508,10,177,88,8],"Zeitz, K":[211,3524,10,190,117,8]}},{"through":"2026-11-17","label":"Tue Nov 17","nights":1,"players":{"Baluja, L":[128,1576,5,151,38,4],"Bieber, J":[105,1846,5,93,65,4],"Bieber, T":[108,1571,5,90,47,4],"Chavez, J":[114,1452,5,82,34,4],"Cordrey, S":[119,1543,5,107,69,4],"Dirks, J":[108,1423,5,87,44,4],"Jallah, K":[169,1761,5,165,53,4],"Lapthorne, A":[127,1747,5,85,44,4],"Lindholm, H":[126,1692,5,110,45,4],"Mejeur, M":[162,1493,5,159,21,4],"Mejeur, S":[154,1777,5,165,62,4],"Meyer, M":[107,1847,5,85,56,4],"Nelson, P":[151,1775,5,162,54,4],"Rensch, S":[129,1791,5,108,46,4],"Rosenbach, A":[126,1662,5,149,37,4],"Rosenbach, K":[113,1910,5,153,87,4],"Shattuck, L":[123,1861,5,106,89,4],"Shaw, J":[113,1780,5,150,81,4],"Shaw, L":[120,1779,5,84,41,4],"Zeitz, K":[105,1698,5,91,47,4]}}],"schedule":[[1,"2026-11-16","- BYE -","Savages Vol 2"],[1,"2026-11-16","180 Proof","Diverted Flights"],[1,"2026-11-16","Dart Chocolate","Love at First Flight"],[1,"2026-11-16","Granny's Bananas","2 Nips 1 Tip"],[1,"2026-11-16","One Hit Wonders","The Dartly Couple"],[1,"2026-11-16","Total Bulls Hit","Darts & Recreation"],[2,"2026-11-23","2 Nips 1 Tip","Total Bulls Hit"],[2,"2026-11-23","Darts & Recreation","180 Proof"],[2,"2026-11-23","Diverted Flights","One Hit Wonders"],[2,"2026-11-23","Love at First Flight","Granny's Bananas"],[2,"2026-11-23","Savages Vol 2","Dart Chocolate"],[2,"2026-11-23","The Dartly Couple","- BYE -"],[3,"2026-11-30","- BYE -","Diverted Flights"],[3,"2026-11-30","180 Proof","2 Nips 1 Tip"],[3,"2026-11-30","Dart Chocolate","The Dartly Couple"],[3,"2026-11-30","One Hit Wonders","Darts & Recreation"],[3,"2026-11-30","Savages Vol 2","Love at First Flight"],[3,"2026-11-30","Total Bulls Hit","Granny's Bananas"],[4,"2026-12-07","2 Nips 1 Tip","One Hit Wonders"],[4,"2026-12-07","Darts & Recreation","- BYE -"],[4,"2026-12-07","Diverted Flights","Dart Chocolate"],[4,"2026-12-07","Granny's Bananas","180 Proof"],[4,"2026-12-07","Love at First Flight","Total Bulls Hit"],[4,"2026-12-07","The Dartly Couple","Savages Vol 2"],[5,"2026-12-14","- BYE -","2 Nips 1 Tip"],[5,"2026-12-14","180 Proof","Total Bulls Hit"],[5,"2026-12-14","Dart Chocolate","Darts & Recreation"],[5,"2026-12-14","One Hit Wonders","Granny's Bananas"],[5,"2026-12-14","Savages Vol 2","Diverted Flights"],[5,"2026-12-14","The Dartly Couple","Love at First Flight"],[6,"2026-12-21","2 Nips 1 Tip","Dart Chocolate"],[6,"2026-12-21","Darts & Recreation","Savages Vol 2"],[6,"2026-12-21","Diverted Flights","The Dartly Couple"],[6,"2026-12-21","Granny's Bananas","- BYE -"],[6,"2026-12-21","Love at First Flight","180 Proof"],[6,"2026-12-21","Total Bulls Hit","One Hit Wonders"],[7,"2026-12-28","- BYE -","Total Bulls Hit"],[7,"2026-12-28","Dart Chocolate","Granny's Bananas"],[7,"2026-12-28","Diverted Flights","Love at First Flight"],[7,"2026-12-28","One Hit Wonders","180 Proof"],[7,"2026-12-28","Savages Vol 2","2 Nips 1 Tip"],[7,"2026-12-28","The Dartly Couple","Darts & Recreation"],[8,"2027-01-11","180 Proof","- BYE -"],[8,"2027-01-11","2 Nips 1 Tip","The Dartly Couple"],[8,"2027-01-11","Darts & Recreation","Diverted Flights"],[8,"2027-01-11","Granny's Bananas","Savages Vol 2"],[8,"2027-01-11","Love at First Flight","One Hit Wonders"],[8,"2027-01-11","Total Bulls Hit","Dart Chocolate"],[9,"2027-01-18","- BYE -","One Hit Wonders"],[9,"2027-01-18","Dart Chocolate","180 Proof"],[9,"2027-01-18","Darts & Recreation","Love at First Flight"],[9,"2027-01-18","Diverted Flights","2 Nips 1 Tip"],[9,"2027-01-18","Savages Vol 2","Total Bulls Hit"],[9,"2027-01-18","The Dartly Couple","Granny's Bananas"],[10,"2027-01-25","180 Proof","Savages Vol 2"],[10,"2027-01-25","2 Nips 1 Tip","Darts & Recreation"],[10,"2027-01-25","Granny's Bananas","Diverted Flights"],[10,"2027-01-25","Love at First Flight","- BYE -"],[10,"2027-01-25","One Hit Wonders","Dart Chocolate"],[10,"2027-01-25","Total Bulls Hit","The Dartly Couple"],[11,"2027-02-01","2 Nips 1 Tip","Love at First Flight"],[11,"2027-02-01","Dart Chocolate","- BYE -"],[11,"2027-02-01","Darts & Recreation","Granny's Bananas"],[11,"2027-02-01","Diverted Flights","Total Bulls Hit"],[11,"2027-02-01","Savages Vol 2","One Hit Wonders"],[11,"2027-02-01","The Dartly Couple","180 Proof"],[12,"2027-02-08","2 Nips 1 Tip","Granny's Bananas"],[12,"2027-02-08","Darts & Recreation","Total Bulls Hit"],[12,"2027-02-08","Diverted Flights","180 Proof"],[12,"2027-02-08","Love at First Flight","Dart Chocolate"],[12,"2027-02-08","Savages Vol 2","- BYE -"],[12,"2027-02-08","The Dartly Couple","One Hit Wonders"],[13,"2027-02-15","- BYE -","The Dartly Couple"],[13,"2027-02-15","180 Proof","Darts & Recreation"],[13,"2027-02-15","Dart Chocolate","Savages Vol 2"],[13,"2027-02-15","Granny's Bananas","Love at First Flight"],[13,"2027-02-15","One Hit Wonders","Diverted Flights"],[13,"2027-02-15","Total Bulls Hit","2 Nips 1 Tip"],[14,"2027-02-22","2 Nips 1 Tip","180 Proof"],[14,"2027-02-22","Darts & Recreation","One Hit Wonders"],[14,"2027-02-22","Diverted Flights","- BYE -"],[14,"2027-02-22","Granny's Bananas","Total Bulls Hit"],[14,"2027-02-22","Love at First Flight","Savages Vol 2"],[14,"2027-02-22","The Dartly Couple","Dart Chocolate"],[15,"2027-03-01","- BYE -","Darts & Recreation"],[15,"2027-03-01","180 Proof","Granny's Bananas"],[15,"2027-03-01","Dart Chocolate","Diverted Flights"],[15,"2027-03-01","One Hit Wonders","2 Nips 1 Tip"],[15,"2027-03-01","Savages Vol 2","The Dartly Couple"],[15,"2027-03-01","Total Bulls Hit","Love at First Flight"],[16,"2027-03-08","2 Nips 1 Tip","- BYE -"],[16,"2027-03-08","Darts & Recreation","Dart Chocolate"],[16,"2027-03-08","Diverted Flights","Savages Vol 2"],[16,"2027-03-08","Granny's Bananas","One Hit Wonders"],[16,"2027-03-08","Love at First Flight","The Dartly Couple"],[16,"2027-03-08","Total Bulls Hit","180 Proof"],[17,"2027-03-15","- BYE -","Granny's Bananas"],[17,"2027-03-15","180 Proof","Love at First Flight"],[17,"2027-03-15","Dart Chocolate","2 Nips 1 Tip"],[17,"2027-03-15","One Hit Wonders","Total Bulls Hit"],[17,"2027-03-15","Savages Vol 2","Darts & Recreation"],[17,"2027-03-15","The Dartly Couple","Diverted Flights"],[18,"2027-03-22","180 Proof","One Hit Wonders"],[18,"2027-03-22","2 Nips 1 Tip","Savages Vol 2"],[18,"2027-03-22","Darts & Recreation","The Dartly Couple"],[18,"2027-03-22","Granny's Bananas","Dart Chocolate"],[18,"2027-03-22","Love at First Flight","Diverted Flights"],[18,"2027-03-22","Total Bulls Hit","- BYE -"],[19,"2027-03-29","- BYE -","180 Proof"],[19,"2027-03-29","Dart Chocolate","Total Bulls Hit"],[19,"2027-03-29","Diverted Flights","Darts & Recreation"],[19,"2027-03-29","One Hit Wonders","Love at First Flight"],[19,"2027-03-29","Savages Vol 2","Granny's Bananas"],[19,"2027-03-29","The Dartly Couple","2 Nips 1 Tip"],[20,"2027-04-05","180 Proof","Dart Chocolate"],[20,"2027-04-05","2 Nips 1 Tip","Diverted Flights"],[20,"2027-04-05","Granny's Bananas","The Dartly Couple"],[20,"2027-04-05","Love at First Flight","Darts & Recreation"],[20,"2027-04-05","One Hit Wonders","- BYE -"],[20,"2027-04-05","Total Bulls Hit","Savages Vol 2"],[21,"2027-04-12","- BYE -","Love at First Flight"],[21,"2027-04-12","Dart Chocolate","One Hit Wonders"],[21,"2027-04-12","Darts & Recreation","2 Nips 1 Tip"],[21,"2027-04-12","Diverted Flights","Granny's Bananas"],[21,"2027-04-12","Savages Vol 2","180 Proof"],[21,"2027-04-12","The Dartly Couple","Total Bulls Hit"],[22,"2027-04-19","- BYE -","Dart Chocolate"],[22,"2027-04-19","180 Proof","The Dartly Couple"],[22,"2027-04-19","Granny's Bananas","Darts & Recreation"],[22,"2027-04-19","Love at First Flight","2 Nips 1 Tip"],[22,"2027-04-19","One Hit Wonders","Savages Vol 2"],[22,"2027-04-19","Total Bulls Hit","Diverted Flights"]],"pending":[],"settings":{"start":501,"minLegs":9,"pct":0.75,"spots":[[0,0],[3,25],[6,50],[9,75],[12,100],[15,125],[18,150],[21,175]],"marks":[[0,0],[0.5,1],[1,2],[1.5,3],[2,4],[2.5,5]]},"full":{"Dirks, J":"Julie Dirks","Zeitz, K":"Karlton Zeitz","Cordrey, S":"Shadd Cordrey","Rensch, S":"Sierra Rensch","Jallah, K":"Keyra Jallah","Nelson, P":"Patrick Nelson","Chavez, J":"Joe Chavez","Shaw, L":"Lorrie Shaw","Bieber, J":"Josh Bieber","Bieber, T":"Tammy Bieber","Cochran, S":"Samantha Cochran","Lindholm, H":"Hannah Lindholm","Shattuck, L":"Larry Shattuck","Mejeur, M":"Mary Mejeur","Mejeur, S":"Scott Mejeur","Baluja, L":"Lynette Baluja","Shaw, J":"Jacob Shaw","Guerrero, B":"Billy Guerrero","Larson, D":"Donna Larson","Rosenbach, A":"Alicia Rosenbach","Rosenbach, K":"Kristen Rosenbach","Lapthorne, A":"April Lapthorne","Meyer, M":"Matthew Meyer"},"league":{"name":"Monday Mixed Doubles","season":"Winter/Spring 2026/27","venue":"@ Cheers, Northglenn","url":"https://tv.dartconnect.com/league/CheersMonDDL","format":{"code":"SISO","name":"single in, single out"}},"beta":{"on":true,"contact":"Karlton Zeitz"}};
+
+/* ---------- pure calculation (tested against the workbook) ---------- */
+function percentile(vals, p){
+  const a=[...vals].sort((x,y)=>x-y); if(!a.length) return 0;
+  const h=(a.length-1)*p, lo=Math.floor(h);
+  return lo+1<a.length ? a[lo]+(h-lo)*(a[lo+1]-a[lo]) : a[lo];
+}
+function band(chart, diff){ let v=0; for(const [from,val] of chart){ if(diff>=from-1e-9) v=val; } return v; }
+function snapshotFor(data, night){
+  // newest snapshot whose stats end before the match night
+  return data.snapshots.filter(s=>s.through<night).sort((a,b)=>a.through<b.through?1:-1)[0]||null;
+}
+function playerStats(snap, settings){
+  const out={}; if(!snap) return {stats:out,assumed:{tda:0,mpr:0}};
+  const t=[],m=[];
+  for(const [n,[d01,p01,l01,dcr,mcr,lcr]] of Object.entries(snap.players)){
+    const tda=d01?p01/d01*3:null, mpr=dcr?mcr/dcr*3:null;
+    out[n]={tda,mpr,legs:l01+lcr};
+    if(tda!=null) t.push(+tda.toFixed(2)); if(mpr!=null) m.push(+mpr.toFixed(2));
+  }
+  return {stats:out,assumed:{tda:percentile(t,settings.pct),mpr:percentile(m,settings.pct)}};
+}
+function resolve(name, ps, settings){
+  const s=ps.stats[name];
+  if(s && s.legs>=settings.minLegs && s.tda!=null && s.mpr!=null)
+    return {name,tda:+s.tda.toFixed(2),mpr:+s.mpr.toFixed(2),basis:'own',legs:s.legs};
+  return {name,tda:ps.assumed.tda,mpr:ps.assumed.mpr,basis:'assumed',legs:s?s.legs:0};
+}
+function computeMatch(lineup, settings){
+  const [H1,H2,A1,A2]=lineup, S=settings.start;
+  const hAvg=(H1.tda+H2.tda)/2, aAvg=(A1.tda+A2.tda)/2, d01=Math.abs(hAvg-aAvg);
+  const spot=band(settings.spots,d01);
+  const hM=H1.mpr+H2.mpr, aM=A1.mpr+A2.mpr, dcr=Math.abs(hM-aM);
+  const marks=band(settings.marks,dcr);
+  const games=[[4,H1,A2],[6,H2,A1],[8,H1,A1],[10,H2,A2]].map(([g,h,a])=>{
+    const scratch=h.basis==='assumed'||a.basis==='assumed';
+    const ratio=scratch?1:Math.min(h.tda,a.tda)/Math.max(h.tda,a.tda);
+    const start=Math.round(S*ratio);
+    const lower=ratio===1?null:(h.tda<a.tda?h:a);
+    return {g,h,a,ratio,start,lower,scratch};
+  });
+  return {hAvg,aAvg,d01,spot,spotTo:spot?(hAvg<aAvg?'home':'away'):null,start01:S-spot,
+          hM,aM,dcr,marks,marksTo:marks?(hM<aM?'home':'away'):null,games};
+}
+/* ---------- end pure calculation ---------- */
+
+const $=id=>document.getElementById(id);
+const S=DATA.settings, TEAMS=Object.keys(DATA.teams).sort();
+const fmtDate=iso=>{const d=new Date(iso+'T12:00:00');return d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})};
+const todayISO=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const f2=x=>x.toFixed(2);
+const nm=n=>(DATA.full&&DATA.full[n])||n;
+
+const nights=[...new Set(DATA.schedule.map(r=>r[1]))].sort();
+const nextNight=nights.find(n=>n>=todayISO())||nights[nights.length-1];
+
+function fillNights(){
+  $('night').innerHTML=nights.map(n=>{
+    const r=DATA.schedule.find(x=>x[1]===n)[0];
+    const tag=n<nextNight?' (makeup)':n===nextNight?' (next)':'';
+    return `<option value="${n}">Week ${r} · ${fmtDate(n)}${tag}</option>`}).join('');
+  $('night').value=nextNight;
+}
+function fillMatchups(){
+  const n=$('night').value;
+  const ms=DATA.schedule.filter(r=>r[1]===n&&r[2]!=='- BYE -'&&r[3]!=='- BYE -');
+  let mine=null; try{mine=localStorage.getItem('myTeam')}catch(e){}
+  $('matchup').innerHTML=ms.map(r=>`<option value="${esc(r[2])}|${esc(r[3])}">${esc(r[2])} v ${esc(r[3])}</option>`).join('')+'<option value="custom">Other matchup…</option>';
+  const pick=ms.find(r=>r[2]===mine||r[3]===mine);
+  if(pick) $('matchup').value=pick[2]+'|'+pick[3];
+}
+function teamOptions(team, current){
+  const [cap,oth]=DATA.teams[team]||[];
+  let h=`<optgroup label="${esc(team)}"><option value="${esc(cap)}">${esc(nm(cap))} (captain)</option><option value="${esc(oth)}">${esc(nm(oth))}</option></optgroup>`;
+  h+=`<optgroup label="Subs">`+DATA.subs.map(s=>`<option value="${esc(s)}">${esc(nm(s))}</option>`).join('')+`<option value="__new">New player…</option></optgroup>`;
+  return h;
+}
+function currentTeams(){
+  const v=$('matchup').value;
+  if(v==='custom') return [$('homeTeam').value,$('awayTeam').value];
+  return v.split('|');
+}
+function setupLineup(){
+  const [home,away]=currentTeams();
+  $('homeName').textContent=home; $('awayName').textContent=away;
+  for(const [id,team,idx] of [['h1',home,0],['h2',home,1],['a1',away,0],['a2',away,1]]){
+    $(id).innerHTML=teamOptions(team); $(id).value=DATA.teams[team][idx]; $(id+'new').hidden=true; $(id+'new').value='';
+  }
+}
+function pickedName(id){
+  if($(id).value==='__new'){ $(id+'new').hidden=false; return $(id+'new').value.trim()||'New player'; }
+  $(id+'new').hidden=true; return $(id).value;
+}
+
+const matchLine=(h,a)=>`<div class="ml"><span class="ell home-c">${esc(h)}</span><span>v</span><span class="ell away-c">${esc(a)}</span></div>`;
+const startRow=(who,verb,n)=>`<div class="st"><span class="ell">${esc(who)}</span><span class="vb">${verb}</span></div><span class="n">${n}</span>`;
+const evenRow=txt=>`<div class="ev">${txt}</div>`;
+function render(){
+  const night=$('night').value, snap=snapshotFor(DATA,night);
+  const ps=playerStats(snap,S);
+  // banner
+  const newest=[...DATA.snapshots].sort((a,b)=>a.through<b.through?1:-1)[0];
+  const ageDays=(new Date(nextNight)-new Date(newest.through))/864e5;
+  const stale=ageDays>8||DATA.pending.length>0;
+  $('banner').className='banner'+(stale?' stale':'');
+  $('banner').innerHTML=`<span><b>Stats through ${fmtDate(newest.through)}</b> · ${newest.nights} night${newest.nights>1?'s':''} · updated ${fmtDate(DATA.updated)}</span>`+
+    (ageDays>8?`<span>These stats may be out of date. Check with a captain before relying on them.</span>`:'')+
+    DATA.pending.map(p=>`<span>Not yet played: ${esc(p)}</span>`).join('');
+  // makeup note
+  const mk=$('makeup');
+  if(night<nextNight){ mk.hidden=false; mk.textContent=snap?`Makeup for ${fmtDate(night)}: using that night's handicaps (stats through ${fmtDate(snap.through)}).`:`Makeup for ${fmtDate(night)}: no stats existed yet, so everything is scratch.`; }
+  else mk.hidden=true;
+
+  const [home,away]=currentTeams();
+  const row=DATA.schedule.find(x=>x[1]===night&&x[2]===home&&x[3]===away);
+  $('board').innerHTML=row&&row[4]?`Board <b>${esc(row[4])}</b>`:'No board assignments yet. Pick any open board.';
+  const names=['h1','h2','a1','a2'].map(pickedName);
+  const L=names.map(n=>resolve(n,ps,S));
+  const warn=[];
+  if(names[0]===names[1]) warn.push(`${home}: Player 1 and Player 2 are the same person.`);
+  if(names[2]===names[3]) warn.push(`${away}: Player 1 and Player 2 are the same person.`);
+  if(new Set(names).size<4 && !warn.length) warn.push('The same player is listed for both teams.');
+  $('lineupWarn').hidden=!warn.length; $('lineupWarn').textContent=warn.join(' ');
+
+  ['h1','h2','a1','a2'].forEach((id,i)=>{const p=L[i],el=$(id+'stat');
+    el.className='pstat'+(p.basis==='own'?'':' assumed');
+    el.textContent=p.basis==='own'?`${f2(p.tda)} 3DA · ${f2(p.mpr)} MPR`:`New · as strong: ${f2(p.tda)} / ${f2(p.mpr)}`;
+    el.title=p.basis==='own'?`${p.legs} legs of stats`:'Fewer than 9 legs of stats, so treated as a strong player';});
+
+  const r=computeMatch(L,S);
+  const tn=w=>w==='home'?home:away;
+  // 501
+  $('r501').className='hgrid dbl';
+  $('r501').innerHTML=matchLine(home,away)+(r.spot?startRow(tn(r.spotTo),'start at',r.start01)+`<div class="sub">${esc(tn(r.spotTo==="home"?"away":"home"))} start at 501</div>`:evenRow('Straight up · both start at 501'));
+  $('m501').innerHTML=`<span>${esc(home)}: (${f2(L[0].tda)} + ${f2(L[1].tda)}) ÷ 2 = ${f2(r.hAvg)}</span><span>${esc(away)}: (${f2(L[2].tda)} + ${f2(L[3].tda)}) ÷ 2 = ${f2(r.aAvg)}</span><span>Difference ${f2(r.d01)} → spot ${r.spot}${r.spot?` → ${S.start} − ${r.spot} = ${r.start01}`:''}</span>`;
+  // cricket
+  $('rcr').className='hgrid dbl';
+  $('rcr').innerHTML=matchLine(home,away)+(r.marks?startRow(tn(r.marksTo),`get free mark${r.marks>1?'s':''}`,r.marks):evenRow('Straight up · no free marks'));
+  $('mcr').innerHTML=`<span>${esc(home)}: ${f2(L[0].mpr)} + ${f2(L[1].mpr)} = ${f2(r.hM)}</span><span>${esc(away)}: ${f2(L[2].mpr)} + ${f2(L[3].mpr)} = ${f2(r.aM)}</span><span>Difference ${f2(r.dcr)} → ${r.marks} mark${r.marks===1?'':'s'}</span>`;
+  // singles
+  $('rsg').className='hgrid sgl';
+  $('rsg').innerHTML=r.games.map(g=>`<div class="g">G${g.g}</div>`+matchLine(nm(g.h.name),nm(g.a.name))+
+    (g.lower?startRow(nm(g.lower.name),'starts at',g.start):evenRow('Scratch · both 501'))).join('');
+  $('msg').innerHTML=r.games.map(g=>`<span>G${g.g} (${g.g===4?'Home P1 v Away P2':g.g===6?'Home P2 v Away P1':g.g===8?'Home P1 v Away P1':'Home P2 v Away P2'}): `+
+    (g.scratch?'a new player is involved → scratch':`${f2(Math.min(g.h.tda,g.a.tda))} ÷ ${f2(Math.max(g.h.tda,g.a.tda))} = ${(g.ratio*100).toFixed(1)}% → 501 × ${(g.ratio*100).toFixed(1)}% = ${g.start}`)+`</span>`).join('');
+  $('srcNote').textContent=`Source: DartConnect league leaderboard (all darts, singles and doubles). Handicaps for ${fmtDate(night)} use stats ${snap?'through '+fmtDate(snap.through):'from before any match was played'}.`;
+}
+
+function drawBoard(){
+  const order=[20,1,18,4,13,6,10,15,2,17,3,19,7,16,8,11,14,9,12,5];
+  const C={black:'#1b1b1b',cream:'#efe4c6',red:'#d2232a',green:'#169a4b',wire:'#b9bcc0'};
+  const pt=(r,a)=>[(r*Math.sin(a)).toFixed(2),(-r*Math.cos(a)).toFixed(2)];
+  const wedge=(r1,r2,a1,a2,fill)=>{const [x1,y1]=pt(r2,a1),[x2,y2]=pt(r2,a2),[x3,y3]=pt(r1,a2),[x4,y4]=pt(r1,a1);
+    return `<path d="M${x1} ${y1}A${r2} ${r2} 0 0 1 ${x2} ${y2}L${x3} ${y3}A${r1} ${r1} 0 0 0 ${x4} ${y4}Z" fill="${fill}" stroke="${C.wire}" stroke-width="1.2"/>`};
+  let s=`<circle r="228" fill="${C.black}"/><circle r="228" fill="none" stroke="#333" stroke-width="4"/>`;
+  const step=Math.PI/10;
+  order.forEach((n,i)=>{
+    const a1=i*step-step/2, a2=a1+step, dark=i%2===0;
+    const single=dark?C.black:C.cream, ring=dark?C.red:C.green;
+    s+=wedge(15.9,99,a1,a2,single)+wedge(99,107,a1,a2,ring)+wedge(107,162,a1,a2,single)+wedge(162,170,a1,a2,ring);
+    const [x,y]=pt(196,i*step);
+    s+=`<text x="${x}" y="${y}" fill="#f2f2f2" font-family="Arial,sans-serif" font-weight="700" font-size="26" text-anchor="middle" dominant-baseline="central">${n}</text>`;
+  });
+  s+=`<circle r="15.9" fill="${C.green}" stroke="${C.wire}" stroke-width="1.2"/><circle r="6.35" fill="${C.red}" stroke="${C.wire}" stroke-width="1"/>`;
+  $('dboard').innerHTML=s;
+}
+function init(){
+  drawBoard();
+  const lg=DATA.league||{}; $('league').textContent=[lg.name,lg.season].filter(Boolean).join(' · ')+' ↗'; if(lg.url) $('league').href=lg.url; else $('league').removeAttribute('href');
+  const fm=lg.format||{}; document.querySelectorAll('.fmt').forEach(e=>{e.textContent=fm.code||'';e.title=fm.name||'';e.hidden=!fm.code;});
+  if(fm.code) $('fmtRule').textContent=`All 01 games are ${fm.code}: ${fm.name}. No double needed to start or finish.`;
+  if(DATA.beta&&DATA.beta.on){ $('betaTag').hidden=false; $('betaNote').hidden=false;
+    $('betaNote').textContent=`This is a beta. Handicaps follow the league worksheets, but please double-check anything that looks off and tell ${DATA.beta.contact}. Suggestions welcome too.`; }
+  fillNights(); fillMatchups();
+  $('homeTeam').innerHTML=$('awayTeam').innerHTML=TEAMS.map(t=>`<option>${esc(t)}</option>`).join('');
+  $('awayTeam').selectedIndex=1;
+  setupLineup(); render();
+  $('night').addEventListener('change',()=>{fillMatchups();toggleCustom();setupLineup();render()});
+  $('matchup').addEventListener('change',()=>{toggleCustom();setupLineup();render();
+    const [h,a]=currentTeams(); try{const mine=localStorage.getItem('myTeam'); if(!mine||(mine!==h&&mine!==a)) localStorage.setItem('myTeam',h)}catch(e){}});
+  for(const id of ['homeTeam','awayTeam']) $(id).addEventListener('change',()=>{setupLineup();render()});
+  for(const id of ['h1','h2','a1','a2']){ $(id).addEventListener('change',render); $(id+'new').addEventListener('input',render); }
+}
+function applyTheme(t){ if(t) document.documentElement.setAttribute('data-theme',t); else document.documentElement.removeAttribute('data-theme');
+  const dark=t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches; $('themeBtn').textContent=dark?'Light':'Dark'; }
+let theme=null; try{theme=localStorage.getItem('theme')}catch(e){}
+applyTheme(theme);
+$('themeBtn').addEventListener('click',()=>{const dark=document.documentElement.getAttribute('data-theme')==='dark'||(!document.documentElement.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+  const t=dark?'light':'dark'; applyTheme(t); try{localStorage.setItem('theme',t)}catch(e){} });
+function toggleCustom(){ $('customTeams').hidden=$('matchup').value!=='custom'; }
+init();
+</script>
+
+</body>
+</html>
