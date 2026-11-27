@@ -5,6 +5,7 @@ const fs=require('fs');
 const [tpl,dataF,recF]=process.argv.slice(2);
 const t=fs.readFileSync(tpl,'utf8'); const data=JSON.parse(fs.readFileSync(dataF,'utf8')); const recs=JSON.parse(fs.readFileSync(recF,'utf8'));
 eval(t.split('/* ---------- pure calculation')[1].split('/* ---------- end pure')[0].replace(/^[^\n]*\n/,''));
+const vm=t.match(/const VERSION = \{number:'([^']+)'/); const cardVersion=vm?vm[1]:'unversioned';
 const S=data.settings, key={}; for(const [k,v] of Object.entries(data.full)) key[v.trim().toLowerCase()]=k;
 const K=n=>key[n.trim().replace(/\s+/g,' ').toLowerCase()]||null;
 let out=[], tot={ok:0,bad:0,skip:0};
@@ -26,4 +27,4 @@ for(const m of recs){
     out.push(`| ${g.n} ${g.type} | ${who} | ${rec} | ${exp} | ${ok?'✓':'**✗**'} |`);
   }
 }
-console.log(`# Handicap audit – ${recs[0].date}\n\nRecorded in DartConnect vs the Bar Card rules (stats through ${snapshotFor(data,recs[0].date).through}).\n\n**${tot.ok} correct, ${tot.bad} different, ${tot.skip} not checkable.**`+out.join('\n'));
+console.log(`# Handicap audit – ${recs[0].date}\n\nRecorded in DartConnect vs the Bar Card rules (card v${cardVersion}, stats through ${snapshotFor(data,recs[0].date).through}).\n\n**${tot.ok} correct, ${tot.bad} different, ${tot.skip} not checkable.**`+out.join('\n'));
