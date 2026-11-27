@@ -10,7 +10,7 @@ First version for league use (Monday 30 Nov 2026).
 - **Game order:** Cricket first, then 501 doubles, 501 singles and 701, each with "How it's calculated".
 - **Lookup charts:** spot and marks charts with tonight's row highlighted.
 - **Singles rule confirmed:** 501 × (lower 3DA ÷ higher 3DA), per the DartConnect worksheet.
-- **New players:** enter name, 3DA (10–70100) and MPR (0.10–6.00) in place; the old "assumed strong" handicap is removed.
+- **New players:** enter name, 3DA (10–100) and MPR (0.10–6.00) in place; the old "assumed strong" handicap is removed.
 - **Layout:** HOME/AWAY labels, captain marked (C), full names, uniform result tiles, collapsible rules, phone layout fixes, light/dark header.
 - **Throwing order:** 'option' note in the Cricket panel, defined in the rules (cork; ties re-cork in reverse order).
 - **Version and beta notice** shown on the card.
