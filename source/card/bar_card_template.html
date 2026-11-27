@@ -134,6 +134,7 @@ a{color:var(--red)}
 a.hint{color:inherit;text-decoration:underline dotted;text-underline-offset:3px}
 #optRule.flash{background:var(--amber-bg);border-radius:6px;padding:4px 6px}
 .foot{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.version{text-align:center;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
 .btnlink{display:block;text-align:center;font-weight:600;text-decoration:none;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;padding:12px}
 @media (prefers-reduced-motion:no-preference){.big .n,.sg .n{transition:color .2s}}
 </style>
@@ -212,6 +213,7 @@ a.hint{color:inherit;text-decoration:underline dotted;text-underline-offset:3px}
   <a class="btnlink" href="https://my.dartconnect.com/league/schedule/CheersMonDDL/26422" target="_blank" rel="noopener">Contact opponent or reschedule (DartConnect)</a>
 
   <div class="betanote" id="betaNote" hidden></div>
+  <div class="version" id="version"></div>
 
   <details class="foot rules" id="rules">
     <summary><h2 id="h-rules">The rules in brief</h2></summary>
@@ -230,6 +232,7 @@ a.hint{color:inherit;text-decoration:underline dotted;text-underline-offset:3px}
 
 <script>
 const DATA = /*DATA*/;
+const VERSION = {number:'0.9.0', released:'2026-11-27'};  // bump on each release
 
 /* ---------- pure calculation (tested against the workbook) ---------- */
 function percentile(vals, p){
@@ -459,6 +462,7 @@ function init(){
   if(fm.code) $('fmtRule').textContent=`All 01 games are ${fm.code}: ${fm.name}. No double needed to start or finish.`;
   if(DATA.beta&&DATA.beta.on){ $('betaTag').hidden=false; $('betaNote').hidden=false;
     $('betaNote').textContent=`This is a beta. Handicaps follow the league worksheets, but please double-check anything that looks off and tell ${DATA.beta.contact}. Suggestions welcome too.`; }
+  $('version').textContent=`Bar Card v${VERSION.number}${DATA.beta&&DATA.beta.on?' beta':''} · released ${fmtShort(VERSION.released)}, ${VERSION.released.slice(0,4)}`;
   fillNights(); fillMatchups();
   $('homeTeam').innerHTML=$('awayTeam').innerHTML=TEAMS.map(t=>`<option>${esc(t)}</option>`).join('');
   $('awayTeam').selectedIndex=1;
