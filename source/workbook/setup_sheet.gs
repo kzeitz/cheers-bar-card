@@ -14,8 +14,8 @@ function setupSheet() {
  "Bar Card": {
   "B4": "Home team = the team listed first on the DartConnect schedule. Choose from the list. Team rosters come from the Teams tab.",
   "B9": "Player 1 and Player 2 are set by the captains each night and decide the singles matchups (game 4 = Home P1 v Away P2, game 6 = P2 v P1, game 8 = P1 v P1, game 10 = P2 v P2). Leave blank = captain is Player 1 and the other regular is Player 2. Pick a different order or a sub from the list; a brand-new sub can be typed in, then enter their 3DA and MPR on the Handicap tab (yellow Entered cells). If a sub is Player 1 and Player 2 is blank, Player 2 defaults to the non-captain regular, so set Player 2 yourself if the sub replaces that regular.",
-  "B14": "Pre-Match worksheet, Part 1. Team average 3DA = the two players' 3DA added and divided by 2. The difference between the two team averages is looked up in the spot chart (Settings). The lower team starts at 501 minus the spot. Full steps: Handicap tab, Part 1.",
-  "B15": "Pre-Match worksheet, Part 2. Combined MPR = the two players' MPR added (not averaged). The difference is looked up in the marks chart (Settings). The lower team receives the marks. Full steps: Handicap tab, Part 2.",
+  "B14": "Pre-Match worksheet, Part 2. Combined MPR = the two players' MPR added (not averaged). The difference is looked up in the marks chart (Settings). The lower team receives the marks. Full steps: Handicap tab, Part 2.",
+  "B15": "Pre-Match worksheet, Part 1. Team average 3DA = the two players' 3DA added and divided by 2. The difference between the two team averages is looked up in the spot chart (Settings). The lower team starts at 501 minus the spot. Full steps: Handicap tab, Part 1.",
   "B16": "Game 4 = Home Player 1 v Away Player 2. Singles percentage handicapping. Lower 3DA ÷ higher 3DA = %. Lower player starts at 501 × % (rounded); higher player starts at 501. ASSUMPTION: the worksheet does not say how to convert the percentage to a start score. Full steps: Handicap tab, Part 3.",
   "B20": "Game 11 is 701 doubles, scratch, per the Match Night worksheet."
  },
@@ -39,6 +39,8 @@ function setupSheet() {
   "J4": "Optional. 3DA for a player with no league stats yet, e.g. from another league or their DartConnect profile. Used only until they have league stats. Averages from other formats may not match Cheers exactly."
  },
  "Handicap": {
+  "C7": "Entered 3DA for a new player with no league stats. Must be between 10 and 100.",
+  "D7": "Entered MPR for a new player with no league stats. Must be between 0.10 and 6.00.",
   "E7": "3DA used for this player. Order: 1) Entered 3DA typed in column C (new player), 2) their own league 3DA if they have any league stats, 3) Entered 3DA on the Players tab. If none, the Bar Card asks for the numbers instead of showing handicaps.",
   "G7": "Basis: Entered = you typed both numbers here. Own stats = the player's league stats. Entered (Players tab) = numbers kept on the Players tab. Needs 3DA & MPR = new player with nothing entered yet.",
   "B16": "Home team average 3DA = combined 3DA of the two players ÷ 2. Pre-Match worksheet Part 1, Step 1.",
@@ -87,6 +89,15 @@ function setupSheet() {
   bc.getRange('B11:B12').setDataValidation(
     SpreadsheetApp.newDataValidation().requireValueInRange(bc.getRange('E9:E20'), true)
       .setAllowInvalid(true).setHelpText('Optional. Blank = captain is Player 1. Pick a regular or a sub, or type a new sub.').build());
+
+  // limits for entered 3DA / MPR (new players)
+  var v3 = SpreadsheetApp.newDataValidation().requireNumberBetween(10, 100).setAllowInvalid(false)
+    .setHelpText('3DA between 10 and 100, for example 38.5.').build();
+  var vm = SpreadsheetApp.newDataValidation().requireNumberBetween(0.1, 6).setAllowInvalid(false)
+    .setHelpText('MPR between 0.10 and 6.00, for example 1.40.').build();
+  var hc = ss.getSheetByName('Handicap'), pl = ss.getSheetByName('Players');
+  hc.getRange('C7:C10').setDataValidation(v3); hc.getRange('D7:D10').setDataValidation(vm);
+  pl.getRange('J5:J40').setDataValidation(v3); pl.getRange('K5:K40').setDataValidation(vm);
 
   ss.toast('Added ' + count + ' notes and the dropdowns. All done.', 'Setup complete', 10);
 }
