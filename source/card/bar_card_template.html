@@ -27,17 +27,19 @@ main{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
 .hero{background:var(--band);color:var(--band-fg);border-radius:14px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
 .beta{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.1em;vertical-align:middle;margin-left:8px;padding:2px 7px;border-radius:999px;background:var(--red);color:#fff;position:relative;top:-3px}
 .betanote{border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:13px;color:var(--muted)}
-.league{font-weight:var(--w-mid);display:block;color:var(--band-fg);text-decoration:underline;text-decoration-color:var(--band-line);text-underline-offset:3px;font-size:13px;opacity:.85;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.league{font-weight:var(--w-mid);display:inline;color:var(--band-fg);text-decoration:underline;text-decoration-color:var(--band-line);text-underline-offset:3px;font-size:13px;opacity:.85}
 .dartboard{position:absolute;right:-40px;top:-40px;width:140px;height:140px;filter:drop-shadow(0 2px 6px #00000055);pointer-events:none}
-.toprow{display:flex;justify-content:space-between;align-items:center;gap:10px;position:relative;z-index:1}
-.theme{position:relative;z-index:1;font:inherit;font-size:12.5px;font-weight:600;background:transparent;color:var(--band-fg);border:1px solid var(--band-line);border-radius:999px;padding:5px 11px;cursor:pointer;margin-right:90px}
+.toprow{display:flex;flex-direction:column;gap:5px;position:relative;z-index:1;padding-right:92px;min-width:0}
+.bannerrow{display:flex;gap:8px;align-items:center;position:relative;z-index:1}
+.bannerrow .banner{flex:1;min-width:0}
+.theme{flex:none;font:inherit;font-size:12.5px;font-weight:600;background:transparent;color:var(--band-fg);border:1px solid var(--band-line);border-radius:999px;padding:6px 12px;cursor:pointer}
 .hero .banner{background:var(--band-chip);color:var(--band-fg);position:relative;z-index:1}
 .hero .banner.stale{background:var(--amber-bg);color:var(--amber)}
 .tile{border-radius:10px;padding:10px 12px}
 .tile.r{background:var(--red-tint)} .tile.g{background:var(--green-tint)} .tile.s{background:var(--chip)}
 .home-c{color:var(--green)} .away-c{color:var(--red)}
 .ell{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-h1{font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:.01em;margin:0;line-height:1}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(24px,7.4vw,30px);letter-spacing:.01em;margin:0;line-height:1;white-space:nowrap}
 h1 span{color:var(--red)} h1{color:var(--band-fg)}
 h2{font-family:var(--display);font-weight:var(--w-disp);font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
 .banner{border-radius:10px;padding:10px 12px;background:var(--chip);font-size:13.5px;display:flex;flex-direction:column;gap:2px}
@@ -105,12 +107,32 @@ table.lk th,table.lk td{padding:3px 10px;text-align:left;border-bottom:1px solid
 table.lk th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
 table.lk tr.hit td{background:var(--tile-bg);color:var(--tile-fg);font-weight:700}
 .lkwrap{overflow-x:auto}
+@media (max-width:430px){
+  body{padding-block:10px 32px}
+  main{gap:12px}
+  .hero{padding:12px 12px 10px}
+  .panel{padding:12px;gap:10px}
+  .grid2{gap:8px}
+  select,input[type=text]{padding:10px 30px 10px 10px}
+  .tile{padding:9px 10px}
+  .hgrid .st,.hgrid .ev{font-size:20px}
+  .teamhead{font-size:22px}
+}
+details.rules{display:block}
+.rules summary{display:flex;align-items:center;gap:8px;cursor:pointer;list-style:none;padding:4px 0}
+.rules summary::-webkit-details-marker{display:none}
+.rules summary::before{content:"";width:0;height:0;border-left:7px solid var(--muted);border-top:5px solid transparent;border-bottom:5px solid transparent;transition:transform .15s}
+.rules[open] summary::before{transform:rotate(90deg)}
+.rules summary h2{display:inline}
+.rules .rulesbody{display:flex;flex-direction:column;gap:6px;padding-top:6px}
 details{font-size:13px;color:var(--muted)}
 summary{cursor:pointer;color:var(--fg);font-weight:var(--w-mid);font-size:13px;padding:2px 0}
 details .math{padding:6px 0 2px;display:flex;flex-direction:column;gap:3px;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font-size:12px;background:var(--chip);border-radius:999px;padding:3px 9px}
 a{color:var(--red)}
+a.hint{color:inherit;text-decoration:underline dotted;text-underline-offset:3px}
+#optRule.flash{background:var(--amber-bg);border-radius:6px;padding:4px 6px}
 .foot{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
 .btnlink{display:block;text-align:center;font-weight:600;text-decoration:none;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;padding:12px}
 @media (prefers-reduced-motion:no-preference){.big .n,.sg .n{transition:color .2s}}
@@ -119,8 +141,8 @@ a{color:var(--red)}
 <main>
   <header class="hero">
     <svg class="dartboard" id="dboard" viewBox="-230 -230 460 460" aria-hidden="true"></svg>
-    <div class="toprow"><div style="min-width:0"><h1>@Cheers <span>Bar Card</span><b class="beta" id="betaTag" hidden>BETA</b></h1><a class="league" id="league" target="_blank" rel="noopener"></a></div><button type="button" class="theme" id="themeBtn">Dark</button></div>
-    <div id="banner" class="banner" role="status"></div>
+    <div class="toprow"><h1>@Cheers <span>Bar Card</span><b class="beta" id="betaTag" hidden>BETA</b></h1><a class="league" id="league" target="_blank" rel="noopener"></a></div>
+    <div class="bannerrow"><div id="banner" class="banner" role="status"></div><button type="button" class="theme" id="themeBtn">Dark</button></div>
   </header>
 
   <section class="panel" aria-labelledby="h-match">
@@ -148,16 +170,16 @@ a{color:var(--red)}
       <div>
         <span class="side home-s">HOME</span><p class="teamhead home-c ell" id="homeName">Home</p>
         <label for="h1">Player 1</label><select id="h1"></select>
-        <div class="newp" id="h1edit" hidden><input type="text" id="h1name" placeholder="Player's name" autocomplete="off"><div class="nrow"><input type="text" id="h1tda" inputmode="decimal" placeholder="3DA"><input type="text" id="h1mpr" inputmode="decimal" placeholder="MPR"></div><div class="nrow"><button type="button" class="nsave" id="h1save">Save player</button><button type="button" class="ncancel" id="h1cancel">Cancel</button></div><div class="nerr" id="h1err" hidden></div></div><button type="button" class="pstat" id="h1stat"></button>
+        <div class="newp" id="h1edit" hidden><input type="text" id="h1name" placeholder="Player's name" autocomplete="off"><div class="nrow"><input type="text" id="h1tda" inputmode="decimal" placeholder="3DA"><input type="text" id="h1mpr" inputmode="decimal" placeholder="MPR"></div><div class="nrow"><button type="button" class="nsave" id="h1save">Save player</button><button type="button" class="ncancel" id="h1cancel">Cancel</button></div><div class="note">3DA 10–100 · MPR 0.10–6.00</div><div class="nerr" id="h1err" hidden></div></div><button type="button" class="pstat" id="h1stat"></button>
         <label for="h2" style="margin-top:8px">Player 2</label><select id="h2"></select>
-        <div class="newp" id="h2edit" hidden><input type="text" id="h2name" placeholder="Player's name" autocomplete="off"><div class="nrow"><input type="text" id="h2tda" inputmode="decimal" placeholder="3DA"><input type="text" id="h2mpr" inputmode="decimal" placeholder="MPR"></div><div class="nrow"><button type="button" class="nsave" id="h2save">Save player</button><button type="button" class="ncancel" id="h2cancel">Cancel</button></div><div class="nerr" id="h2err" hidden></div></div><button type="button" class="pstat" id="h2stat"></button>
+        <div class="newp" id="h2edit" hidden><input type="text" id="h2name" placeholder="Player's name" autocomplete="off"><div class="nrow"><input type="text" id="h2tda" inputmode="decimal" placeholder="3DA"><input type="text" id="h2mpr" inputmode="decimal" placeholder="MPR"></div><div class="nrow"><button type="button" class="nsave" id="h2save">Save player</button><button type="button" class="ncancel" id="h2cancel">Cancel</button></div><div class="note">3DA 10–100 · MPR 0.10–6.00</div><div class="nerr" id="h2err" hidden></div></div><button type="button" class="pstat" id="h2stat"></button>
       </div>
       <div>
         <span class="side away-s">AWAY</span><p class="teamhead away-c ell" id="awayName">Away</p>
         <label for="a1">Player 1</label><select id="a1"></select>
-        <div class="newp" id="a1edit" hidden><input type="text" id="a1name" placeholder="Player's name" autocomplete="off"><div class="nrow"><input type="text" id="a1tda" inputmode="decimal" placeholder="3DA"><input type="text" id="a1mpr" inputmode="decimal" placeholder="MPR"></div><div class="nrow"><button type="button" class="nsave" id="a1save">Save player</button><button type="button" class="ncancel" id="a1cancel">Cancel</button></div><div class="nerr" id="a1err" hidden></div></div><button type="button" class="pstat" id="a1stat"></button>
+        <div class="newp" id="a1edit" hidden><input type="text" id="a1name" placeholder="Player's name" autocomplete="off"><div class="nrow"><input type="text" id="a1tda" inputmode="decimal" placeholder="3DA"><input type="text" id="a1mpr" inputmode="decimal" placeholder="MPR"></div><div class="nrow"><button type="button" class="nsave" id="a1save">Save player</button><button type="button" class="ncancel" id="a1cancel">Cancel</button></div><div class="note">3DA 10–100 · MPR 0.10–6.00</div><div class="nerr" id="a1err" hidden></div></div><button type="button" class="pstat" id="a1stat"></button>
         <label for="a2" style="margin-top:8px">Player 2</label><select id="a2"></select>
-        <div class="newp" id="a2edit" hidden><input type="text" id="a2name" placeholder="Player's name" autocomplete="off"><div class="nrow"><input type="text" id="a2tda" inputmode="decimal" placeholder="3DA"><input type="text" id="a2mpr" inputmode="decimal" placeholder="MPR"></div><div class="nrow"><button type="button" class="nsave" id="a2save">Save player</button><button type="button" class="ncancel" id="a2cancel">Cancel</button></div><div class="nerr" id="a2err" hidden></div></div><button type="button" class="pstat" id="a2stat"></button>
+        <div class="newp" id="a2edit" hidden><input type="text" id="a2name" placeholder="Player's name" autocomplete="off"><div class="nrow"><input type="text" id="a2tda" inputmode="decimal" placeholder="3DA"><input type="text" id="a2mpr" inputmode="decimal" placeholder="MPR"></div><div class="nrow"><button type="button" class="nsave" id="a2save">Save player</button><button type="button" class="ncancel" id="a2cancel">Cancel</button></div><div class="note">3DA 10–100 · MPR 0.10–6.00</div><div class="nerr" id="a2err" hidden></div></div><button type="button" class="pstat" id="a2stat"></button>
       </div>
     </div>
     <div id="lineupWarn" class="warn" hidden></div>
@@ -165,15 +187,16 @@ a{color:var(--red)}
 
   <section class="panel" aria-labelledby="h-res" id="results">
     <h2 id="h-res">Handicaps</h2>
-    <div class="result tile r">
-      <div class="rlabel">501 doubles <span class="fmt"></span> · games 3 &amp; 7</div>
-      <div id="r501"></div>
-      <details><summary>How it's calculated</summary><div class="math" id="m501"></div></details>
-    </div>
     <div class="result tile g">
       <div class="rlabel">Cricket doubles · games 1, 2, 5 &amp; 9</div>
       <div id="rcr"></div>
       <details><summary>How it's calculated</summary><div class="math" id="mcr"></div></details>
+      <p class="note" style="margin:0">Home team has the first <a class="hint" href="#optRule">‘option’</a>. Loser of the prior leg has the ‘option’ thereafter.</p>
+    </div>
+    <div class="result tile r">
+      <div class="rlabel">501 doubles <span class="fmt"></span> · games 3 &amp; 7</div>
+      <div id="r501"></div>
+      <details><summary>How it's calculated</summary><div class="math" id="m501"></div></details>
     </div>
     <div class="result tile s">
       <div class="rlabel">501 singles <span class="fmt"></span> · games 4, 6, 8 &amp; 10</div>
@@ -184,23 +207,25 @@ a{color:var(--red)}
       <div class="rlabel">701 doubles <span class="fmt"></span> · game 11</div>
       <div id="r701" class="hgrid dbl"></div>
     </div>
-    <p class="note" style="margin:0">Who throws first in each leg is decided at the board.</p>
   </section>
 
   <a class="btnlink" href="https://my.dartconnect.com/league/schedule/CheersMonDDL/26422" target="_blank" rel="noopener">Contact opponent or reschedule (DartConnect)</a>
 
   <div class="betanote" id="betaNote" hidden></div>
 
-  <section class="foot" aria-labelledby="h-rules">
-    <h2 id="h-rules">The rules in brief</h2>
+  <details class="foot rules" id="rules">
+    <summary><h2 id="h-rules">The rules in brief</h2></summary>
+    <div class="rulesbody">
     <div>501 doubles: each team's average 3DA is (Player 1 + Player 2) ÷ 2. The difference sets the spot: under 3.0 none, then 25 points per 3.0, up to 175. The lower team starts at 501 minus the spot.</div>
     <div>Cricket: each team's MPR is Player 1 + Player 2 (added). The difference sets free marks: under 0.50 none, then 1 mark per 0.50, up to 5. Free marks count toward closing only and don't count in anyone's MPR.</div>
     <div>Singles: lower 3DA ÷ higher 3DA gives a percentage. The lower player starts at 501 × that percentage, rounded. The higher player starts at 501.</div>
     <div>New players and subs without league stats: pick "New player…" and enter their 3DA and MPR (for example from another league or their DartConnect profile). Handicaps use those numbers until they have league stats.</div>
     <div id="fmtRule"></div>
+    <div id="optRule">‘Option’: the choice of who corks (throws one dart at the bull) first. Closest to the bull throws first. On a tie, cork again in the reverse order.</div>
     <div>Makeup matches use the handicaps from the night they were scheduled.</div>
     <div id="srcNote"></div>
-  </section>
+    </div>
+  </details>
 </main>
 
 <script>
@@ -251,6 +276,7 @@ function computeMatch(lineup, settings){
 
 const $=id=>document.getElementById(id);
 const S=DATA.settings, TEAMS=Object.keys(DATA.teams).sort();
+const fmtShort=iso=>new Date(iso+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'});
 const fmtDate=iso=>{const d=new Date(iso+'T12:00:00');return d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})};
 const todayISO=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -280,7 +306,7 @@ function fillMatchups(){
 }
 function teamOptions(team, current){
   const [cap,oth]=DATA.teams[team]||[];
-  let h=`<optgroup label="${esc(team)}"><option value="${esc(cap)}">${esc(nm(cap))} (captain)</option><option value="${esc(oth)}">${esc(nm(oth))}</option></optgroup>`;
+  let h=`<optgroup label="${esc(team)}"><option value="${esc(cap)}">${esc(nm(cap))} (C)</option><option value="${esc(oth)}">${esc(nm(oth))}</option></optgroup>`;
   h+=`<optgroup label="Subs">`+DATA.subs.map(s=>`<option value="${esc(s)}">${esc(nm(s))}</option>`).join('')
     +Object.keys(NEWP).sort().map(n=>`<option value="new:${esc(n)}">${esc(n)} (new)</option>`).join('')
     +`<option value="__new">New player…</option></optgroup>`;
@@ -320,8 +346,8 @@ function saveEditor(id){
   const err=[];
   if(!name) err.push('Enter the player\'s name.');
   else if(Object.keys(DATA.full||{}).some(k=>nm(k).toLowerCase()===name.toLowerCase())) err.push('That player already has league stats. Pick them from the list.');
-  if(!(tda>=5&&tda<=120)) err.push('3DA should be a number like 38.5.');
-  if(!(mpr>=0&&mpr<=9)) err.push('MPR should be a number like 1.40.');
+  if(!(tda>=10&&tda<=100)) err.push('3DA must be between 10 and 100 (for example 38.5).');
+  if(!(mpr>=0.1&&mpr<=6)) err.push('MPR must be between 0.10 and 6.00 (for example 1.40).');
   if(err.length){ $(id+'err').textContent=err.join(' '); $(id+'err').hidden=false; return; }
   const old=$(id).dataset.editing; if(old&&old!==name) delete NEWP[old];
   NEWP[name]={tda:+tda.toFixed(2),mpr:+mpr.toFixed(2)}; saveNewp();
@@ -353,7 +379,7 @@ function render(){
   const ageDays=(new Date(nextNight)-new Date(newest.through))/864e5;
   const stale=ageDays>8||DATA.pending.length>0;
   $('banner').className='banner'+(stale?' stale':'');
-  $('banner').innerHTML=`<span><b>Stats through ${fmtDate(newest.through)}</b> · ${newest.nights} night${newest.nights>1?'s':''} · updated ${fmtDate(DATA.updated)}</span>`+
+  $('banner').innerHTML=`<span><b>Stats through ${fmtShort(newest.through)}</b> · ${newest.nights} night${newest.nights>1?'s':''}</span><span>Updated ${fmtShort(DATA.updated)}</span>`+
     (ageDays>8?`<span>These stats may be out of date. Check with a captain before relying on them.</span>`:'')+
     DATA.pending.map(p=>`<span>Not yet played: ${esc(p)}</span>`).join('');
   // makeup note
@@ -437,6 +463,7 @@ function init(){
   $('homeTeam').innerHTML=$('awayTeam').innerHTML=TEAMS.map(t=>`<option>${esc(t)}</option>`).join('');
   $('awayTeam').selectedIndex=1;
   setupLineup(); render();
+  document.addEventListener('click',e=>{const h=e.target.closest('a.hint'); if(!h) return; e.preventDefault(); $('rules').open=true; const r=$('optRule'); r.scrollIntoView({behavior:'smooth',block:'center'}); r.classList.add('flash'); setTimeout(()=>r.classList.remove('flash'),1600);});
   document.addEventListener('click',e=>{const b=e.target.closest('button.chartbtn'); if(!b) return; const k=b.dataset.chart; OPEN[k]=!OPEN[k];
     const wrap=b.nextElementSibling; wrap.hidden=!OPEN[k]; b.setAttribute('aria-expanded',OPEN[k]); b.textContent=(OPEN[k]?'Hide ':'Show ')+(k==='spots'?'spot chart':'marks chart');});
   $('night').addEventListener('change',()=>{fillMatchups();toggleCustom();setupLineup();render()});
