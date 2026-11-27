@@ -49,7 +49,7 @@ ws['A1']='How It Works – Cheers Monday Handicap & Ranking'; ws['A1'].font=TITL
 lines=[
 ('START HERE',''),
 ('Bar Card','Pick the HOME and AWAY team (yellow cells). The card shows the 501 doubles start, cricket marks and the four singles starts. Each team\'s captain is Player 1 and the other regular is Player 2 by default. Only fill in the lineup cells if the captains set a different order, or a sub plays.'),
-('Lineup and subs','Player 1 / Player 2 are chosen by the captains each night and decide the singles matchups: game 4 = Home P1 v Away P2, game 6 = Home P2 v Away P1, game 8 = P1 v P1, game 10 = P2 v P2. Each team has two regulars. A sub is not on a roster and can sub for any team; regulars cannot sub for other teams. The absent regular simply does not play, so they have no stats that week. Who throws first in a leg is decided at the board and does not change handicaps.'),
+('Lineup and subs','Player 1 / Player 2 are chosen by the captains each night and decide the singles matchups: game 4 = Home P1 v Away P2, game 6 = Home P2 v Away P1, game 8 = P1 v P1, game 10 = P2 v P2. Each team has two regulars. A sub is not on a roster and can sub for any team; regulars cannot sub for other teams. The absent regular simply does not play, so they have no stats that week. Throwing order: the home team has the first ‘option’; the loser of the prior leg has the ‘option’ thereafter. ‘Option’ = the choice of who corks (throws one dart at the bull) first; closest to the bull throws first; on a tie, cork again in the reverse order. Throwing order does not change handicaps.'),
 ('Hover / tap for answers','Cells with a small marker have a note explaining exactly how the number is calculated and what was assumed. Hover (computer) or tap the cell (phone) to read it.'),
 ('THE THREE HANDICAPS',''),
 ('1. Team 501 start','Add the two players\' 3DA, divide by 2 = team average. Difference between the two team averages is looked up in the Pre-Match worksheet chart (Settings): 0–2.9 = no spot, 3.0–5.9 = 25 points, then +25 per 3 points of difference, capped at 175. The LOWER team starts at 501 minus the spot (or the higher team starts at 501 plus the spot).'),
@@ -123,6 +123,9 @@ pl['A1']='Players – Season Stats & Cheers Rating'; pl['A1'].font=TITLE
 pl['A2']='Entered 3DA/MPR/source (yellow, optional): for a new player or sub with no league stats yet, e.g. from another league or their DartConnect profile. Used only while they have no league stats. Source: DartConnect League Leaderboard (stats) and DCTV standings (legs played), pulled 24 Nov 2026. Add new players in the blank rows (up to row 40). Rating = 100 × [w × 3DA ÷ league 3DA + (1−w) × MPR ÷ league MPR].'
 pl['A2'].font=font(italic=True,color='595959')
 hdr(pl,4,['Player','Team',"3DA ('01)",'MPR (Cricket)','Cheers Rating','Rank','SortKey','Legs played','Status','Entered 3DA','Entered MPR','Entered source'])
+dv3p=DataValidation(type='decimal',operator='between',formula1='10',formula2='100',allow_blank=True,showErrorMessage=True,errorTitle='3DA out of range',error='Enter a 3DA between 10 and 100, for example 38.5.')
+dvmp=DataValidation(type='decimal',operator='between',formula1='0.1',formula2='6',allow_blank=True,showErrorMessage=True,errorTitle='MPR out of range',error='Enter an MPR between 0.10 and 6.00, for example 1.40.')
+pl.add_data_validation(dv3p); pl.add_data_validation(dvmp); dv3p.add('J5:J40'); dvmp.add('K5:K40')
 for i in range(36):
     rr=5+i
     if i<len(rows):
@@ -195,6 +198,9 @@ for i,(s,p) in enumerate(slots):
     put(hc,f'G{rr}',f'=IF(AND(ISNUMBER(C{rr}),ISNUMBER(D{rr})),"Entered",IF(AND(H{rr}>0,ISNUMBER(IFERROR(INDEX(Players!$C$5:$C$40,MATCH(B{rr},Players!$A$5:$A$40,0)),""))),"Own stats",IF(AND(ISNUMBER(I{rr}),ISNUMBER(J{rr})),"Entered (Players tab)","Needs 3DA & MPR")))')
     put(hc,f'E{rr}',f'=IF(G{rr}="Entered",C{rr},IF(G{rr}="Own stats",INDEX(Players!$C$5:$C$40,MATCH(B{rr},Players!$A$5:$A$40,0)),IF(G{rr}="Entered (Players tab)",I{rr},"")))',BLK,'0.00')
     put(hc,f'F{rr}',f'=IF(G{rr}="Entered",D{rr},IF(G{rr}="Own stats",INDEX(Players!$D$5:$D$40,MATCH(B{rr},Players!$A$5:$A$40,0)),IF(G{rr}="Entered (Players tab)",J{rr},"")))',BLK,'0.00')
+dv3=DataValidation(type='decimal',operator='between',formula1='10',formula2='100',allow_blank=True,showErrorMessage=True,errorTitle='3DA out of range',error='Enter a 3DA between 10 and 100, for example 38.5.')
+dvm=DataValidation(type='decimal',operator='between',formula1='0.1',formula2='6',allow_blank=True,showErrorMessage=True,errorTitle='MPR out of range',error='Enter an MPR between 0.10 and 6.00, for example 1.40.')
+hc.add_data_validation(dv3); hc.add_data_validation(dvm); dv3.add('C7:C10'); dvm.add('D7:D10')
 hc['A11']='Lineup comes from the Bar Card tab: blank = captain is Player 1, other regular is Player 2. Players with league stats use them. A new player with no league stats needs their 3DA and MPR typed in the yellow Entered cells (or on the Players tab); until then no handicaps are shown.'
 hc['A11'].font=font(italic=True,color='595959')
 
@@ -318,14 +324,14 @@ for k,(lab) in enumerate(['Home Player 1','Home Player 2','Away Player 1','Away 
     bset(f'A{9+k}',lab,font(size=11)); bset(f'B{9+k}',None,font(size=12,color='0000FF'),YEL)
 bc.merge_cells('A13:B13'); bset('A13','YOUR STARTS',HDRF,HDR,al=Alignment(horizontal='center',vertical='center'))
 R=font(bold=True,size=14)
-bset('A14','501 doubles\n(games 3 & 7)',font(bold=True,size=12)); bset('B14','=IF(COUNTIF(Handicap!$G$7:$G$10,"Needs*")>0,"Enter 3DA and MPR for every new player (Handicap tab, yellow Entered cells)",IF(Handicap!B21=0,"Both teams start at 501",Handicap!B22&" starts at "&Handicap!B23&" (other team 501)"))',R,GREY)
-bset('A15','Cricket doubles\n(games 1, 2, 5, 9)',font(bold=True,size=12)); bset('B15','=IF(COUNTIF(Handicap!$G$7:$G$10,"Needs*")>0,"Enter 3DA and MPR for every new player (Handicap tab, yellow Entered cells)",IF(Handicap!B32=0,"Straight up – no free marks",Handicap!B33&" gets "&Handicap!B32&IF(Handicap!B32=1," free mark"," free marks")))',R,GREY)
+bset('A14','Cricket doubles\n(games 1, 2, 5, 9)',font(bold=True,size=12)); bset('B14','=IF(COUNTIF(Handicap!$G$7:$G$10,"Needs*")>0,"Enter 3DA and MPR for every new player (Handicap tab, yellow Entered cells)",IF(Handicap!B32=0,"Straight up – no free marks",Handicap!B33&" gets "&Handicap!B32&IF(Handicap!B32=1," free mark"," free marks")))',R,GREY)
+bset('A15','501 doubles\n(games 3 & 7)',font(bold=True,size=12)); bset('B15','=IF(COUNTIF(Handicap!$G$7:$G$10,"Needs*")>0,"Enter 3DA and MPR for every new player (Handicap tab, yellow Entered cells)",IF(Handicap!B21=0,"Both teams start at 501",Handicap!B22&" starts at "&Handicap!B23&" (other team 501)"))',R,GREY)
 for k,(r_,g) in enumerate(((38,4),(39,6),(40,8),(41,10))):
     rr=16+k
     bset(f'A{rr}',f'="Game {g}"&CHAR(10)&Handicap!C{r_}&" v "&Handicap!E{r_}',font(bold=True,size=11))
     bset(f'B{rr}',f'=IF(COUNTIF(Handicap!$G$7:$G$10,"Needs*")>0,"Enter 3DA and MPR for every new player (Handicap tab, yellow Entered cells)",IF(Handicap!G{r_}=1,"Both start at 501",Handicap!H{r_}&" starts at "&Handicap!I{r_}&" (other 501)"))',R,GREY)
 bset('A20','Game 11\n701 doubles',font(bold=True,size=12)); bset('B20','Scratch – no handicap',R,GREY)
-bc.merge_cells('A21:B21'); bset('A21','Who throws first in each leg is decided at the board and does not change these starts.',font(italic=True,size=10,color='595959'),border=False)
+bc.merge_cells('A21:B21'); bset('A21','Home team has the first ‘option’. Loser of the prior leg has the ‘option’ thereafter. (See How It Works.)',font(italic=True,size=10,color='595959'),border=False)
 bc.row_dimensions[21].height=30
 bc.merge_cells('A22:B22')
 bset('A22','=IF(COUNTIF(Handicap!G7:G10,"Needs*")>0,"NOTE: a new player has no league stats. Enter their 3DA and MPR on the Handicap tab (yellow Entered cells) to see handicaps.",IF(COUNTIF(Handicap!G7:G10,"Entered*")>0,"NOTE: a new player is using entered 3DA and MPR.",""))',font(bold=True,size=11,color='C00000'),border=False)
@@ -353,8 +359,8 @@ def note(ws,ref,text,w=380,h=170):
     NOTES.setdefault(ws.title,{})[ref]=text
 note(bc,'B4','Home team = the team listed first on the DartConnect schedule. Choose from the list. Team rosters come from the Teams tab.',300,90)
 note(bc,'B9','Player 1 and Player 2 are set by the captains each night and decide the singles matchups (game 4 = Home P1 v Away P2, game 6 = P2 v P1, game 8 = P1 v P1, game 10 = P2 v P2). Leave blank = captain is Player 1 and the other regular is Player 2. Pick a different order or a sub from the list; a brand-new sub can be typed in, then enter their 3DA and MPR on the Handicap tab (yellow Entered cells). If a sub is Player 1 and Player 2 is blank, Player 2 defaults to the non-captain regular, so set Player 2 yourself if the sub replaces that regular.',380,230)
-note(bc,'B14','Pre-Match worksheet, Part 1. Team average 3DA = the two players\' 3DA added and divided by 2. The difference between the two team averages is looked up in the spot chart (Settings). The lower team starts at 501 minus the spot. Full steps: Handicap tab, Part 1.',360,150)
-note(bc,'B15','Pre-Match worksheet, Part 2. Combined MPR = the two players\' MPR added (not averaged). The difference is looked up in the marks chart (Settings). The lower team receives the marks. Full steps: Handicap tab, Part 2.',360,150)
+note(bc,'B14','Pre-Match worksheet, Part 2. Combined MPR = the two players\' MPR added (not averaged). The difference is looked up in the marks chart (Settings). The lower team receives the marks. Full steps: Handicap tab, Part 2.',360,150)
+note(bc,'B15','Pre-Match worksheet, Part 1. Team average 3DA = the two players\' 3DA added and divided by 2. The difference between the two team averages is looked up in the spot chart (Settings). The lower team starts at 501 minus the spot. Full steps: Handicap tab, Part 1.',360,150)
 note(bc,'B16','Game 4 = Home Player 1 v Away Player 2. Singles percentage handicapping. Lower 3DA ÷ higher 3DA = %. Lower player starts at 501 × % (rounded); higher player starts at 501. ASSUMPTION: the worksheet does not say how to convert the percentage to a start score. Full steps: Handicap tab, Part 3.',360,160)
 note(bc,'B20','Game 11 is 701 doubles, scratch, per the Match Night worksheet.',300,70)
 
@@ -378,6 +384,8 @@ note(P,'I4','Provisional = fewer legs than the minimum on Settings B11. Numbers 
 note(P,'J4','Optional. 3DA for a player with no league stats yet, e.g. from another league or their DartConnect profile. Used only until they have league stats. Averages from other formats may not match Cheers exactly.',340,120)
 
 H=wb['Handicap']
+note(H,'C7','Entered 3DA for a new player with no league stats. Must be between 10 and 100.',300,70)
+note(H,'D7','Entered MPR for a new player with no league stats. Must be between 0.10 and 6.00.',300,70)
 note(H,'E7','3DA used for this player. Order: 1) Entered 3DA typed in column C (new player), 2) their own league 3DA if they have any league stats, 3) Entered 3DA on the Players tab. If none, the Bar Card asks for the numbers instead of showing handicaps.',360,140)
 note(H,'G7','Basis: Entered = you typed both numbers here. Own stats = the player\'s league stats. Entered (Players tab) = numbers kept on the Players tab. Needs 3DA & MPR = new player with nothing entered yet.',340,120)
 note(H,'B16','Home team average 3DA = combined 3DA of the two players ÷ 2. Pre-Match worksheet Part 1, Step 1.',320,90)
