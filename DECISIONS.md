@@ -44,13 +44,14 @@ The items below are the ones we already know need a decision. Anything in the st
 
 These teams haven't played yet (they meet Dec 28 and Mar 22), so this is an estimate from their averages:
 - Partners alternate turns, so Diverted Flights average about 1.76 marks a turn and Love at First Flight about 0.90.
-- Diverted Flights need about 12 turns to close all 21 marks. In those 12 turns Love at First Flight score about 11 marks, plus 3 free marks: about 14 of 21.
-- Even with the handicap, the weaker team is still about 7 marks short when the stronger team closes.
+- Diverted Flights need about 12 turns to close all 21 marks. In those 12 turns Love at First Flight score about 11 marks.
+- **With no handicap**, the weaker team is about 10 marks short when the stronger team closes.
+- **With the chart's 3 free marks**, they have about 14 of 21: still about 7 marks short.
 - The same pairing in 501 gets a 125-point spot, about a quarter of the game. Three marks is about a seventh of a cricket game.
 
 **Options:**
-- Keep the worksheet chart (narrows the gap, doesn't try to even it).
-- Double the rate: 1 mark per 0.25, up to 7. This pairing would get 6 marks, about 4 short instead of 7.
+- **Keep the current chart:** in this example 3 free marks cut the gap from about 10 marks to about 7, but the weaker team is still well behind.
+- **Double the rate:** 1 mark per 0.25, up to 7. This pairing would get 6 marks, cutting the gap to about 4.
 - Decide after a few weeks of results: the weekly audit will show how often teams receiving marks actually win cricket legs.
 
 ### 2. How many legs before a player's own stats count?
