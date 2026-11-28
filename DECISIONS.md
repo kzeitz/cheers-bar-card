@@ -5,7 +5,7 @@ Bar Card: https://kzeitz.github.io/cheers-bar-card/ (v0.9.0 beta)
 
 The Bar Card and the league Google Sheet follow the rules below. **Everything here is open to discussion.** The starting rules were chosen because they seemed obvious and straightforward, not because they are final. Final rulings belong to the league rules committee.
 
-> **Please weigh in before Monday, Nov 30.** Any handicap changes need to be decided before that night so every match is played under the same rules.
+> **Please weigh in before Monday, Nov 30.** Any handicap changes need to be decided before that night so every match is played under the same rules. Send your questions or comments to Beth or Karlton.
 
 _Last updated: 27 Nov 2026_
 
