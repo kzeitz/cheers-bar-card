@@ -122,10 +122,33 @@ After each night we compare the handicaps actually entered in DartConnect with w
 | 701 doubles (scratch) | 3 | 0 | 2 |
 | **Total** | **17** | **18** | **20** |
 
-- **Singles:** every checkable singles game was different. A 25-point spot chart was used instead of the worksheet's 501 × (lower ÷ higher 3DA). Example: Josh Bieber v Lynette Baluja was played at 376; the worksheet gives 351.
+- **Singles:** every checkable singles game was different. A 25-point spot chart was used instead of the worksheet's 501 × (lower ÷ higher 3DA). Details below.
 - **Cricket:** 2 Nips 1 Tip received 3 free marks in all four cricket games against Total Bulls Hit, where the chart gives none. Diverted Flights v One Hit Wonders was correct (2 marks).
 - **501 doubles:** all correct.
 - **Can't check:** Savages Vol 2 had a bye in week 1 and Samantha Cochran was new, so there were no league stats for games involving them.
+
+**How far off were the singles?** Not by much in any one game, but always in the same direction: **in all 14 games the weaker player started higher than the worksheet gives**, so they got less help than they should have.
+
+- Average: **17 points** of help missed per game; range 2 to 29.
+- 4 games were within 10 points; 6 were off by 20 or more.
+- 17 points is about half a turn for a typical player here. It's small in one game, but it always went against the weaker player.
+
+| Match (lower player in **bold**) | Played at | Worksheet | Help missed |
+|---|---|---|---|
+| **Shadd Cordrey** v Matthew Meyer | 401 | 376 | 25 |
+| **Sierra Rensch** v April Lapthorne | 501 | 496 | 5 |
+| **Shadd Cordrey** v April Lapthorne | 501 | 472 | 29 |
+| **Sierra Rensch** v Matthew Meyer | 426 | 403 | 23 |
+| **Mary Mejeur** v Larry Shattuck | 326 | 305 | 21 |
+| **Scott Mejeur** v Larry Shattuck | 401 | 382 | 19 |
+| Lorrie Shaw v **Julie Dirks** | 451 | 445 | 6 |
+| **Joe Chavez** v Karlton Zeitz | 401 | 395 | 6 |
+| **Lorrie Shaw** v Karlton Zeitz | 476 | 459 | 17 |
+| **Joe Chavez** v Julie Dirks | 501 | 484 | 17 |
+| Josh Bieber v **Lynette Baluja** | 376 | 351 | 25 |
+| **Tammy Bieber** v Jacob Shaw | 476 | 463 | 13 |
+| Josh Bieber v **Jacob Shaw** | 476 | 449 | 27 |
+| **Tammy Bieber** v Lynette Baluja | 426 | 424 | 2 |
 
 This is the main reason for the Bar Card: the same rules, worked out the same way, for every match. Full game-by-game report: [reports/audit_2026-11-23.md](reports/audit_2026-11-23.md).
 
