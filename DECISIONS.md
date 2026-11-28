@@ -136,6 +136,8 @@ What each factor does:
 
 **Which average is used:** your average from the weeks before that night, so a hot night doesn't lower its own score. In week 1, or a player's first night, there is nothing earlier, so that night's own stats are used. Averages below 25 in 01 or 0.80 marks in cricket are treated as 25 and 0.80, so one very low average can't produce huge points.
 
+**Week 1 side effect:** in week 1 (or a player's first night) a big night also raises the average it's measured against, so it counts a bit less. Larry Shattuck's huge cricket night in week 1 (a 7-mark round, a 6 and three 5s) is an example: it set his own bar at 2.72 marks, the highest in the league, and he finished 8th. From the next week on, every night is measured only against earlier weeks, and one big night gets diluted as the weeks add up. We tested softening this by blending early averages with the league average, but that raised the bar for weaker players and tilted the scores heavily toward stronger players (weaker / middle / stronger 644 / 754 / 913), so we didn't adopt it.
+
 #### How we checked it's fair
 
 We scored weeks 1 and 2 (about 3,300 turns) under different weighting strengths and compared the average night score of weaker, middle and stronger players. If the system is fair, the three bars should be about level.
