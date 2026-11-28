@@ -66,7 +66,7 @@ Outside stats are also likely to be double-out (SIDO) averages, which run lower 
 
 1. **This season's league stats**, once the player has enough legs.
 2. **Recent outside stats** (another league or an earlier season, from DartConnect or elsewhere). If they come from double-out play, use the player's First 9 average × about 0.95. The first nine darts come before any finishing, so the out rule barely affects them.
-3. **No usable stats:** a fallback number (choose one below). Even a scratch rule needs numbers for the player: without them we can't calculate the team handicap in doubles, and that isn't fair to either team.
+3. **No usable stats:** a fallback (choose one below).
 
 **To decide:**
 
@@ -75,7 +75,7 @@ Outside stats are also likely to be double-out (SIDO) averages, which run lower 
 | Legs needed before league stats count | • Any<br>• 9 (one night): in effect what's used today, since stats update after each full night `KZ thinks`<br>• 18 (two nights)<br>• Blend entered and league stats until the minimum |
 | How old outside stats can be (DartConnect or elsewhere) | • Last 12 months<br>• Last two seasons `KZ thinks`<br>• No limit<br>• Other |
 | SIDO to SISO stats conversion | • First 9 × ~0.95 `KZ thinks`<br>• Use as is<br>• Flat adjustment |
-| No usable stats at all | • Team's average for the night<br>• League average (about 39.90 3DA / 1.35 MPR)<br>• Scratch on their first night (still needs numbers for the team handicap) `KZ thinks: scratch = 3DA 50, MPR 2.5`<br>• Captains agree at the board, or the league director decides |
+| No usable stats at all | • Team's average for the night<br>• League average (about 39.90 3DA / 1.35 MPR) `KZ thinks`<br>• Scratch for any game the new player is in: no spot in 01 doubles, no free marks in cricket, and both start at 501 in their singles. Their partner's singles use normal handicaps. No numbers needed.<br>• Captains agree at the board, or the league director decides |
 
 ### 3. Ranking and Player of the Week
 
