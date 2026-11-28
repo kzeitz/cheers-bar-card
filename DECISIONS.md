@@ -3,11 +3,13 @@
 Cheers Monday Doubles Dart League · Monday Mixed Doubles · Winter/Spring 2026/27
 Bar Card: https://kzeitz.github.io/cheers-bar-card/ (v0.9.0 beta)
 
-The Bar Card and the league Google Sheet follow the rules below. Final rulings belong to the league rules committee.
+The Bar Card and the league Google Sheet follow the rules below. **Everything here is open to discussion.** The starting rules were chosen because they seemed obvious and straightforward, not because they are final. Final rulings belong to the league rules committee.
+
+> **Please weigh in before Monday, Nov 30.** Any handicap changes need to be decided before that night so every match is played under the same rules.
 
 _Last updated: 27 Nov 2026_
 
-## Rules in use
+## Starting rules (all open to discussion)
 
 | Topic | Rule |
 |---|---|
@@ -15,7 +17,7 @@ _Last updated: 27 Nov 2026_
 | 501 doubles (games 3, 7) | Each team's average 3DA = (Player 1 + Player 2) ÷ 2. The difference sets the spot: under 3.0 none, then 25 points per 3.0, up to 175. The lower team starts at 501 minus the spot. |
 | 501 singles (games 4, 6, 8, 10) | Lower player starts at 501 × (lower 3DA ÷ higher 3DA), rounded. Higher player starts at 501. Per the DartConnect worksheet. |
 | 701 doubles (game 11) | Scratch. |
-| Stats used | 3DA from every 01 leg (singles 501, doubles 501, doubles 701). MPR from doubles cricket. Free handicap marks are not counted. |
+| Stats used | 3DA from every 01 leg (singles 501, doubles 501, doubles 701). MPR from doubles cricket. Free handicap marks are not counted. Currently based on the **first two weeks of play** (stats through Nov 23). |
 | New players and subs | A player with no league stats needs a 3DA (10–100) and MPR (0.10–6.00) entered before handicaps are shown. |
 | Throwing order | Home team has the first 'option'; the loser of the prior leg has the 'option' thereafter. 'Option' = the choice of who corks first; closest to the bull throws first; on a tie, cork again in the reverse order. |
 | Makeups | A makeup match uses the handicaps from the night it was scheduled. |
@@ -23,6 +25,10 @@ _Last updated: 27 Nov 2026_
 | Names | Full player names are shown on the Bar Card. |
 
 ## Open for discussion
+
+**Our goal is fair matches, especially for the weaker players.** We want everyone to have fun, have a real chance in every game, and want to come back next season. Keep that in mind on every item below.
+
+The items below are the ones we already know need a decision. Anything in the starting rules can be raised too.
 
 ### 1. Is the cricket marks chart too light?
 
@@ -103,6 +109,25 @@ These teams haven't played yet (they meet Dec 28 and Mar 22), so this is an esti
 - A player needs 18 legs to be ranked.
 
 **Questions:** are these weights and minimums right? Should Player of the Week be shown on the Bar Card?
+
+## Week 2 audit (Nov 23)
+
+After each night we compare the handicaps actually entered in DartConnect with what the Bar Card rules give. Week 2 was worked out by hand, before the Bar Card existed, and it didn't go well:
+
+| Game type | Correct | Different | Can't check |
+|---|---|---|---|
+| Cricket doubles | 8 | 4 | 8 |
+| 501 doubles | 6 | 0 | 4 |
+| 501 singles | **0** | **14** | 6 |
+| 701 doubles (scratch) | 3 | 0 | 2 |
+| **Total** | **17** | **18** | **20** |
+
+- **Singles:** every checkable singles game was different. A 25-point spot chart was used instead of the worksheet's 501 × (lower ÷ higher 3DA). Example: Josh Bieber v Lynette Baluja was played at 376; the worksheet gives 351.
+- **Cricket:** 2 Nips 1 Tip received 3 free marks in all four cricket games against Total Bulls Hit, where the chart gives none. Diverted Flights v One Hit Wonders was correct (2 marks).
+- **501 doubles:** all correct.
+- **Can't check:** Savages Vol 2 had a bye in week 1 and Samantha Cochran was new, so there were no league stats for games involving them.
+
+This is the main reason for the Bar Card: the same rules, worked out the same way, for every match. Full game-by-game report: [reports/audit_2026-11-23.md](reports/audit_2026-11-23.md).
 
 ## Other open items
 
