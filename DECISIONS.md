@@ -54,62 +54,30 @@ These teams haven't played yet (they meet Dec 28 and Mar 22), so this is an esti
 - **Double the rate:** 1 mark per 0.25, up to 7. This pairing would get 6 marks, cutting the gap to about 4.
 - Decide after a few weeks of results: the weekly audit will show how often teams receiving marks actually win cricket legs.
 
-### 2. How many legs before a player's own stats count?
+### 2. Which numbers do we use for each player?
 
-**Today:** any league stats at all.
+**Today:** any league stats from this season count, even one night. A player with no league stats needs a 3DA and MPR entered, but there is no rule on where those numbers come from.
 
-**Talking points:**
-- One night is a small sample. Tammy Bieber averaged 43.64 in week 1 and 33.12 in week 2, a swing of more than 10 points.
-- Samantha Cochran (sub) has one night: 26.48 3DA and 0.97 MPR. Her handicaps are based on 5 legs of 01 and 4 of cricket.
+**Why it matters:** one night is a small sample. Tammy Bieber averaged 43.64 in week 1 and 33.12 in week 2. Samantha Cochran (sub) has one night: 5 legs of 01 and 4 of cricket.
 
-**Options:**
-- Any league stats (today).
-- At least 9 legs (one night); below that, use entered numbers.
-- At least 18 legs (two nights); below that, use entered numbers.
-- Blend entered numbers with league stats until the player reaches the minimum.
+**Suggested approach:** use the first source that applies.
 
-### 3. Early-season stats and how old outside stats can be
+1. **This season's league stats**, once the player has enough legs.
+2. **Recent outside stats** (another league or an earlier season). If they come from double-out play, use the player's First 9 average × about 0.95. The first nine darts come before any finishing, so the out rule barely affects them. Double-out 3DA runs low and would give their team too big a handicap.
+3. **No usable stats:** a fallback number (choose one below).
 
-**Today:** season-to-date stats, using only matches before the night being played. Outside stats (another league, an earlier season) can be entered for new players, with no rule on how old they may be.
+**To decide:**
 
-**Talking points:**
-- In the first weeks everyone's numbers rest on one or two nights (see the swing in item 2).
-- Stats from years ago may not reflect a player's current level.
+| Question | Options |
+|---|---|
+| Legs needed before league stats count | Any (today) · 9 (one night) · 18 (two nights) · blend entered and league stats until the minimum |
+| How old outside stats can be | Last 12 months · last two seasons · no limit |
+| Double-out (SIDO) outside stats | First 9 × ~0.95 (**favored**) · use as is · flat adjustment |
+| No usable stats at all | Team's average for the night · league average (about 39.90 3DA / 1.35 MPR) · captains agree at the board · scratch on their first night |
 
-**Options:**
-- Season to date only (today).
-- Carry each player's prior-season average until they have 18 legs this season.
-- Accept outside stats only from the last 12 months, or the last two seasons.
-- Anything older counts as a truly new player (item 5).
+### 3. Ranking and Player of the Week
 
-### 4. Outside stats from double-out (SIDO) play
-
-**The issue:** this league is SISO, and its DartConnect stats are SISO. A new player's outside stats may come from double-out leagues or a mix of formats, and DartConnect doesn't appear to separate them in a player's profile. Double-out averages run lower, because of the extra darts thrown at doubles and busts, and the gap is bigger for weaker players. There is no standard conversion between the two.
-
-**Options:**
-- **Use the player's First 9 average** (average of their first three turns in each leg) times our league's ratio of 3DA to First 9 (currently about 0.95; it will settle as the season goes on). The first nine darts come before any finishing, so the out rule barely affects them. **Favored option.**
-- Use the double-out 3DA as is. This understates the player and gives their team too big a handicap.
-- Apply a flat adjustment. There is no established figure for it.
-- Treat the player as truly new (item 5).
-
-### 5. Truly new player with no DartConnect stats anywhere
-
-**Today:** the captain must enter a 3DA and MPR, but there is no rule on where the numbers come from.
-
-**Options:**
-- Use their team's average for the night (the ADA approach).
-- Use the league average (currently about 39.90 3DA and 1.35 MPR).
-- Captains agree on numbers at the board.
-- Scratch: no handicap in any game involving that player on their first night.
-
-### 6. Ranking and Player of the Week settings
-
-**Today (placeholders in the Sheet):**
-- Rating weights 3DA and MPR 50/50.
-- Player of the Week pulls small samples toward average with a 60-dart shrink factor, and needs at least 60 darts that week.
-- A player needs 18 legs to be ranked.
-
-**Questions:** are these weights and minimums right? Should Player of the Week be shown on the Bar Card?
+Karlton is working on this now and will follow up shortly.
 
 ## Week 2 audit (Nov 23)
 
@@ -152,17 +120,6 @@ After each night we compare the handicaps actually entered in DartConnect with w
 | **Tammy Bieber** v Lynette Baluja | 426 | 424 | 2 |
 
 This is the main reason for the Bar Card: the same rules, worked out the same way, for every match. Full game-by-game report: [reports/audit_2026-11-23.md](reports/audit_2026-11-23.md).
-
-## Other open items
-
-| Item | When |
-|---|---|
-| Send the captain announcement (below) with link and QR code | Before Mon Nov 30 |
-| Lock the Google Sheet (only yellow cells editable) and share with a co-owner | Before Mon Nov 30 |
-| Update Sheet wording that still calls the singles rule an assumption | Next Sheet update |
-| Weekly stats refresh and handicap audit | Every Tuesday, starting Dec 1 |
-| Board assignments on the card | Waiting on DartConnect support |
-| Home-screen icon; rankings and Player of the Week page | Later |
 
 ## Captain announcement (draft)
 
