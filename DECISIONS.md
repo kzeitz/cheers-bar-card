@@ -91,35 +91,48 @@ Outside stats are also likely to be double-out (SIDO) averages, which run lower 
 
 #### How one turn is scored
 
-1. **Start with your own average turn.** In 01 that is your 3-dart average (3DA). In cricket it is your marks per round (MPR).
+1. **Start with your own average turn.** In 01 that is your 3-dart average (3DA). In cricket it is your average marks per turn, counted with the bull rule below (so it can differ slightly from DartConnect's MPR).
 2. **Count only what's above it.** A 40-average player who throws 100 is 60 above their average. A turn at or below your average scores zero. No penalty, just no points.
-3. **Apply the weighting.** The amount above your average is multiplied by a weighting based on how your average compares with the league average (about 40.7 3DA and 1.34 MPR). A lower average gives a weighting a little above 1, and a higher average a little below 1. The weighting is deliberately gentle (we use 0.65 strength, explained below), so it nudges rather than flips the result.
-4. **Cricket marks are converted to 01 points.** One mark is worth about 30 points (40.7 ÷ 1.34), because an average turn in our league is about 40 points or about 1.34 marks.
+3. **Apply the weighting.** The amount above your average is multiplied by a weighting based on how your average compares with the league average (about 40.7 in 01 and 1.52 marks in cricket). A lower average gives a weighting a little above 1, and a higher average a little below 1. The weighting is deliberately gentle (we use 0.65 strength, explained below), so it nudges rather than flips the result.
+4. **Cricket marks are converted to points: 1 mark = 19 points.** We picked 19 so that cricket and 01 count about equally per turn thrown. Cricket is about 47% of all turns and earns about 51% of the points. It also matches how often big turns happen: in weeks 1 and 2 a 5-mark round and a 100+ turn each came up in about 3% of turns, so they are worth about the same.
+
+**Bulls.** On the board, the double bull is about half the size of a treble 20, and the single bull is about a sixth the size of a single 20, yet DartConnect counts them as only 2 marks and 1 mark. For Player of the Week only (the game itself doesn't change), bulls count like this:
+
+| Dart | Size on the board | DartConnect marks | Player of the Week marks |
+|---|---|---|---|
+| Single 20 | about 3,800 mm² | 1 | 1 |
+| Single bull | about 670 mm² | 1 | **2** (like a double) |
+| Treble 20 | about 260 mm² | 3 | 3 |
+| Double bull | about 130 mm² | 2 | **3** (like a treble) |
+
+So six bulls (three double bulls) counts as 9 marks, the same as three treble 20s, and a bull dart is never worth less than the matching 20 dart. Because each player's cricket average is counted the same way, the bull rule doesn't tilt the scores toward cricket or toward bull-heavy players.
 
 ![What one big turn is worth](reports/potw_turn_value.svg)
 
-| Turn | Weaker player<br>(30 3DA / 1.0 MPR) | Middle player<br>(40 3DA / 1.5 MPR) | Stronger player<br>(50 3DA / 2.0 MPR) |
+| Turn | Weaker player<br>(30 3DA / 1.0 marks) | Middle player<br>(40 3DA / 1.5 marks) | Stronger player<br>(50 3DA / 2.0 marks) |
 |---|---|---|---|
 | 60 | 37 | 20 | 9 |
 | 100 | 85 | 61 | 44 |
 | 140 | 134 | 101 | 79 |
 | 180 | 183 | 142 | 114 |
-| 4 marks | 110 | 71 | 47 |
-| 5 marks | 147 | 99 | 70 |
-| 7 marks | 221 | 155 | 117 |
+| 4 marks | 75 | 48 | 32 |
+| 5 marks | 100 | 67 | 48 |
+| 7 marks | 149 | 105 | 79 |
+| 9 marks, or 6 bulls | 199 | 143 | 111 |
 
 What each factor does:
 - **"Above your own average"** means a 60 is a great turn for a 30-average player but routine for a 50-average player, and the points reflect that.
 - **The weighting** gives a weaker player's big turn some extra credit, but a strong player's 180 is still one of the biggest scores of the night.
-- **The cricket conversion** lets 01 and cricket turns add up on the same scale.
+- **The cricket conversion** puts 01 and cricket on the same scale: a 5-mark round is worth about a 100, and a 9-mark round about a 180.
+- **The bull rule** makes bulls worth at least as much as 20s.
 
 #### How a night is scored
 
 - Add up the points from all your turns that night.
-- **Divide by the number of turns you threw, then multiply by 80** (a typical night). Weaker teams' legs run longer, so their players throw more turns (often 90–110 a night against 60–80 for stronger players). Scoring per turn means more turns don't mean more chances.
+- **Divide by the number of turns you threw, then multiply by 80** (a typical night). Weaker teams' legs run longer, so their players throw more turns (90–112 a night in weeks 1 and 2, against 61–91 for stronger players). Scoring per turn means more turns don't mean more chances.
 - **Highest night score wins Player of the Week.**
 
-**Which average is used:** your average from the weeks before that night, so a hot night doesn't lower its own score. In week 1, or a player's first night, there is nothing earlier, so that night's own stats are used. Averages below 25 3DA or 0.80 MPR are treated as 25 and 0.80, so one very low average can't produce huge points.
+**Which average is used:** your average from the weeks before that night, so a hot night doesn't lower its own score. In week 1, or a player's first night, there is nothing earlier, so that night's own stats are used. Averages below 25 in 01 or 0.80 marks in cricket are treated as 25 and 0.80, so one very low average can't produce huge points.
 
 #### How we checked it's fair
 
@@ -129,11 +142,12 @@ We scored weeks 1 and 2 (about 3,300 turns) under different weighting strengths 
 
 - **Full weighting (1.0)** tilted toward weaker players by about 20%.
 - **Less weighting (0.5)** starts tilting toward stronger players, because a 50 player's good turns are bigger numbers to begin with.
-- **0.65** puts the three groups within 16 points of each other (956 / 940 / 943), which is less than the normal night-to-night swing of any one player (about 230 points).
+- **0.65** puts the three groups within 11 points of each other (778 / 773 / 767), far less than the normal night-to-night swing of any one player (about 200 points).
 
 Things we tried and dropped:
 - **Fixed bars (60+ in 01, 4+ marks in cricket).** Easy for a 50 player and rare for a 30 player, so stronger players dominated.
-- **A bar of "1.5× your own average".** Cricket marks come in whole numbers, so the bar jumped at certain MPRs (1.28 MPR needed 2 marks, 1.34 needed 3). Counting points above your average has no jumps.
+- **A bar of "1.5× your own average".** Cricket marks come in whole numbers, so the bar jumped at certain averages (1.28 MPR needed 2 marks, 1.34 needed 3). Counting points above your average has no jumps.
+- **30 points per mark.** Cricket earned about 61% of all points, and a 5-mark round was worth far more than a 100 even though both happen about as often.
 
 #### Season standings
 
@@ -153,27 +167,27 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 
 #### Weeks 1 and 2 under these rules
 
-**Week 1 (Nov 16): Player of the Week is Keyra Jallah (1,140)**
+**Week 1 (Nov 16): Player of the Week is April Lapthorne (951)**
 
-| # | Player | 3DA / MPR used | Night score | Best turn |
+| # | Player | 3DA / cricket marks used | Night score | Best turn |
 |---|---|---|---|---|
-| 1 | Keyra Jallah | 31.3 / 0.96 | 1,140 | 4 marks |
-| 2 | Sierra Rensch | 41.7 / 1.28 | 1,116 | 5 marks |
-| 3 | Lynette Baluja | 36.9 / 0.75 | 1,104 | 6 marks |
-| 4 | April Lapthorne | 41.3 / 1.55 | 1,100 | 5 marks |
-| 5 | Jacob Shaw | 47.3 / 1.62 | 1,035 | 7 marks |
+| 1 | April Lapthorne | 41.3 / 1.59 | 951 | 129 |
+| 2 | Keyra Jallah | 31.3 / 1.05 | 891 | 4 marks |
+| 3 | Julie Dirks | 39.5 / 1.52 | 850 | 121 |
+| 4 | Sierra Rensch | 41.7 / 1.47 | 844 | 120 |
+| 5 | Lynette Baluja | 36.9 / 0.87 | 837 | 6 marks |
 
-**Week 2 (Nov 23): Player of the Week is Sierra Rensch (1,398)**
+**Week 2 (Nov 23): Player of the Week is Karlton Zeitz (1,082)**
 
-| # | Player | 3DA / MPR used | Night score | Best turn |
+| # | Player | 3DA / cricket marks used | Night score | Best turn |
 |---|---|---|---|---|
-| 1 | Sierra Rensch | 41.7 / 1.28 | 1,398 | 5 marks; outs of 80 and 63 |
-| 2 | Scott Mejeur | 34.6 / 1.13 | 1,350 | three 5-mark rounds |
-| 3 | Karlton Zeitz | 48.5 / 1.55 | 1,340 | two 6-mark rounds |
-| 4 | Jacob Shaw | 47.3 / 1.62 | 1,145 | two 5-mark rounds, 120 |
-| 5 | Keyra Jallah | 31.3 / 0.96 | 1,073 | lots of above-average turns |
+| 1 | Karlton Zeitz | 48.5 / 1.65 | 1,082 | two 6-mark rounds |
+| 2 | Sierra Rensch | 41.7 / 1.47 | 1,061 | 5 marks; outs of 80 and 63 |
+| 3 | Joe Chavez | 38.2 / 1.23 | 1,033 | 105 |
+| 4 | Scott Mejeur | 34.6 / 1.31 | 1,026 | three 5-mark rounds |
+| 5 | Keyra Jallah | 31.3 / 1.05 | 922 | 89 |
 
-**Standings after week 2** (N = 1, so best night so far): 1. Sierra Rensch 1,398 · 2. Scott Mejeur 1,350 · 3. Karlton Zeitz 1,340 · 4. Jacob Shaw 1,145 · 5. Keyra Jallah 1,140.
+**Standings after week 2** (N = 1, so best night so far): 1. Karlton Zeitz 1,082 · 2. Sierra Rensch 1,061 · 3. Joe Chavez 1,033 · 4. Scott Mejeur 1,026 · 5. April Lapthorne 951.
 
 **Highlights.** Big turns always earn points; these are just the ones worth a shout-out.
 - **Week 1:** Larry Shattuck had a 7-mark round, a 6-mark round and three 5-mark rounds, plus a 140. Jacob Shaw, Josh Bieber and Tammy Bieber each had a 7-mark round. Kristen Rosenbach threw a 140 and a 135, and Karlton Zeitz a 140.
@@ -190,7 +204,7 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 | Question | Options |
 |---|---|
 | Weighting strength | • 0.65 (tested as the most even)<br>• Something else after more weeks of data |
-| Cricket's share of the points | • Keep about 30 points per mark (cricket currently earns about 60% of all points)<br>• Lower it so 01 and cricket count more evenly |
+| Bull value | • Single bull 2, double bull 3 (as above)<br>• Double bull 4, closer to its size on the board |
 | Bonus for big checkouts | • No bonus (the turn already earns points)<br>• Extra points for outs of 100 or more |
 | Standings minimum | • Half your team's nights, rounded up<br>• A fixed number of nights |
 
