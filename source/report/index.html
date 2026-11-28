@@ -38,11 +38,15 @@ h1 span{color:var(--red)}
 .theme{flex:none;font:inherit;font-size:12.5px;font-weight:600;background:transparent;color:var(--band-fg);border:1px solid var(--band-line);border-radius:999px;padding:6px 12px;cursor:pointer}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
 h2{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
-.potw{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center}
+.potwpanel{position:relative;overflow:hidden}
+.potwpanel>*{position:relative;z-index:1}
+.potwpanel .celebrate{position:absolute;z-index:0;right:0;top:50%;transform:translateY(-50%);width:150px;height:150px;pointer-events:none;border-radius:12px;-webkit-mask-image:radial-gradient(circle at 50% 50%,#000 55%,transparent 72%);mask-image:radial-gradient(circle at 50% 50%,#000 55%,transparent 72%)}
+.potw .name{text-shadow:0 1px 0 var(--card)}
+.potw{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding-right:128px}
 .potw .name{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.05}
 .potw .team{color:var(--muted);font-size:13.5px}
-.potw .best{grid-column:1 / -1;font-size:14px}
-.score{display:inline-block;font-family:var(--display);font-weight:700;font-size:30px;font-variant-numeric:tabular-nums;background:var(--band);color:var(--band-fg);border-radius:8px;padding:2px 12px 0;line-height:1.15;grid-row:span 2}
+.potw .best{font-size:14px}
+.score{display:inline-block;font-family:var(--display);font-weight:700;font-size:30px;font-variant-numeric:tabular-nums;background:var(--band);color:var(--band-fg);border-radius:8px;padding:2px 12px 0;line-height:1.15;margin:4px 0 2px}
 table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
 th,td{padding:6px 4px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
 th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
@@ -70,7 +74,7 @@ details[open] summary::before{content:"▾ "}
 .foot{display:flex;flex-direction:column;gap:8px}
 .btnlink{display:block;text-align:center;font-weight:600;text-decoration:none;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;padding:12px}
 .small{text-align:center;font-size:12px;color:var(--muted)}
-@media (max-width:430px){.panel{padding:12px}.bar{grid-template-columns:92px minmax(0,1fr) 52px}}
+@media (max-width:430px){.panel{padding:12px}.potw{padding-right:104px}.potwpanel .celebrate{width:150px;height:150px;right:-18px}.bar{grid-template-columns:92px minmax(0,1fr) 52px}}
 </style>
 </head>
 <body>
@@ -81,7 +85,8 @@ details[open] summary::before{content:"▾ "}
     <div class="ctl"><label for="wk" class="note" hidden>Week</label><select id="wk" aria-label="Week"></select><button type="button" class="theme" id="themeBtn">Dark</button></div>
   </header>
 
-  <section class="panel" aria-labelledby="h-potw">
+  <section class="panel potwpanel" aria-labelledby="h-potw">
+    <svg class="celebrate" id="cele" aria-hidden="true"></svg>
     <h2 id="h-potw">Player of the Week</h2>
     <div class="potw" id="potw"></div>
   </section>
@@ -139,7 +144,8 @@ function rowsHTML(list,start){return list.map((x,i)=>`<tr><td class="rk">${start
 function render(w){
   const W=WEEKS.find(x=>x.w===w); if(!W) return;
   const p=W.nights[0];
-  $('potw').innerHTML=`<div class="name">${esc(p.p)}</div><span class="score">${n0(p.s)}</span><div class="team">${esc(p.t)}</div><div class="best">Best turn: ${esc(bestTxt(p.b))}</div>`;
+  const ck=/marks/.test(String(p.b))?'bull':'t20', cs=celebrateSVG(ck); $('cele').setAttribute('viewBox',cs.view); $('cele').innerHTML=cs.html;
+  $('potw').innerHTML=`<div class="name">${esc(p.p)}</div><div class="team">${esc(p.t)}</div><span class="score">${n0(p.s)}</span><div class="best">Best turn: ${esc(bestTxt(p.b))}</div>`;
   $('top').innerHTML=rowsHTML(W.nights.slice(0,5),1);
   const rest=W.nights.slice(5); $('all').innerHTML=rowsHTML(rest,6);
   $('allSum').textContent=`Show the rest (${rest.length})`; $('allBox').hidden=!rest.length; $('allBox').open=false;
@@ -164,6 +170,32 @@ function render(w){
   $('fairNote').textContent=`${F.weak[1]+F.mid[1]+F.strong[1]} player-nights so far; groups within ${spread} points (${pct<1?'under 1':pct}%). `+(w<4?'With only '+w+' week'+(w===1?'':'s')+' of data this will move around.':(pct>5?'Above our 5% check: we\'ll look at re-tuning.':'Within our 5% check.'));
   $('audit').innerHTML=`<b>Handicap check:</b> ${esc(W.audit)}`;
   document.title=`@Cheers Weekly Report · Week ${w}`;
+}
+
+function celebrateSVG(kind){
+  // kind 'bull' (best turn in cricket) or 't20' (best turn in 01)
+  const order=[20,1,18,4,13,6,10,15,2,17,3,19,7,16,8,11,14,9,12,5];
+  const C={black:'#1b1b1b',cream:'#efe4c6',red:'#d2232a',green:'#169a4b',wire:'#b9bcc0'};
+  const pt=(r,a)=>[(r*Math.sin(a)).toFixed(2),(-r*Math.cos(a)).toFixed(2)];
+  const wedge=(r1,r2,a1,a2,fill)=>{const [x1,y1]=pt(r2,a1),[x2,y2]=pt(r2,a2),[x3,y3]=pt(r1,a2),[x4,y4]=pt(r1,a1);
+    return `<path d="M${x1} ${y1}A${r2} ${r2} 0 0 1 ${x2} ${y2}L${x3} ${y3}A${r1} ${r1} 0 0 0 ${x4} ${y4}Z" fill="${fill}" stroke="${C.wire}" stroke-width="1"/>`};
+  let b=`<circle r="228" fill="${C.black}"/>`; const step=Math.PI/10;
+  order.forEach((n,i)=>{const a1=i*step-step/2,a2=a1+step,dark=i%2===0,single=dark?C.black:C.cream,ring=dark?C.red:C.green;
+    b+=wedge(15.9,99,a1,a2,single)+wedge(99,107,a1,a2,ring)+wedge(107,162,a1,a2,single)+wedge(162,170,a1,a2,ring);
+    const [x,y]=pt(196,i*step); b+=`<text x="${x}" y="${y}" fill="#f2f2f2" font-family="Arial,sans-serif" font-weight="700" font-size="24" text-anchor="middle" dominant-baseline="central">${n}</text>`;});
+  b+=`<circle r="15.9" fill="${C.green}" stroke="${C.wire}" stroke-width="1"/><circle r="6.35" fill="${C.red}" stroke="${C.wire}" stroke-width="1"/>`;
+  // a steel-tip dart drawn with its tip at (0,0), body pointing up, then leaned to the right
+  const dart=(x,y,ang)=>`<g transform="translate(${x} ${y}) rotate(${ang}) scale(.85)">`+
+    `<path d="M0 0 L-.6 -3 L-1.1 -28 L1.1 -28 L.6 -3 Z" fill="#d9dde1" stroke="#7b8086" stroke-width=".4"/>`+
+    `<path d="M-1.8 -28 L-2.8 -31 L-2.8 -58 L-1.8 -61 L1.8 -61 L2.8 -58 L2.8 -31 L1.8 -28 Z" fill="#3a3e43" stroke="#16191c" stroke-width=".5"/>`+
+    `<path d="M-2.8 -34 H2.8 M-2.8 -36.5 H2.8 M-2.8 -39 H2.8 M-2.8 -41.5 H2.8 M-2.8 -49 H2.8 M-2.8 -51.5 H2.8 M-2.8 -54 H2.8 M-2.8 -56.5 H2.8" stroke="#6c7177" stroke-width=".6"/>`+
+    `<rect x="-2.9" y="-46" width="5.8" height="3" fill="#c9cdd2"/>`+
+    `<path d="M-1.6 -61 L-1.4 -78 L1.4 -78 L1.6 -61 Z" fill="#2f45d0" fill-opacity=".85"/>`+
+    `<path d="M-1.6 -74 L-11 -88 Q-12 -90 -12 -92 L-12 -99 Q-12 -101.6 -9.6 -102.4 L0 -107 L9.6 -102.4 Q12 -101.6 12 -99 L12 -92 Q12 -90 11 -88 L1.6 -74 Z" fill="#2f45d0" fill-opacity=".8" stroke="#1b2a8a" stroke-width=".7"/>`+
+    `<path d="M0 -74 V-107" stroke="#1b2a8a" stroke-width=".7"/></g>`;
+  const view=kind==='bull'?'-30 -96 128 128':'-38 -214 136 136';
+  const tip=kind==='bull'?[0,0]:[0,-103]; const darts=[25,45,65].map(a=>dart(tip[0],tip[1],a)).join('');
+  return {view,html:`<g opacity=".5">${b}</g><g opacity=".95">${darts}</g>`};
 }
 function drawBoard(){
   const order=[20,1,18,4,13,6,10,15,2,17,3,19,7,16,8,11,14,9,12,5];
