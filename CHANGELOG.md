@@ -4,6 +4,15 @@ Every release of the Bar Card, newest first. The version is shown at the bottom 
 
 To release: bump `VERSION` in `source/card/bar_card_template.html`, add an entry here, and use the version in the commit message.
 
+## Weekly report (beta) – 28 Nov 2026
+New page at /report/ (source in `source/report/`).
+
+- Player of the Week, top 5 and every player's night score, with best turns.
+- Highlights: 120+ turns, 6+ mark rounds (dart by dart) and checkouts.
+- Season standings (best-N average) and team standings (legs won).
+- Fair play check by average group, plus the weekly handicap check.
+- Week picker with links to each week (?w=1, ?w=2). Weeks 1 and 2 included.
+
 ## v0.9.0 beta – 27 Nov 2026
 First version for league use (Monday 30 Nov 2026).
 

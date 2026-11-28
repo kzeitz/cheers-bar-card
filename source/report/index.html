@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>@Cheers Weekly Report</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#dfe5dd; --card:#ffffff; --fg:#111512; --muted:#454e48; --line:#b9c3b6;
+  --red:#c0102b; --green:#06703a; --amber:#9a5b00; --num:#1450b4; --chip:#dde4da; --amber-bg:#fff1d6;
+  --band:#a3b39f; --band-fg:#0c100d; --band-chip:#ffffff8c; --band-line:#0c100d59;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1210; --card:#1a1f1b; --fg:#eef0ec; --muted:#a3aca5; --line:#2c342e;
+  --red:#ff5a6e; --green:#43c47c; --amber:#f0b04a; --num:#7fb2ff; --chip:#252b27; --amber-bg:#2e2410;
+  --band:#060807; --band-fg:#f4efe2; --band-chip:#ffffff14; --band-line:#ffffff55; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1210; --card:#1a1f1b; --fg:#eef0ec; --muted:#a3aca5; --line:#2c342e;
+  --red:#ff5a6e; --green:#43c47c; --amber:#f0b04a; --num:#7fb2ff; --chip:#252b27; --amber-bg:#2e2410;
+  --band:#060807; --band-fg:#f4efe2; --band-chip:#ffffff14; --band-line:#ffffff55; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 40px}
+main{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.hero{background:var(--band);color:var(--band-fg);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.dartboard{position:absolute;right:-40px;top:-40px;width:140px;height:140px;filter:drop-shadow(0 2px 6px #00000055);pointer-events:none}
+.toprow{display:flex;flex-direction:column;gap:4px;position:relative;z-index:1;padding-right:92px;min-width:0}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(24px,7.4vw,30px);margin:0;line-height:1;white-space:nowrap}
+h1 span{color:var(--red)}
+.beta{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.1em;vertical-align:middle;margin-left:8px;padding:2px 7px;border-radius:999px;background:var(--red);color:#fff;position:relative;top:-3px}
+.league{font-weight:600;color:var(--band-fg);font-size:13px;opacity:.85;text-decoration:underline;text-decoration-color:var(--band-line);text-underline-offset:3px}
+.ctl{display:flex;gap:8px;align-items:center;position:relative;z-index:1;margin-top:16px}
+.ctl select{flex:1;min-width:0;font:inherit;font-size:16px;font-weight:600;padding:9px 10px;border-radius:9px;border:1px solid var(--band-line);background:var(--band-chip);color:var(--band-fg)}
+.ctl select option{color:#111;background:#fff}
+.theme{flex:none;font:inherit;font-size:12.5px;font-weight:600;background:transparent;color:var(--band-fg);border:1px solid var(--band-line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+h2{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
+.potw{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center}
+.potw .name{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.05}
+.potw .team{color:var(--muted);font-size:13.5px}
+.potw .best{grid-column:1 / -1;font-size:14px}
+.score{display:inline-block;font-family:var(--display);font-weight:700;font-size:30px;font-variant-numeric:tabular-nums;background:var(--band);color:var(--band-fg);border-radius:8px;padding:2px 12px 0;line-height:1.15;grid-row:span 2}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{padding:6px 4px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.r,th.r{text-align:right}
+td.rk{width:28px;font-family:var(--display);font-weight:700;color:var(--muted);font-size:16px}
+td .sub{display:block;font-size:12.5px;color:var(--muted)}
+td.sc{font-family:var(--display);font-weight:700;font-size:18px}
+tr.me td{background:var(--chip)}
+details summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--num);list-style:none;padding:4px 0}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"▸ ";color:var(--muted)}
+details[open] summary::before{content:"▾ "}
+.hl{display:flex;flex-direction:column;gap:8px}
+.tile{border-radius:10px;padding:10px 12px;background:var(--chip);display:flex;flex-direction:column;gap:4px}
+.rlabel{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.hl ul{margin:0;padding-left:0;list-style:none}
+.hl li{margin:2px 0;font-weight:500;color:var(--fg)}
+.note{font-size:12.5px;color:var(--muted);margin:0}
+.bars{display:flex;flex-direction:column;gap:8px}
+.bar{display:grid;grid-template-columns:110px minmax(0,1fr) 56px;gap:8px;align-items:center;font-size:13.5px}
+.track{height:16px;background:var(--chip);border-radius:7px;overflow:hidden}
+.fill{height:100%;border-radius:7px}
+.bar b{justify-self:end;font-family:var(--display);font-weight:700;font-size:18px;font-variant-numeric:tabular-nums;background:var(--band);color:var(--band-fg);border:1px solid var(--band-line);border-radius:7px;padding:0 8px;line-height:1.3}
+.audit{font-size:13.5px;background:var(--chip);border-radius:8px;padding:8px 10px}
+.foot{display:flex;flex-direction:column;gap:8px}
+.btnlink{display:block;text-align:center;font-weight:600;text-decoration:none;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;padding:12px}
+.small{text-align:center;font-size:12px;color:var(--muted)}
+@media (max-width:430px){.panel{padding:12px}.bar{grid-template-columns:92px minmax(0,1fr) 52px}}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <svg class="dartboard" id="dboard" viewBox="-230 -230 460 460" aria-hidden="true"></svg>
+    <div class="toprow"><h1>@Cheers <span>Weekly Report</span><b class="beta">BETA</b></h1><a class="league" href="https://tv.dartconnect.com/league/CheersMonDDL/26422/standings" target="_blank" rel="noopener">Cheers Monday Doubles · Winter/Spring 2026/27</a></div>
+    <div class="ctl"><label for="wk" class="note" hidden>Week</label><select id="wk" aria-label="Week"></select><button type="button" class="theme" id="themeBtn">Dark</button></div>
+  </header>
+
+  <section class="panel" aria-labelledby="h-potw">
+    <h2 id="h-potw">Player of the Week</h2>
+    <div class="potw" id="potw"></div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-top">
+    <h2 id="h-top">This week's top 5</h2>
+    <table><thead><tr><th></th><th>Player</th><th class="r">Score</th></tr></thead><tbody id="top"></tbody></table>
+    <details id="allBox"><summary id="allSum">Show the rest</summary>
+      <table><tbody id="all"></tbody></table>
+    </details>
+    <p class="note">Night score = points for every turn that beat your own average, per 80 turns. <a href="https://github.com/kzeitz/cheers-bar-card/blob/main/DECISIONS.md#3-player-of-the-week-and-season-standings" target="_blank" rel="noopener">How scoring works</a></p>
+  </section>
+
+  <section class="panel" aria-labelledby="h-hl">
+    <h2 id="h-hl">Highlights</h2>
+    <div class="hl" id="hl"></div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-st">
+    <h2 id="h-st">Season standings</h2>
+    <p class="note" id="stNote"></p>
+    <table><thead><tr><th></th><th>Player</th><th class="r">Standing</th></tr></thead><tbody id="st"></tbody></table>
+    <details id="stBox"><summary id="stSum">Show the rest</summary>
+      <table><tbody id="stAll"></tbody></table>
+    </details>
+  </section>
+
+  <section class="panel" aria-labelledby="h-tm">
+    <h2 id="h-tm">Team standings</h2>
+    <table><thead><tr><th></th><th>Team</th><th class="r">Legs won</th></tr></thead><tbody id="tm"></tbody></table>
+    <p class="note" id="tmNote"></p>
+  </section>
+
+  <section class="panel" aria-labelledby="h-fair">
+    <h2 id="h-fair">Fair play check</h2>
+    <p class="note">Average night score by average group (3DA), season to date. Level bars mean nobody's average gives them an edge.</p>
+    <div class="bars" id="fair"></div>
+    <p class="note" id="fairNote"></p>
+    <div class="audit" id="audit"></div>
+  </section>
+
+  <div class="foot">
+    <a class="btnlink" href="../">Open the Bar Card</a>
+    <p class="small">Questions or comments? Ask Beth or Karlton.</p>
+  </div>
+</main>
+<script>
+const WEEKS = [{"w": 1,"date": "2026-11-16","nights": [{"p": "April Lapthorne","t": "Total Bulls Hit","s": 951,"b": "129","a": 41.27},{"p": "Keyra Jallah","t": "Dart Chocolate","s": 891,"b": "4 marks (T19, S17)","a": 31.26},{"p": "Julie Dirks","t": "180 Proof","s": 850,"b": "121","a": 39.53},{"p": "Sierra Rensch","t": "2 Nips 1 Tip","s": 849,"b": "120","a": 41.65},{"p": "Lynette Baluja","t": "One Hit Wonders","s": 837,"b": "6 marks (T16, T15)","a": 36.94},{"p": "Jacob Shaw","t": "One Hit Wonders","s": 809,"b": "7 marks (T17, T17, S17)","a": 47.26},{"p": "Lorrie Shaw","t": "Darts & Recreation","s": 792,"b": "98","a": 44.47},{"p": "Larry Shattuck","t": "Granny's Bananas","s": 791,"b": "140","a": 45.39},{"p": "Shadd Cordrey","t": "2 Nips 1 Tip","s": 786,"b": "6 marks (T19, T19)","a": 38.9},{"p": "Patrick Nelson","t": "Dart Chocolate","s": 785,"b": "5 marks (T19, D19)","a": 35.26},{"p": "Alicia Rosenbach","t": "The Dartly Couple","s": 772,"b": "4 marks (T17, S17)","a": 39.57},{"p": "Josh Bieber","t": "Diverted Flights","s": 756,"b": "7 marks (T17, T18, S18)","a": 52.74},{"p": "Scott Mejeur","t": "Love at First Flight","s": 754,"b": "5 marks (T20, S20, S20)","a": 34.62},{"p": "Karlton Zeitz","t": "180 Proof","s": 749,"b": "140","a": 48.51},{"p": "Matthew Meyer","t": "Total Bulls Hit","s": 718,"b": "7 marks (S15, DB, DB)","a": 51.79},{"p": "Kristen Rosenbach","t": "The Dartly Couple","s": 704,"b": "140","a": 50.71},{"p": "Tammy Bieber","t": "Diverted Flights","s": 695,"b": "7 marks (T20, S19, T19)","a": 43.64},{"p": "Hannah Lindholm","t": "Granny's Bananas","s": 694,"b": "118","a": 40.29},{"p": "Joe Chavez","t": "Darts & Recreation","s": 691,"b": "4 marks (T15, S17)","a": 38.21},{"p": "Mary Mejeur","t": "Love at First Flight","s": 525,"b": "114","a": 27.65}],"standings": [{"p": "April Lapthorne","t": "Total Bulls Hit","np": 1,"n": 1,"v": 951},{"p": "Keyra Jallah","t": "Dart Chocolate","np": 1,"n": 1,"v": 891},{"p": "Julie Dirks","t": "180 Proof","np": 1,"n": 1,"v": 850},{"p": "Sierra Rensch","t": "2 Nips 1 Tip","np": 1,"n": 1,"v": 849},{"p": "Lynette Baluja","t": "One Hit Wonders","np": 1,"n": 1,"v": 837},{"p": "Jacob Shaw","t": "One Hit Wonders","np": 1,"n": 1,"v": 809},{"p": "Lorrie Shaw","t": "Darts & Recreation","np": 1,"n": 1,"v": 792},{"p": "Larry Shattuck","t": "Granny's Bananas","np": 1,"n": 1,"v": 791},{"p": "Shadd Cordrey","t": "2 Nips 1 Tip","np": 1,"n": 1,"v": 786},{"p": "Patrick Nelson","t": "Dart Chocolate","np": 1,"n": 1,"v": 785},{"p": "Alicia Rosenbach","t": "The Dartly Couple","np": 1,"n": 1,"v": 772},{"p": "Josh Bieber","t": "Diverted Flights","np": 1,"n": 1,"v": 756},{"p": "Scott Mejeur","t": "Love at First Flight","np": 1,"n": 1,"v": 754},{"p": "Karlton Zeitz","t": "180 Proof","np": 1,"n": 1,"v": 749},{"p": "Matthew Meyer","t": "Total Bulls Hit","np": 1,"n": 1,"v": 718},{"p": "Kristen Rosenbach","t": "The Dartly Couple","np": 1,"n": 1,"v": 704},{"p": "Tammy Bieber","t": "Diverted Flights","np": 1,"n": 1,"v": 695},{"p": "Hannah Lindholm","t": "Granny's Bananas","np": 1,"n": 1,"v": 694},{"p": "Joe Chavez","t": "Darts & Recreation","np": 1,"n": 1,"v": 691},{"p": "Mary Mejeur","t": "Love at First Flight","np": 1,"n": 1,"v": 525}],"teams": [{"t": "Dart Chocolate","l": 9,"n": 1},{"t": "Granny's Bananas","l": 9,"n": 1},{"t": "Total Bulls Hit","l": 8,"n": 1},{"t": "Diverted Flights","l": 7,"n": 1},{"t": "One Hit Wonders","l": 6,"n": 1},{"t": "The Dartly Couple","l": 5,"n": 1},{"t": "180 Proof","l": 4,"n": 1},{"t": "Darts & Recreation","l": 3,"n": 1},{"t": "Love at First Flight","l": 2,"n": 1},{"t": "2 Nips 1 Tip","l": 2,"n": 1}],"fair": {"weak": [739,4],"mid": [792,10],"strong": [754,6]},"hl": {"t120": ["Kristen Rosenbach 140 and 135","Larry Shattuck 140 and 121","Karlton Zeitz 140","Jacob Shaw 132","April Lapthorne 129","Julie Dirks 121","Sierra Rensch 120"],"m6": ["Larry Shattuck 7 (T17, T17, S17) and 6 (T20, T20)","Jacob Shaw 7 (T17, T17, S17)","Josh Bieber 7 (T17, T18, S18)","Tammy Bieber 7 (T20, S19, T19)","Shadd Cordrey 6 (T19, T19)","Lynette Baluja 6 (T16, T15)"],"outs": ["Josh Bieber 93","Matthew Meyer 70","Jacob Shaw 65","Kristen Rosenbach 60"]},"audit": "Not checked: week 1 was played before the Bar Card existed.","bye": "Savages Vol 2"},{"w": 2,"date": "2026-11-23","nights": [{"p": "Karlton Zeitz","t": "180 Proof","s": 1137,"b": "6 marks (T16, T15)","a": 48.51},{"p": "Sierra Rensch","t": "2 Nips 1 Tip","s": 1100,"b": "5 marks","a": 41.65},{"p": "Joe Chavez","t": "Darts & Recreation","s": 1036,"b": "105","a": 38.21},{"p": "Scott Mejeur","t": "Love at First Flight","s": 1026,"b": "5 marks","a": 34.62},{"p": "Keyra Jallah","t": "Dart Chocolate","s": 931,"b": "89","a": 31.26},{"p": "Shadd Cordrey","t": "2 Nips 1 Tip","s": 903,"b": "140","a": 38.9},{"p": "Jacob Shaw","t": "One Hit Wonders","s": 867,"b": "120","a": 47.26},{"p": "Mary Mejeur","t": "Love at First Flight","s": 849,"b": "5 marks","a": 27.65},{"p": "Matthew Meyer","t": "Total Bulls Hit","s": 795,"b": "180","a": 51.79},{"p": "Donna Larson","t": "Savages Vol 2","s": 781,"b": "4 marks (T20, S18)","a": 31.42},{"p": "Billy Guerrero","t": "Savages Vol 2","s": 780,"b": "4 marks (T16, S15)","a": 44.23},{"p": "Samantha Cochran","t": "Granny's Bananas","s": 715,"b": "5 marks (T17, D15)","a": 26.48},{"p": "Josh Bieber","t": "Diverted Flights","s": 710,"b": "180","a": 52.74},{"p": "Julie Dirks","t": "180 Proof","s": 698,"b": "100","a": 39.53},{"p": "Lorrie Shaw","t": "Darts & Recreation","s": 681,"b": "5 marks (S20, S19, T19)","a": 44.47},{"p": "April Lapthorne","t": "Total Bulls Hit","s": 591,"b": "105","a": 41.27},{"p": "Lynette Baluja","t": "One Hit Wonders","s": 588,"b": "6 marks (T19, D19, S17)","a": 36.94},{"p": "Larry Shattuck","t": "Granny's Bananas","s": 561,"b": "100","a": 45.39},{"p": "Patrick Nelson","t": "Dart Chocolate","s": 560,"b": "5 marks (S20, T18, S18)","a": 35.26},{"p": "Tammy Bieber","t": "Diverted Flights","s": 517,"b": "5 marks (T18, S17, S17)","a": 43.64}],"standings": [{"p": "Karlton Zeitz","t": "180 Proof","np": 2,"n": 1,"v": 1137},{"p": "Sierra Rensch","t": "2 Nips 1 Tip","np": 2,"n": 1,"v": 1100},{"p": "Joe Chavez","t": "Darts & Recreation","np": 2,"n": 1,"v": 1036},{"p": "Scott Mejeur","t": "Love at First Flight","np": 2,"n": 1,"v": 1026},{"p": "April Lapthorne","t": "Total Bulls Hit","np": 2,"n": 1,"v": 951},{"p": "Keyra Jallah","t": "Dart Chocolate","np": 2,"n": 1,"v": 931},{"p": "Shadd Cordrey","t": "2 Nips 1 Tip","np": 2,"n": 1,"v": 903},{"p": "Jacob Shaw","t": "One Hit Wonders","np": 2,"n": 1,"v": 867},{"p": "Julie Dirks","t": "180 Proof","np": 2,"n": 1,"v": 850},{"p": "Mary Mejeur","t": "Love at First Flight","np": 2,"n": 1,"v": 849},{"p": "Lynette Baluja","t": "One Hit Wonders","np": 2,"n": 1,"v": 837},{"p": "Matthew Meyer","t": "Total Bulls Hit","np": 2,"n": 1,"v": 795},{"p": "Lorrie Shaw","t": "Darts & Recreation","np": 2,"n": 1,"v": 792},{"p": "Larry Shattuck","t": "Granny's Bananas","np": 2,"n": 1,"v": 791},{"p": "Patrick Nelson","t": "Dart Chocolate","np": 2,"n": 1,"v": 785},{"p": "Donna Larson","t": "Savages Vol 2","np": 1,"n": 1,"v": 781},{"p": "Billy Guerrero","t": "Savages Vol 2","np": 1,"n": 1,"v": 780},{"p": "Alicia Rosenbach","t": "The Dartly Couple","np": 1,"n": 1,"v": 772},{"p": "Josh Bieber","t": "Diverted Flights","np": 2,"n": 1,"v": 756},{"p": "Samantha Cochran","t": "Granny's Bananas","np": 1,"n": 1,"v": 715},{"p": "Kristen Rosenbach","t": "The Dartly Couple","np": 1,"n": 1,"v": 704},{"p": "Tammy Bieber","t": "Diverted Flights","np": 2,"n": 1,"v": 695},{"p": "Hannah Lindholm","t": "Granny's Bananas","np": 1,"n": 1,"v": 694}],"teams": [{"t": "Granny's Bananas","l": 16,"n": 2},{"t": "Diverted Flights","l": 13,"n": 2},{"t": "Dart Chocolate","l": 12,"n": 2},{"t": "180 Proof","l": 12,"n": 2},{"t": "One Hit Wonders","l": 11,"n": 2},{"t": "Total Bulls Hit","l": 11,"n": 2},{"t": "2 Nips 1 Tip","l": 10,"n": 2},{"t": "Savages Vol 2","l": 8,"n": 1},{"t": "Love at First Flight","l": 6,"n": 2},{"t": "Darts & Recreation","l": 6,"n": 2},{"t": "The Dartly Couple","l": 5,"n": 1}],"fair": {"weak": [782,10],"mid": [780,19],"strong": [782,11]},"hl": {"t120": ["Josh Bieber 180","Matthew Meyer 180","Shadd Cordrey 140","Jacob Shaw 120"],"m6": ["Karlton Zeitz 6 (T16, T15) and 6 (T19, T17)","Josh Bieber 6 (T15, T15)","Lynette Baluja 6 (T19, D19, S17)"],"outs": ["Larry Shattuck 81","Sierra Rensch 80 and 63","Josh Bieber 76","Mary Mejeur 56 (twice her average)"]},"audit": "Handicaps were worked out by hand this week. 17 of 35 we could check matched the rules; 18 differed, mostly singles starts. From week 3 the Bar Card does the math.","bye": "The Dartly Couple"}];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtDate=d=>new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+const n0=v=>Number(v).toLocaleString('en-US');
+function bestTxt(b){ if(!b) return ''; b=String(b); if(/^\d+$/.test(b)) return 'a '+b; if(b.startsWith('out ')) return 'an out of '+b.slice(4); return b.replace(/^(\d+) marks/,'a $1-mark round'); }
+function rowsHTML(list,start){return list.map((x,i)=>`<tr><td class="rk">${start+i}</td><td>${esc(x.p)}<span class="sub">${esc(x.t)}${x.b?' · best: '+esc(x.b):''}</span></td><td class="r sc">${n0(x.s)}</td></tr>`).join('');}
+function render(w){
+  const W=WEEKS.find(x=>x.w===w); if(!W) return;
+  const p=W.nights[0];
+  $('potw').innerHTML=`<div class="name">${esc(p.p)}</div><span class="score">${n0(p.s)}</span><div class="team">${esc(p.t)}</div><div class="best">Best turn: ${esc(bestTxt(p.b))}</div>`;
+  $('top').innerHTML=rowsHTML(W.nights.slice(0,5),1);
+  const rest=W.nights.slice(5); $('all').innerHTML=rowsHTML(rest,6);
+  $('allSum').textContent=`Show the rest (${rest.length})`; $('allBox').hidden=!rest.length; $('allBox').open=false;
+  const H=W.hl;
+  $('hl').innerHTML=[['120+ turns',H.t120],['6+ mark rounds',H.m6],['Checkouts',H.outs]]
+    .filter(x=>x[1]&&x[1].length).map(x=>`<div class="tile"><div class="rlabel">${x[0]}</div><ul>${x[1].map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>`).join('');
+  const ranked=W.standings.filter(s=>s.v!=null), unr=W.standings.filter(s=>s.v==null);
+  const N=Math.max(...W.standings.map(s=>s.n));
+  $('stNote').textContent=`Average of each player's best ${N===1?'night':N+' nights'} so far (half your team's nights, rounded up). ${N===1?'Early in the season this is just your best night; it settles from week 4.':''}`;
+  const stRow=(s,i)=>`<tr><td class="rk">${s.v!=null?i+1:''}</td><td>${esc(s.p)}<span class="sub">${esc(s.t)} · ${s.np} night${s.np===1?'':'s'}</span></td><td class="r sc">${s.v!=null?n0(s.v):'<span class="sub">not ranked yet</span>'}</td></tr>`;
+  $('st').innerHTML=ranked.slice(0,10).map(stRow).join('');
+  const stRest=ranked.slice(10).map((s,i)=>stRow(s,10+i)).join('')+unr.map((s,i)=>stRow(s,ranked.length+i)).join('');
+  $('stAll').innerHTML=stRest; const nRest=Math.max(0,ranked.length-10)+unr.length;
+  $('stSum').textContent=`Show the rest (${nRest})`; $('stBox').hidden=!nRest; $('stBox').open=false;
+  $('tm').innerHTML=W.teams.map((t,i)=>`<tr><td class="rk">${i+1}</td><td>${esc(t.t)}<span class="sub">${t.n} night${t.n===1?'':'s'}</span></td><td class="r sc">${t.l}</td></tr>`).join('');
+  $('tmNote').textContent=`Bye this week: ${W.bye}. Legs won as shown in DartConnect's standings.`;
+  const F=W.fair, mx=Math.max(F.weak[0],F.mid[0],F.strong[0])*1.08;
+  $('fair').innerHTML=[['weak','Lower (under 36)'],['mid','Middle (36–45)'],['strong','Higher (45+)']].map(([k,l])=>
+    `<div class="bar"><span>${l}</span><div class="track"><div class="fill" style="width:${(F[k][0]/mx*100).toFixed(1)}%;background:var(--${k==="weak"?"amber":k==="mid"?"num":"green"})"></div></div><b>${F[k][0]}</b></div>`).join('');
+  const spread=Math.max(F.weak[0],F.mid[0],F.strong[0])-Math.min(F.weak[0],F.mid[0],F.strong[0]);
+  const pct=Math.round(spread/((F.weak[0]+F.mid[0]+F.strong[0])/3)*100);
+  $('fairNote').textContent=`${F.weak[1]+F.mid[1]+F.strong[1]} player-nights so far; groups within ${spread} points (${pct<1?'under 1':pct}%). `+(w<4?'With only '+w+' week'+(w===1?'':'s')+' of data this will move around.':(pct>5?'Above our 5% check: we\'ll look at re-tuning.':'Within our 5% check.'));
+  $('audit').innerHTML=`<b>Handicap check:</b> ${esc(W.audit)}`;
+  document.title=`@Cheers Weekly Report · Week ${w}`;
+}
+function drawBoard(){
+  const order=[20,1,18,4,13,6,10,15,2,17,3,19,7,16,8,11,14,9,12,5];
+  const C={black:'#1b1b1b',cream:'#efe4c6',red:'#d2232a',green:'#169a4b',wire:'#b9bcc0'};
+  const pt=(r,a)=>[(r*Math.sin(a)).toFixed(2),(-r*Math.cos(a)).toFixed(2)];
+  const wedge=(r1,r2,a1,a2,fill)=>{const [x1,y1]=pt(r2,a1),[x2,y2]=pt(r2,a2),[x3,y3]=pt(r1,a2),[x4,y4]=pt(r1,a1);
+    return `<path d="M${x1} ${y1}A${r2} ${r2} 0 0 1 ${x2} ${y2}L${x3} ${y3}A${r1} ${r1} 0 0 0 ${x4} ${y4}Z" fill="${fill}" stroke="${C.wire}" stroke-width="1.2"/>`};
+  let s=`<circle r="228" fill="${C.black}"/>`; const step=Math.PI/10;
+  order.forEach((n,i)=>{const a1=i*step-step/2,a2=a1+step,dark=i%2===0,single=dark?C.black:C.cream,ring=dark?C.red:C.green;
+    s+=wedge(15.9,99,a1,a2,single)+wedge(99,107,a1,a2,ring)+wedge(107,162,a1,a2,single)+wedge(162,170,a1,a2,ring);
+    const [x,y]=pt(196,i*step); s+=`<text x="${x}" y="${y}" fill="#f2f2f2" font-family="Arial,sans-serif" font-weight="700" font-size="26" text-anchor="middle" dominant-baseline="central">${n}</text>`;});
+  s+=`<circle r="15.9" fill="${C.green}" stroke="${C.wire}" stroke-width="1.2"/><circle r="6.35" fill="${C.red}" stroke="${C.wire}" stroke-width="1"/>`;
+  $('dboard').innerHTML=s;
+}
+function applyTheme(t){ if(t) document.documentElement.setAttribute('data-theme',t); else document.documentElement.removeAttribute('data-theme');
+  const dark=t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches; $('themeBtn').textContent=dark?'Light':'Dark'; }
+let theme=null; try{theme=localStorage.getItem('theme')}catch(e){}
+applyTheme(theme);
+$('themeBtn').addEventListener('click',()=>{const dark=document.documentElement.getAttribute('data-theme')==='dark'||(!document.documentElement.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+  const t=dark?'light':'dark'; applyTheme(t); try{localStorage.setItem('theme',t)}catch(e){} });
+drawBoard();
+const sel=$('wk');
+WEEKS.slice().reverse().forEach(W=>{const o=document.createElement('option');o.value=W.w;o.textContent=`Week ${W.w} · ${fmtDate(W.date)}`;sel.appendChild(o);});
+const qs=new URLSearchParams(location.search), want=parseInt(qs.get('w'))||WEEKS[WEEKS.length-1].w;
+sel.value=want; render(want);
+sel.addEventListener('change',()=>{const w=parseInt(sel.value); render(w); try{history.replaceState(null,'','?w='+w)}catch(e){} });
+</script>
+</body>
+</html>
