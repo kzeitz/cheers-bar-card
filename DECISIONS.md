@@ -81,6 +81,26 @@ Outside stats are also likely to be double-out (SIDO) averages, which run lower 
 
 Karlton is working on this now and will follow up shortly.
 
+## Captain announcement (draft)
+
+> **Subject: New handicap Bar Card – starting Monday**
+>
+> Hi captains,
+>
+> Starting Monday (Nov 30), get your handicaps on your phone:
+> **https://kzeitz.github.io/cheers-bar-card/** (or scan the QR code at the bar)
+>
+> 1. Pick tonight's matchup. It's already filled in from the schedule.
+> 2. Check your lineup. Captain is Player 1 by default; change it or pick a sub if needed.
+> 3. Read your cricket marks, 501 doubles start and singles starts. Tap "How it's calculated" to see the math.
+>
+> Stats come from DartConnect and are updated weekly; the date is shown at the top. New player or sub with no league stats? Pick "New player…" and enter their 3DA and MPR. The card shows full player names.
+>
+> It's a beta (v0.9.0), so let me know if anything looks off.
+>
+> Thanks,
+> Beth
+
 ## Week 2 audit (Nov 23)
 
 After each night we compare the handicaps actually entered in DartConnect with what the Bar Card rules give. Week 2 was worked out by hand, before the Bar Card existed, and it didn't go well:
@@ -122,23 +142,3 @@ After each night we compare the handicaps actually entered in DartConnect with w
 | **Tammy Bieber** v Lynette Baluja | 426 | 424 | 2 |
 
 This is the main reason for the Bar Card: the same rules, worked out the same way, for every match. Full game-by-game report: [reports/audit_2026-11-23.md](reports/audit_2026-11-23.md).
-
-## Captain announcement (draft)
-
-> **Subject: New handicap Bar Card – starting Monday**
->
-> Hi captains,
->
-> Starting Monday (Nov 30), get your handicaps on your phone:
-> **https://kzeitz.github.io/cheers-bar-card/** (or scan the QR code at the bar)
->
-> 1. Pick tonight's matchup. It's already filled in from the schedule.
-> 2. Check your lineup. Captain is Player 1 by default; change it or pick a sub if needed.
-> 3. Read your cricket marks, 501 doubles start and singles starts. Tap "How it's calculated" to see the math.
->
-> Stats come from DartConnect and are updated weekly; the date is shown at the top. New player or sub with no league stats? Pick "New player…" and enter their 3DA and MPR. The card shows full player names.
->
-> It's a beta (v0.9.0), so let me know if anything looks off.
->
-> Thanks,
-> Beth
