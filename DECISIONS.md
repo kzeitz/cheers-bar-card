@@ -95,7 +95,7 @@ Outside stats are also likely to be double-out (SIDO) averages, which run lower 
 2. **Count only what's above it.** A 40-average player who throws 100 is 60 above their average. A turn at or below your average scores zero. No penalty, just no points.
 3. **Apply the weighting.** The amount above your average is multiplied by a weighting based on how your average compares with the league average (about 40.7 in 01 and 1.52 marks in cricket). A lower average gives a weighting a little above 1, and a higher average a little below 1. The weighting is deliberately gentle (we use 0.65 strength, explained below), so it nudges rather than flips the result.
 4. **Cricket marks are converted to points: 1 mark = 19 points.** We picked 19 so that cricket and 01 count about equally per turn thrown. Cricket is about 47% of all turns and earns about 51% of the points. It also matches how often big turns happen: in weeks 1 and 2 a 5-mark round and a 100+ turn each came up in about 3% of turns, so they are worth about the same.
-5. **Checkouts count double.** The turn that wins a 01 leg earns 2 times its points: you beat your own average and took out the leg. An out that is below your average (finishing on 16, say) still earns nothing, which keeps it fair. Stronger players check out more often, but only outs that beat your own average count, so the bonus doesn't favor them. Outs are about 2% of all points, so a good checkout night can decide a close week without carrying one on its own.
+5. **Closing out a leg counts 1.5×.** The turn that wins a leg earns 1.5 times its points: the checkout in 01, or the closing turn in cricket. You beat your own average and took out the leg. A closing turn that is below your average (finishing on 16, say, or closing with a single bull when you usually hit 2 marks) still earns nothing, which keeps it fair. These turns are about 3% of all points, so a good finishing night can decide a close week without carrying one on its own.
 
 **Bulls.** On the board, the double bull is about half the size of a treble 20, and the single bull is about a sixth the size of a single 20, yet DartConnect counts them as only 2 marks and 1 mark. For Player of the Week only (the game itself doesn't change), bulls count like this:
 
@@ -126,7 +126,7 @@ What each factor does:
 - **The weighting** gives a weaker player's big turn some extra credit, but a strong player's 180 is still one of the biggest scores of the night.
 - **The cricket conversion** puts 01 and cricket on the same scale: a 5-mark round is worth about a 100, and a 9-mark round about a 180.
 - **The bull rule** makes bulls worth at least as much as 20s.
-- **The checkout bonus** makes a better-than-average out worth twice the same score mid-leg. For example, Mary Mejeur's 56 out in week 2 earned 73 points.
+- **The closing bonus** makes a better-than-average closing turn worth 1.5 times the same turn mid-leg, in both 01 and cricket. For example, Mary Mejeur's 56 out in week 2 earned 55 points.
 
 #### How a night is scored
 
@@ -144,12 +144,13 @@ We scored weeks 1 and 2 (about 3,300 turns) under different weighting strengths 
 
 - **Full weighting (1.0)** tilted toward weaker players by about 20%.
 - **Less weighting (0.5)** starts tilting toward stronger players, because a 50 player's good turns are bigger numbers to begin with.
-- **0.65** puts the three groups within 4 points of each other (783 / 780 / 779), far less than the normal night-to-night swing of any one player (about 200 points).
+- **0.65** puts the three groups within 2 points of each other (782 / 780 / 782), far less than the normal night-to-night swing of any one player (about 200 points).
 
 Things we tried and dropped:
 - **Fixed bars (60+ in 01, 4+ marks in cricket).** Easy for a 50 player and rare for a 30 player, so stronger players dominated.
 - **A bar of "1.5× your own average".** Cricket marks come in whole numbers, so the bar jumped at certain averages (1.28 MPR needed 2 marks, 1.34 needed 3). Counting points above your average has no jumps.
 - **30 points per mark.** Cricket earned about 61% of all points, and a 5-mark round was worth far more than a 100 even though both happen about as often.
+- **2× for closing turns in both games.** Stronger players close more cricket legs (usually on bulls), so at 2× they edged ahead by about 1.4%. At 1.5× the groups stay level.
 
 #### Season standings
 
@@ -176,20 +177,20 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 | 1 | April Lapthorne | 41.3 / 1.59 | 951 | 129 |
 | 2 | Keyra Jallah | 31.3 / 1.05 | 891 | 4 marks |
 | 3 | Julie Dirks | 39.5 / 1.52 | 850 | 121 |
-| 4 | Sierra Rensch | 41.7 / 1.47 | 844 | 120 |
+| 4 | Sierra Rensch | 41.7 / 1.47 | 849 | 120 |
 | 5 | Lynette Baluja | 36.9 / 0.87 | 837 | 6 marks |
 
-**Week 2 (Nov 23): Player of the Week is Sierra Rensch (1,138)**
+**Week 2 (Nov 23): Player of the Week is Karlton Zeitz (1,137)**
 
 | # | Player | 3DA / cricket marks used | Night score | Best turn |
 |---|---|---|---|---|
-| 1 | Sierra Rensch | 41.7 / 1.47 | 1,138 | outs of 80 and 63; 5 marks |
-| 2 | Karlton Zeitz | 48.5 / 1.65 | 1,082 | two 6-mark rounds |
-| 3 | Joe Chavez | 38.2 / 1.23 | 1,039 | 105 |
+| 1 | Karlton Zeitz | 48.5 / 1.65 | 1,137 | two 6-mark rounds; closed 4 cricket legs |
+| 2 | Sierra Rensch | 41.7 / 1.47 | 1,100 | outs of 80 and 63; 5 marks |
+| 3 | Joe Chavez | 38.2 / 1.23 | 1,036 | 105 |
 | 4 | Scott Mejeur | 34.6 / 1.31 | 1,026 | three 5-mark rounds |
-| 5 | Keyra Jallah | 31.3 / 1.05 | 922 | 89 |
+| 5 | Keyra Jallah | 31.3 / 1.05 | 931 | 89 |
 
-**Standings after week 2** (N = 1, so best night so far): 1. Sierra Rensch 1,138 · 2. Karlton Zeitz 1,082 · 3. Joe Chavez 1,039 · 4. Scott Mejeur 1,026 · 5. April Lapthorne 951.
+**Standings after week 2** (N = 1, so best night so far): 1. Karlton Zeitz 1,137 · 2. Sierra Rensch 1,100 · 3. Joe Chavez 1,036 · 4. Scott Mejeur 1,026 · 5. April Lapthorne 951.
 
 **Highlights.** Big turns always earn points; these are just the ones worth a shout-out: 120+ turns, 6+ mark rounds, and checkouts of 60 or more (or at least twice the player's own average).
 
@@ -215,7 +216,7 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 |---|---|---|
 | Weighting strength | 0.65 (tested as the most even) | Adjust if the fairness check drifts |
 | Bull value | Single bull 2 marks, double bull 3 | Double bull 4, closer to its size on the board |
-| Checkout bonus | 2× the out turn's points (only outs that beat your average) | 1.5× or 3×; at 3× stronger players start to edge ahead |
+| Closing bonus | 1.5× the winning turn's points, in 01 and cricket (only turns that beat your average) | 2× in both games; stronger players edged ahead about 1.4% |
 | Standings minimum | Half your team's nights, rounded up | A fixed number of nights |
 
 ### 4. Team standings and special cases
