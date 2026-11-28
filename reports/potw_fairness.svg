@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="640" height="340" fill="#ffffff" rx="8"/>
+<text x="56" y="26" font-size="17" font-weight="700" fill="#1a1f1c">Average night score by skill group (weeks 1 and 2)</text>
+<text x="56" y="46" font-size="12.5" fill="#4a524d">How strong the weighting is. We want the three bars level: 0.65 is the closest.</text>
+<line x1="56" x2="624" y1="270.0" y2="270.0" stroke="#e3e7e4"/>
+<text x="48" y="274.0" font-size="11" fill="#6b736e" text-anchor="end">0</text>
+<line x1="56" x2="624" y1="218.5" y2="218.5" stroke="#e3e7e4"/>
+<text x="48" y="222.5" font-size="11" fill="#6b736e" text-anchor="end">300</text>
+<line x1="56" x2="624" y1="167.0" y2="167.0" stroke="#e3e7e4"/>
+<text x="48" y="171.0" font-size="11" fill="#6b736e" text-anchor="end">600</text>
+<line x1="56" x2="624" y1="115.5" y2="115.5" stroke="#e3e7e4"/>
+<text x="48" y="119.5" font-size="11" fill="#6b736e" text-anchor="end">900</text>
+<line x1="56" x2="624" y1="64.0" y2="64.0" stroke="#e3e7e4"/>
+<text x="48" y="68.0" font-size="11" fill="#6b736e" text-anchor="end">1200</text>
+<rect x="70.0" y="89.1" width="35.3" height="180.9" fill="#c06a1a" rx="3"/>
+<text x="87.7" y="84.1" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">1054</text>
+<rect x="109.3" y="106.1" width="35.3" height="163.9" fill="#7a8580" rx="3"/>
+<text x="127.0" y="101.1" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">955</text>
+<rect x="148.7" y="122.0" width="35.3" height="148.0" fill="#1f5fae" rx="3"/>
+<text x="166.3" y="117.0" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">862</text>
+<text x="127.0" y="290" font-size="12.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">Full (1.0)</text>
+<rect x="212.0" y="101.3" width="35.3" height="168.7" fill="#c06a1a" rx="3"/>
+<text x="229.7" y="96.3" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">983</text>
+<rect x="251.3" y="107.9" width="35.3" height="162.1" fill="#7a8580" rx="3"/>
+<text x="269.0" y="102.9" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">944</text>
+<rect x="290.7" y="112.2" width="35.3" height="157.8" fill="#1f5fae" rx="3"/>
+<text x="308.3" y="107.2" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">919</text>
+<text x="269.0" y="290" font-size="12.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">0.75</text>
+<rect x="354.0" y="105.9" width="35.3" height="164.1" fill="#c06a1a" rx="3"/>
+<text x="371.7" y="100.9" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">956</text>
+<rect x="393.3" y="108.6" width="35.3" height="161.4" fill="#7a8580" rx="3"/>
+<text x="411.0" y="103.6" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">940</text>
+<rect x="432.7" y="108.1" width="35.3" height="161.9" fill="#1f5fae" rx="3"/>
+<text x="450.3" y="103.1" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">943</text>
+<text x="411.0" y="290" font-size="12.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">0.65 (chosen)</text>
+<rect x="496.0" y="112.6" width="35.3" height="157.4" fill="#c06a1a" rx="3"/>
+<text x="513.7" y="107.6" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">917</text>
+<rect x="535.3" y="109.5" width="35.3" height="160.5" fill="#7a8580" rx="3"/>
+<text x="553.0" y="104.5" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">935</text>
+<rect x="574.7" y="101.6" width="35.3" height="168.4" fill="#1f5fae" rx="3"/>
+<text x="592.3" y="96.6" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">981</text>
+<text x="553.0" y="290" font-size="12.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">0.5</text>
+<rect x="56" y="316" width="12" height="12" fill="#c06a1a" rx="2"/><text x="73" y="326" font-size="12" fill="#1a1f1c">Weaker (under 36 3DA)</text>
+<rect x="246.20000000000002" y="316" width="12" height="12" fill="#7a8580" rx="2"/><text x="263.20000000000005" y="326" font-size="12" fill="#1a1f1c">Middle (36–45)</text>
+<rect x="386.0" y="316" width="12" height="12" fill="#1f5fae" rx="2"/><text x="403.0" y="326" font-size="12" fill="#1a1f1c">Stronger (45+)</text>
+</svg>

@@ -77,9 +77,122 @@ Outside stats are also likely to be double-out (SIDO) averages, which run lower 
 | SIDO to SISO stats conversion | • First 9 × ~0.95 `KZ thinks!`<br>• Use as is<br>• Flat adjustment |
 | No usable stats at all | • Team's average for the night<br>• League average (about 39.90 3DA / 1.35 MPR) `KZ thinks!`<br>• Scratch for any game the new player is in: the new player or the new player's team receive no marks or spot. The opponents' handicap is calculated as if the new player were a league average player. No stats needed for the new player.<br>• Captains agree at the board, or the league director decides `KZ thinks! In the spirit of fairness, the league director can always override the numbers. Especially useful when Luke Littler subs for someone!` |
 
-### 3. Ranking and Player of the Week
+### 3. Player of the Week and season standings
 
-Karlton is working on this now and will follow up shortly.
+> **Heads up: this is probably the most debatable part of the whole document.** There is no established way to rank players of very different skill levels against each other in a handicapped dart league, so we are rolling our own. What follows is our best attempt to use sound, simple math so that anyone, at any level, can win Player of the Week, and nobody feels the system is stacked for or against them. Every number here can be tuned.
+
+**What we borrowed from**
+
+- **Bowling handicaps.** Bowling leagues have done this for decades: a bowler's handicap is a percentage (often 80–100%) of the gap between a set score and their own average, so players of all levels can compete for the same prizes. ([BowlingBall.com](https://bowlingball.com/BowlVersity/how-to-calculate-bowling-handicap), [BowlerSmart](https://www.bowlersmart.com/2021/05/04/how-handicap-makes-league-bowling-fun-fair-equal-for-all-bowlers))
+- **Dart league ratings.** Handicapped dart leagues rate each player from their own 3-dart average and MPR, and update the rating as the season goes. ([DartsTOC league rules](https://dartstoc.com/rwdtoc/2020RemoteLeague2.pdf), [VCDA](https://vcda.org/calculation.php))
+- **Beating your own normal.** A common way to compare people of different abilities: measure each performance against what that person usually does, not against everyone else.
+
+**The idea in one sentence:** every turn that beats your own average earns points. The bigger the turn, the more points, and the same turn is worth a bit more from a player whose average is lower.
+
+#### How one turn is scored
+
+1. **Start with your own average turn.** In 01 that is your 3-dart average (3DA). In cricket it is your marks per round (MPR).
+2. **Count only what's above it.** A 40-average player who throws 100 is 60 above their average. A turn at or below your average scores zero. No penalty, just no points.
+3. **Apply the weighting.** The amount above your average is multiplied by a weighting based on how your average compares with the league average (about 40.7 3DA and 1.34 MPR). A lower average gives a weighting a little above 1, and a higher average a little below 1. The weighting is deliberately gentle (we use 0.65 strength, explained below), so it nudges rather than flips the result.
+4. **Cricket marks are converted to 01 points.** One mark is worth about 30 points (40.7 ÷ 1.34), because an average turn in our league is about 40 points or about 1.34 marks.
+
+![What one big turn is worth](reports/potw_turn_value.svg)
+
+| Turn | Weaker player<br>(30 3DA / 1.0 MPR) | Middle player<br>(40 3DA / 1.5 MPR) | Stronger player<br>(50 3DA / 2.0 MPR) |
+|---|---|---|---|
+| 60 | 37 | 20 | 9 |
+| 100 | 85 | 61 | 44 |
+| 140 | 134 | 101 | 79 |
+| 180 | 183 | 142 | 114 |
+| 4 marks | 110 | 71 | 47 |
+| 5 marks | 147 | 99 | 70 |
+| 7 marks | 221 | 155 | 117 |
+
+What each factor does:
+- **"Above your own average"** means a 60 is a great turn for a 30-average player but routine for a 50-average player, and the points reflect that.
+- **The weighting** gives a weaker player's big turn some extra credit, but a strong player's 180 is still one of the biggest scores of the night.
+- **The cricket conversion** lets 01 and cricket turns add up on the same scale.
+
+#### How a night is scored
+
+- Add up the points from all your turns that night.
+- **Divide by the number of turns you threw, then multiply by 80** (a typical night). Weaker teams' legs run longer, so their players throw more turns (often 90–110 a night against 60–80 for stronger players). Scoring per turn means more turns don't mean more chances.
+- **Highest night score wins Player of the Week.**
+
+**Which average is used:** your average from the weeks before that night, so a hot night doesn't lower its own score. In week 1, or a player's first night, there is nothing earlier, so that night's own stats are used. Averages below 25 3DA or 0.80 MPR are treated as 25 and 0.80, so one very low average can't produce huge points.
+
+#### How we checked it's fair
+
+We scored weeks 1 and 2 (about 3,300 turns) under different weighting strengths and compared the average night score of weaker, middle and stronger players. If the system is fair, the three bars should be about level.
+
+![Average night score by skill group](reports/potw_fairness.svg)
+
+- **Full weighting (1.0)** tilted toward weaker players by about 20%.
+- **Less weighting (0.5)** starts tilting toward stronger players, because a 50 player's good turns are bigger numbers to begin with.
+- **0.65** puts the three groups within 16 points of each other (956 / 940 / 943), which is less than the normal night-to-night swing of any one player (about 230 points).
+
+Things we tried and dropped:
+- **Fixed bars (60+ in 01, 4+ marks in cricket).** Easy for a 50 player and rare for a 30 player, so stronger players dominated.
+- **A bar of "1.5× your own average".** Cricket marks come in whole numbers, so the bar jumped at certain MPRs (1.28 MPR needed 2 marks, 1.34 needed 3). Counting points above your average has no jumps.
+
+#### Season standings
+
+- **Your standing is the average of your best N nights,** where **N = half your team's nights so far, rounded up.** Byes don't count.
+- Rankings start in week 1.
+- **Showing up never hurts you.** Every extra night is another chance at a good one, and an off night just doesn't get counted.
+- **Missing nights costs a little.** If you've played exactly N nights, all of them count, including the off ones.
+
+| End of season (20 team nights, N = 10) | Nights counted |
+|---|---|
+| Played all 20 | best 10 of 20 |
+| Played 14 | best 10 of 14 |
+| Played 10 | all 10, good and bad |
+| Played 8 | not ranked yet (needs 10) |
+
+Early in the season N is 1, so the standings are just "best night so far". They become meaningful around week 4, when N becomes 2.
+
+#### Weeks 1 and 2 under these rules
+
+**Week 1 (Nov 16): Player of the Week is Keyra Jallah (1,140)**
+
+| # | Player | 3DA / MPR used | Night score | Best turn |
+|---|---|---|---|---|
+| 1 | Keyra Jallah | 31.3 / 0.96 | 1,140 | 4 marks |
+| 2 | Sierra Rensch | 41.7 / 1.28 | 1,116 | 5 marks |
+| 3 | Lynette Baluja | 36.9 / 0.75 | 1,104 | 6 marks |
+| 4 | April Lapthorne | 41.3 / 1.55 | 1,100 | 5 marks |
+| 5 | Jacob Shaw | 47.3 / 1.62 | 1,035 | 7 marks |
+
+**Week 2 (Nov 23): Player of the Week is Sierra Rensch (1,398)**
+
+| # | Player | 3DA / MPR used | Night score | Best turn |
+|---|---|---|---|---|
+| 1 | Sierra Rensch | 41.7 / 1.28 | 1,398 | 5 marks; outs of 80 and 63 |
+| 2 | Scott Mejeur | 34.6 / 1.13 | 1,350 | three 5-mark rounds |
+| 3 | Karlton Zeitz | 48.5 / 1.55 | 1,340 | two 6-mark rounds |
+| 4 | Jacob Shaw | 47.3 / 1.62 | 1,145 | two 5-mark rounds, 120 |
+| 5 | Keyra Jallah | 31.3 / 0.96 | 1,073 | lots of above-average turns |
+
+**Standings after week 2** (N = 1, so best night so far): 1. Sierra Rensch 1,398 · 2. Scott Mejeur 1,350 · 3. Karlton Zeitz 1,340 · 4. Jacob Shaw 1,145 · 5. Keyra Jallah 1,140.
+
+**Highlights.** Big turns always earn points; these are just the ones worth a shout-out.
+- **Week 1:** Larry Shattuck had a 7-mark round, a 6-mark round and three 5-mark rounds, plus a 140. Jacob Shaw, Josh Bieber and Tammy Bieber each had a 7-mark round. Kristen Rosenbach threw a 140 and a 135, and Karlton Zeitz a 140.
+- **Week 2:** Josh Bieber and Matthew Meyer each threw a 180. Karlton Zeitz had two 6-mark rounds, and Shadd Cordrey threw a 140.
+
+#### Keeping it honest
+
+- **A weekly fairness check** (average night score for weaker, middle and stronger players, season to date) will be published with the standings.
+- **If any group drifts more than about 5% from the others for 4 or more weeks,** we re-tune the weighting and say so.
+- **Each player can see their own numbers:** the averages used and what each of their turns earned.
+
+**To decide:**
+
+| Question | Options |
+|---|---|
+| Weighting strength | • 0.65 (tested as the most even)<br>• Something else after more weeks of data |
+| Cricket's share of the points | • Keep about 30 points per mark (cricket currently earns about 60% of all points)<br>• Lower it so 01 and cricket count more evenly |
+| Bonus for big checkouts | • No bonus (the turn already earns points)<br>• Extra points for outs of 100 or more |
+| Standings minimum | • Half your team's nights, rounded up<br>• A fixed number of nights |
 
 ## Captain announcement (draft)
 
