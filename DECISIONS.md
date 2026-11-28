@@ -72,7 +72,7 @@ Outside stats are also likely to be double-out (SIDO) averages, which run lower 
 
 | Question | Options |
 |---|---|
-| Legs needed before league stats count | • Any (today)<br>• 9 (one night)<br>• 18 (two nights)<br>• Blend entered and league stats until the minimum |
+| Legs needed before league stats count | • Any<br>• 9 (one night): in effect what's used today, since stats update after each full night<br>• 18 (two nights)<br>• Blend entered and league stats until the minimum |
 | How old outside stats can be (DartConnect or elsewhere) | • Last 12 months<br>• Last two seasons<br>• No limit |
 | Double-out (SIDO) outside stats | • First 9 × ~0.95<br>• Use as is<br>• Flat adjustment |
 | No usable stats at all | • Team's average for the night<br>• League average (about 39.90 3DA / 1.35 MPR)<br>• Scratch on their first night (still needs numbers for the team handicap)<br>• Captains agree at the board, or the league director decides |
