@@ -51,7 +51,7 @@ These teams haven't played yet (they meet Dec 28 and Mar 22), so this is an esti
 
 **Options:**
 - **Keep the current chart:** in this example 3 free marks cut the gap from about 10 marks to about 7, but the weaker team is still well behind.
-- **Double the rate:** `KZ Leaning` 1 mark per 0.25, up to 7. This pairing would get 6 marks, cutting the gap to about 4.
+- **Double the rate:** `KZ thinks!` 1 mark per 0.25, up to 7. This pairing would get 6 marks, cutting the gap to about 4.
 - Decide after a few weeks of results: the weekly audit will show how often teams receiving marks actually win cricket legs. But by then it may not be fair to change the chart mid-season, so any change would likely have to wait until the next league or season.
 
 ### 2. Which numbers do we use for each player?
@@ -72,10 +72,10 @@ Outside stats are also likely to be double-out (SIDO) averages, which run lower 
 
 | Question | Options |
 |---|---|
-| Legs needed before league stats count | • Any<br>• 9 (one night): in effect what's used today, since stats update after each full night `KZ thinks`<br>• 18 (two nights)<br>• Blend entered and league stats until the minimum |
-| How old outside stats can be (DartConnect or elsewhere) | • Last 12 months<br>• Last two seasons `KZ thinks`<br>• No limit<br>• Other |
-| SIDO to SISO stats conversion | • First 9 × ~0.95 `KZ thinks`<br>• Use as is<br>• Flat adjustment |
-| No usable stats at all | • Team's average for the night<br>• League average (about 39.90 3DA / 1.35 MPR) `KZ thinks`<br>• Scratch for any game the new player is in: the new player or the new player's team receive no marks or spot. The opponents' handicap is calculated as if the new player were a league average player. No stats needed for the new player.<br>• Captains agree at the board, or the league director decides |
+| Legs needed before league stats count | • Any<br>• 9 (one night): in effect what's used today, since stats update after each full night `KZ thinks!`<br>• 18 (two nights)<br>• Blend entered and league stats until the minimum |
+| How old outside stats can be (DartConnect or elsewhere) | • Last 12 months<br>• Last two seasons `KZ thinks!`<br>• No limit<br>• Other |
+| SIDO to SISO stats conversion | • First 9 × ~0.95 `KZ thinks!`<br>• Use as is<br>• Flat adjustment |
+| No usable stats at all | • Team's average for the night<br>• League average (about 39.90 3DA / 1.35 MPR) `KZ thinks!`<br>• Scratch for any game the new player is in: the new player or the new player's team receive no marks or spot. The opponents' handicap is calculated as if the new player were a league average player. No stats needed for the new player.<br>• Captains agree at the board, or the league director decides `KZ thinks! In the spirit of fairness, the league director can always override the numbers. Especially useful when Luke Littler subs for someone!` |
 
 ### 3. Ranking and Player of the Week
 
