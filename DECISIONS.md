@@ -51,7 +51,7 @@ These teams haven't played yet (they meet Dec 28 and Mar 22), so this is an esti
 
 **Options:**
 - **Keep the current chart:** in this example 3 free marks cut the gap from about 10 marks to about 7, but the weaker team is still well behind.
-- **Double the rate:** ![KZ Leaning](https://img.shields.io/badge/KZ_Leaning-2f81f7) 1 mark per 0.25, up to 7. This pairing would get 6 marks, cutting the gap to about 4.
+- **Double the rate:** `KZ Leaning` 1 mark per 0.25, up to 7. This pairing would get 6 marks, cutting the gap to about 4.
 - Decide after a few weeks of results: the weekly audit will show how often teams receiving marks actually win cricket legs. But by then it may not be fair to change the chart mid-season, so any change would likely have to wait until the next league or season.
 
 ### 2. Which numbers do we use for each player?
