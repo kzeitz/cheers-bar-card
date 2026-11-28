@@ -195,12 +195,12 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 
 **Week 1 (Nov 16)**
 - **120+:** Kristen Rosenbach 140 and 135 · Larry Shattuck 140 and 121 · Karlton Zeitz 140 · Jacob Shaw 132 · April Lapthorne 129 · Julie Dirks 121 · Sierra Rensch 120
-- **6+ marks** (numbers hit in brackets): Larry Shattuck 7 (17) and 6 (20) · Jacob Shaw 7 (17) · Josh Bieber 7 (17, 18) · Tammy Bieber 7 (20, 19) · Shadd Cordrey 6 (19) · Lynette Baluja 6 (16, 15)
+- **6+ marks** (darts in brackets; T = treble, D = double, S = single): Larry Shattuck 7 (T17, T17, S17) and 6 (T20, T20) · Jacob Shaw 7 (T17, T17, S17) · Josh Bieber 7 (T17, T18, S18) · Tammy Bieber 7 (T20, S19, T19) · Shadd Cordrey 6 (T19, T19) · Lynette Baluja 6 (T16, T15)
 - **Checkouts:** Josh Bieber 93 · Matthew Meyer 70 · Jacob Shaw 65 · Kristen Rosenbach 60
 
 **Week 2 (Nov 23)**
 - **120+:** Josh Bieber 180 · Matthew Meyer 180 · Shadd Cordrey 140 · Jacob Shaw 120
-- **6+ marks** (numbers hit in brackets): Karlton Zeitz 6 (16, 15) and 6 (19, 17) · Josh Bieber 6 (15) · Lynette Baluja 6 (19, 17)
+- **6+ marks** (darts in brackets): Karlton Zeitz 6 (T16, T15) and 6 (T19, T17) · Josh Bieber 6 (T15, T15) · Lynette Baluja 6 (T19, D19, S17)
 - **Checkouts:** Larry Shattuck 81 · Sierra Rensch 80 and 63 · Josh Bieber 76 · Mary Mejeur 56 (twice her average)
 
 #### Keeping it honest
