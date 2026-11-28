@@ -60,20 +60,22 @@ These teams haven't played yet (they meet Dec 28 and Mar 22), so this is an esti
 
 **Why it matters:** one night is a small sample. Tammy Bieber averaged 43.64 in week 1 and 33.12 in week 2. Samantha Cochran (sub) has one night: 5 legs of 01 and 4 of cricket.
 
+Outside stats are also likely to be double-out (SIDO) averages, which run lower than the same player's SISO average. Used as is, the player looks weaker than they are and their team gets more help than it should. Once again the advantage goes to the stronger player.
+
 **Suggested approach:** use the first source that applies.
 
 1. **This season's league stats**, once the player has enough legs.
-2. **Recent outside stats** (another league or an earlier season). If they come from double-out play, use the player's First 9 average × about 0.95. The first nine darts come before any finishing, so the out rule barely affects them. Double-out 3DA runs low and would give their team too big a handicap.
-3. **No usable stats:** a fallback number (choose one below).
+2. **Recent outside stats** (another league or an earlier season, from DartConnect or elsewhere). If they come from double-out play, use the player's First 9 average × about 0.95. The first nine darts come before any finishing, so the out rule barely affects them.
+3. **No usable stats:** a fallback number (choose one below). Even a scratch rule needs numbers for the player: without them we can't calculate the team handicap in doubles, and that isn't fair to either team.
 
 **To decide:**
 
 | Question | Options |
 |---|---|
 | Legs needed before league stats count | Any (today) · 9 (one night) · 18 (two nights) · blend entered and league stats until the minimum |
-| How old outside stats can be | Last 12 months · last two seasons · no limit |
-| Double-out (SIDO) outside stats | First 9 × ~0.95 (**favored**) · use as is · flat adjustment |
-| No usable stats at all | Team's average for the night · league average (about 39.90 3DA / 1.35 MPR) · captains agree at the board · scratch on their first night |
+| How old outside stats can be (DartConnect or elsewhere) | Last 12 months · last two seasons · no limit |
+| Double-out (SIDO) outside stats | First 9 × ~0.95 · use as is · flat adjustment |
+| No usable stats at all | Team's average for the night · league average (about 39.90 3DA / 1.35 MPR) · captains agree at the board · scratch on their first night (still needs numbers for the team handicap) |
 
 ### 3. Ranking and Player of the Week
 
