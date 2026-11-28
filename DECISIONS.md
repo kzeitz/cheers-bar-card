@@ -95,6 +95,7 @@ Outside stats are also likely to be double-out (SIDO) averages, which run lower 
 2. **Count only what's above it.** A 40-average player who throws 100 is 60 above their average. A turn at or below your average scores zero. No penalty, just no points.
 3. **Apply the weighting.** The amount above your average is multiplied by a weighting based on how your average compares with the league average (about 40.7 in 01 and 1.52 marks in cricket). A lower average gives a weighting a little above 1, and a higher average a little below 1. The weighting is deliberately gentle (we use 0.65 strength, explained below), so it nudges rather than flips the result.
 4. **Cricket marks are converted to points: 1 mark = 19 points.** We picked 19 so that cricket and 01 count about equally per turn thrown. Cricket is about 47% of all turns and earns about 51% of the points. It also matches how often big turns happen: in weeks 1 and 2 a 5-mark round and a 100+ turn each came up in about 3% of turns, so they are worth about the same.
+5. **Checkouts earn 1.2×.** The turn that wins a 01 leg earns 1.2 times its points, because checking out is the name of the game. An out that is below your average (finishing on 16, say) still earns nothing, so in practice the bonus rewards big outs.
 
 **Bulls.** On the board, the double bull is about half the size of a treble 20, and the single bull is about a sixth the size of a single 20, yet DartConnect counts them as only 2 marks and 1 mark. For Player of the Week only (the game itself doesn't change), bulls count like this:
 
@@ -125,6 +126,7 @@ What each factor does:
 - **The weighting** gives a weaker player's big turn some extra credit, but a strong player's 180 is still one of the biggest scores of the night.
 - **The cricket conversion** puts 01 and cricket on the same scale: a 5-mark round is worth about a 100, and a 9-mark round about a 180.
 - **The bull rule** makes bulls worth at least as much as 20s.
+- **The checkout bonus** gives a big out a little extra over the same score mid-leg.
 
 #### How a night is scored
 
@@ -142,7 +144,7 @@ We scored weeks 1 and 2 (about 3,300 turns) under different weighting strengths 
 
 - **Full weighting (1.0)** tilted toward weaker players by about 20%.
 - **Less weighting (0.5)** starts tilting toward stronger players, because a 50 player's good turns are bigger numbers to begin with.
-- **0.65** puts the three groups within 11 points of each other (778 / 773 / 767), far less than the normal night-to-night swing of any one player (about 200 points).
+- **0.65** puts the three groups within 10 points of each other (779 / 774 / 769), far less than the normal night-to-night swing of any one player (about 200 points).
 
 Things we tried and dropped:
 - **Fixed bars (60+ in 01, 4+ marks in cricket).** Easy for a 50 player and rare for a 30 player, so stronger players dominated.
@@ -182,12 +184,12 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 | # | Player | 3DA / cricket marks used | Night score | Best turn |
 |---|---|---|---|---|
 | 1 | Karlton Zeitz | 48.5 / 1.65 | 1,082 | two 6-mark rounds |
-| 2 | Sierra Rensch | 41.7 / 1.47 | 1,061 | 5 marks; outs of 80 and 63 |
-| 3 | Joe Chavez | 38.2 / 1.23 | 1,033 | 105 |
+| 2 | Sierra Rensch | 41.7 / 1.47 | 1,076 | 5 marks; outs of 80 and 63 |
+| 3 | Joe Chavez | 38.2 / 1.23 | 1,035 | 105 |
 | 4 | Scott Mejeur | 34.6 / 1.31 | 1,026 | three 5-mark rounds |
 | 5 | Keyra Jallah | 31.3 / 1.05 | 922 | 89 |
 
-**Standings after week 2** (N = 1, so best night so far): 1. Karlton Zeitz 1,082 · 2. Sierra Rensch 1,061 · 3. Joe Chavez 1,033 · 4. Scott Mejeur 1,026 · 5. April Lapthorne 951.
+**Standings after week 2** (N = 1, so best night so far): 1. Karlton Zeitz 1,082 · 2. Sierra Rensch 1,076 · 3. Joe Chavez 1,035 · 4. Scott Mejeur 1,026 · 5. April Lapthorne 951.
 
 **Highlights.** Big turns always earn points; these are just the ones worth a shout-out.
 - **Week 1:** Larry Shattuck had a 7-mark round, a 6-mark round and three 5-mark rounds, plus a 140. Jacob Shaw, Josh Bieber and Tammy Bieber each had a 7-mark round. Kristen Rosenbach threw a 140 and a 135, and Karlton Zeitz a 140.
@@ -199,14 +201,14 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 - **If any group drifts more than about 5% from the others for 4 or more weeks,** we re-tune the weighting and say so.
 - **Each player can see their own numbers:** the averages used and what each of their turns earned.
 
-**To decide:**
+**To re-examine when more data is available.** These are our current choices. We'll check them against the weekly results and adjust if the numbers say we should.
 
-| Question | Options |
-|---|---|
-| Weighting strength | • 0.65 (tested as the most even)<br>• Something else after more weeks of data |
-| Bull value | • Single bull 2, double bull 3 (as above)<br>• Double bull 4, closer to its size on the board |
-| Bonus for big checkouts | • No bonus (the turn already earns points)<br>• Extra points for outs of 100 or more |
-| Standings minimum | • Half your team's nights, rounded up<br>• A fixed number of nights |
+| Question | Current choice | Other options |
+|---|---|---|
+| Weighting strength | 0.65 (tested as the most even) | Adjust if the fairness check drifts |
+| Bull value | Single bull 2 marks, double bull 3 | Double bull 4, closer to its size on the board |
+| Checkout bonus | 1.2× the out turn's points | A bigger bonus, or a bonus for every out |
+| Standings minimum | Half your team's nights, rounded up | A fixed number of nights |
 
 ## Captain announcement (draft)
 

@@ -12,33 +12,33 @@
 <text x="48" y="119.5" font-size="11" fill="#6b736e" text-anchor="end">750</text>
 <line x1="56" x2="624" y1="64.0" y2="64.0" stroke="#e3e7e4"/>
 <text x="48" y="68.0" font-size="11" fill="#6b736e" text-anchor="end">1000</text>
-<rect x="68.0" y="92.0" width="36.7" height="178.0" fill="#c06a1a" rx="3"/>
-<text x="86.3" y="87.0" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">864</text>
-<rect x="108.7" y="106.6" width="36.7" height="163.4" fill="#7a8580" rx="3"/>
-<text x="127.0" y="101.6" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">793</text>
-<rect x="149.3" y="123.5" width="36.7" height="146.5" fill="#1f5fae" rx="3"/>
-<text x="167.7" y="118.5" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">711</text>
+<rect x="68.0" y="91.8" width="36.7" height="178.2" fill="#c06a1a" rx="3"/>
+<text x="86.3" y="86.8" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">865</text>
+<rect x="108.7" y="106.4" width="36.7" height="163.6" fill="#7a8580" rx="3"/>
+<text x="127.0" y="101.4" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">794</text>
+<rect x="149.3" y="123.1" width="36.7" height="146.9" fill="#1f5fae" rx="3"/>
+<text x="167.7" y="118.1" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">713</text>
 <text x="127.0" y="290" font-size="12.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">Full (1.0)</text>
-<rect x="210.0" y="105.0" width="36.7" height="165.0" fill="#c06a1a" rx="3"/>
-<text x="228.3" y="100.0" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">801</text>
-<rect x="250.7" y="109.7" width="36.7" height="160.3" fill="#7a8580" rx="3"/>
-<text x="269.0" y="104.7" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">778</text>
-<rect x="291.3" y="115.5" width="36.7" height="154.5" fill="#1f5fae" rx="3"/>
-<text x="309.7" y="110.5" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">750</text>
+<rect x="210.0" y="104.8" width="36.7" height="165.2" fill="#c06a1a" rx="3"/>
+<text x="228.3" y="99.8" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">802</text>
+<rect x="250.7" y="109.5" width="36.7" height="160.5" fill="#7a8580" rx="3"/>
+<text x="269.0" y="104.5" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">779</text>
+<rect x="291.3" y="114.9" width="36.7" height="155.1" fill="#1f5fae" rx="3"/>
+<text x="309.7" y="109.9" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">753</text>
 <text x="269.0" y="290" font-size="12.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">0.75</text>
-<rect x="352.0" y="109.7" width="36.7" height="160.3" fill="#c06a1a" rx="3"/>
-<text x="370.3" y="104.7" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">778</text>
-<rect x="392.7" y="110.8" width="36.7" height="159.2" fill="#7a8580" rx="3"/>
-<text x="411.0" y="105.8" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">773</text>
-<rect x="433.3" y="112.0" width="36.7" height="158.0" fill="#1f5fae" rx="3"/>
-<text x="451.7" y="107.0" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">767</text>
+<rect x="352.0" y="109.5" width="36.7" height="160.5" fill="#c06a1a" rx="3"/>
+<text x="370.3" y="104.5" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">779</text>
+<rect x="392.7" y="110.6" width="36.7" height="159.4" fill="#7a8580" rx="3"/>
+<text x="411.0" y="105.6" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">774</text>
+<rect x="433.3" y="111.6" width="36.7" height="158.4" fill="#1f5fae" rx="3"/>
+<text x="451.7" y="106.6" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">769</text>
 <text x="411.0" y="290" font-size="12.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">0.65 (chosen)</text>
-<rect x="494.0" y="116.7" width="36.7" height="153.3" fill="#c06a1a" rx="3"/>
-<text x="512.3" y="111.7" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">744</text>
-<rect x="534.7" y="112.4" width="36.7" height="157.6" fill="#7a8580" rx="3"/>
-<text x="553.0" y="107.4" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">765</text>
-<rect x="575.3" y="106.8" width="36.7" height="163.2" fill="#1f5fae" rx="3"/>
-<text x="593.7" y="101.8" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">792</text>
+<rect x="494.0" y="116.5" width="36.7" height="153.5" fill="#c06a1a" rx="3"/>
+<text x="512.3" y="111.5" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">745</text>
+<rect x="534.7" y="112.0" width="36.7" height="158.0" fill="#7a8580" rx="3"/>
+<text x="553.0" y="107.0" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">767</text>
+<rect x="575.3" y="106.2" width="36.7" height="163.8" fill="#1f5fae" rx="3"/>
+<text x="593.7" y="101.2" font-size="11.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">795</text>
 <text x="553.0" y="290" font-size="12.5" font-weight="600" fill="#1a1f1c" text-anchor="middle">0.5</text>
 <rect x="56" y="304" width="12" height="12" fill="#c06a1a" rx="2"/><text x="73" y="314" font-size="12" fill="#1a1f1c">Weaker (under 36 3DA): 6 players, 10 player-nights</text>
 <rect x="56" y="324" width="12" height="12" fill="#7a8580" rx="2"/><text x="73" y="334" font-size="12" fill="#1a1f1c">Middle (36–45 3DA): 11 players, 19 player-nights</text>
