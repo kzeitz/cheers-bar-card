@@ -4,6 +4,10 @@ Every release of the Bar Card, newest first. The version is shown at the bottom 
 
 To release: bump `VERSION` in `source/card/bar_card_template.html`, add an entry here, and use the version in the commit message.
 
+## v0.9.1 beta – 28 Nov 2026
+- **Weekly report link:** a "Weekly report: Player of the Week & standings" button above the DartConnect button opens the report page.
+- No change to handicaps.
+
 ## Weekly report (beta) – 28 Nov 2026
 New page at /report/ (source in `source/report/`).
 
