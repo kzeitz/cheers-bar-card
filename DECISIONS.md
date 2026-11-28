@@ -75,7 +75,7 @@ Outside stats are also likely to be double-out (SIDO) averages, which run lower 
 | Legs needed before league stats count | • Any<br>• 9 (one night): in effect what's used today, since stats update after each full night `KZ thinks`<br>• 18 (two nights)<br>• Blend entered and league stats until the minimum |
 | How old outside stats can be (DartConnect or elsewhere) | • Last 12 months<br>• Last two seasons `KZ thinks`<br>• No limit<br>• Other |
 | SIDO to SISO stats conversion | • First 9 × ~0.95 `KZ thinks`<br>• Use as is<br>• Flat adjustment |
-| No usable stats at all | • Team's average for the night<br>• League average (about 39.90 3DA / 1.35 MPR) `KZ thinks`<br>• Scratch for any game the new player is in: the new player's team receives no marks or spot (the new player starts at 501 in singles). The opponents' handicap is calculated as if the new player were a league average player. No stats needed for the new player.<br>• Captains agree at the board, or the league director decides |
+| No usable stats at all | • Team's average for the night<br>• League average (about 39.90 3DA / 1.35 MPR) `KZ thinks`<br>• Scratch for any game the new player is in: the new player or the new player's team receive no marks or spot. The opponents' handicap is calculated as if the new player were a league average player. No stats needed for the new player.<br>• Captains agree at the board, or the league director decides |
 
 ### 3. Ranking and Player of the Week
 
