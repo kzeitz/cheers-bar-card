@@ -191,9 +191,18 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 
 **Standings after week 2** (N = 1, so best night so far): 1. Sierra Rensch 1,138 · 2. Karlton Zeitz 1,082 · 3. Joe Chavez 1,039 · 4. Scott Mejeur 1,026 · 5. April Lapthorne 951.
 
-**Highlights.** Big turns always earn points; these are just the ones worth a shout-out: 140+, 5+ mark rounds, and checkouts of 60 or more (or at least twice the player's own average).
-- **Week 1:** Larry Shattuck had a 7-mark round, a 6-mark round and three 5-mark rounds, plus a 140. Jacob Shaw, Josh Bieber and Tammy Bieber each had a 7-mark round. Kristen Rosenbach threw a 140 and a 135, and Karlton Zeitz a 140. **Checkouts:** Josh Bieber 93, Matthew Meyer 70, Jacob Shaw 65, Kristen Rosenbach 60.
-- **Week 2:** Josh Bieber and Matthew Meyer each threw a 180. Karlton Zeitz had two 6-mark rounds, and Shadd Cordrey threw a 140. **Checkouts:** Larry Shattuck 81, Sierra Rensch 80 and 63, Josh Bieber 76, and Mary Mejeur 56 (twice her average).
+**Highlights.** Big turns always earn points; these are just the ones worth a shout-out: tons (100+), 5+ mark rounds, and checkouts of 60 or more (or at least twice the player's own average).
+
+**Week 1 (Nov 16)**
+- **Tons (100+):** Josh Bieber 4 · April Lapthorne 3 (best 129) · Larry Shattuck 3 (best 140) · Karlton Zeitz 3 (best 140) · Matthew Meyer 3 · Sierra Rensch 3 (best 120) · Kristen Rosenbach 2 (140, 135) · Jacob Shaw 2 (best 132) · Julie Dirks 2 (best 121) · Hannah Lindholm 118 · Mary Mejeur 114
+- **5+ mark rounds:** Larry Shattuck 5 (best 7) · Shadd Cordrey 4 (best 6) · Josh Bieber 3 (best 7) · Matthew Meyer 2 · Patrick Nelson 2 · Jacob Shaw 7 marks · Tammy Bieber 7 marks · Lynette Baluja 6 marks · April Lapthorne, Karlton Zeitz, Kristen Rosenbach, Scott Mejeur and Sierra Rensch 5 marks each
+- **Checkouts:** Josh Bieber 93 · Matthew Meyer 70 · Jacob Shaw 65 · Kristen Rosenbach 60
+
+**Week 2 (Nov 23)**
+- **180s:** Josh Bieber and Matthew Meyer
+- **Tons (100+):** Matthew Meyer 5 (incl. 180) · Shadd Cordrey 4 (best 140) · Josh Bieber 3 (incl. 180) · Sierra Rensch 2 · Joe Chavez 2 (best 105) · Karlton Zeitz 2 · Larry Shattuck 2 · Lorrie Shaw 2 · Jacob Shaw 120 · April Lapthorne 105 · Julie Dirks 100 · Tammy Bieber 100
+- **5+ mark rounds:** Karlton Zeitz 3 (two 6s) · Scott Mejeur 3 · Jacob Shaw 2 · Josh Bieber 2 (best 6) · Larry Shattuck 2 · Matthew Meyer 2 · Tammy Bieber 2 · Lynette Baluja 6 marks · April Lapthorne, Lorrie Shaw, Mary Mejeur, Patrick Nelson, Samantha Cochran, Shadd Cordrey and Sierra Rensch 5 marks each
+- **Checkouts:** Larry Shattuck 81 · Sierra Rensch 80 and 63 · Josh Bieber 76 · Mary Mejeur 56 (twice her average)
 
 #### Keeping it honest
 
