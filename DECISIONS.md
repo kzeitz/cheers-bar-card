@@ -26,7 +26,7 @@ _Last updated: 27 Nov 2026_
 
 ## Open for discussion
 
-**Our goal is fair matches, especially for the weaker players.** We want everyone to have fun, have a real chance in every game, and want to come back next season. Keep that in mind on every item below.
+**Our goal is fair matches, especially for the lower-average players.** We want everyone to have fun, have a real chance in every game, and want to come back next season. Keep that in mind on every item below.
 
 The items below are the ones we already know need a decision. Anything in the starting rules can be raised too.
 
@@ -34,7 +34,7 @@ The items below are the ones we already know need a decision. Anything in the st
 
 **Today:** 1 free mark per 0.50 of combined MPR difference, up to 5.
 
-**Example – strongest v weakest cricket pair (stats through Nov 23):**
+**Example – highest v lowest cricket pair (stats through Nov 23):**
 
 | Team | Players' MPR | Combined |
 |---|---|---|
@@ -45,12 +45,12 @@ The items below are the ones we already know need a decision. Anything in the st
 These teams haven't played yet (they meet Dec 28 and Mar 22), so this is an estimate from their averages:
 - Partners alternate turns, so Diverted Flights average about 1.76 marks a turn and Love at First Flight about 0.90.
 - Diverted Flights need about 12 turns to close all 21 marks. In those 12 turns Love at First Flight score about 11 marks.
-- **With no handicap**, the weaker team is about 10 marks short when the stronger team closes.
+- **With no handicap**, the lower team is about 10 marks short when the higher team closes.
 - **With the chart's 3 free marks**, they have about 14 of 21: still about 7 marks short.
 - The same pairing in 501 gets a 125-point spot, about a quarter of the game. Three marks is about a seventh of a cricket game.
 
 **Options:**
-- **Keep the current chart:** in this example 3 free marks cut the gap from about 10 marks to about 7, but the weaker team is still well behind.
+- **Keep the current chart:** in this example 3 free marks cut the gap from about 10 marks to about 7, but the lower team is still well behind.
 - **Double the rate:** `KZ thinks!` 1 mark per 0.25, up to 7. This pairing would get 6 marks, cutting the gap to about 4.
 - Decide after a few weeks of results: the weekly audit will show how often teams receiving marks actually win cricket legs. But by then it may not be fair to change the chart mid-season, so any change would likely have to wait until the next league or season.
 
@@ -60,7 +60,7 @@ These teams haven't played yet (they meet Dec 28 and Mar 22), so this is an esti
 
 **Why it matters:** one night is a small sample. Tammy Bieber averaged 43.64 in week 1 and 33.12 in week 2. Samantha Cochran (sub) has one night: 5 legs of 01 and 4 of cricket.
 
-Outside stats are also likely to be double-out (SIDO) averages, which run lower than the same player's SISO average. Used as is, the player looks weaker than they are and their team gets more help than it should. Once again the advantage goes to the stronger player.
+Outside stats are also likely to be double-out (SIDO) averages, which run lower than the same player's SISO average. Used as is, the player's numbers look lower than they really are and their team gets more help than it should. Once again the advantage goes to the higher-average player.
 
 **Suggested approach:** use the first source that applies.
 
@@ -110,7 +110,7 @@ So six bulls (three double bulls) counts as 9 marks, the same as three treble 20
 
 ![What one big turn is worth](reports/potw_turn_value.svg)
 
-| Turn | Weaker player<br>(30 3DA / 1.0 marks) | Middle player<br>(40 3DA / 1.5 marks) | Stronger player<br>(50 3DA / 2.0 marks) |
+| Turn | Lower average<br>(30 3DA / 1.0 marks) | Middle<br>(40 3DA / 1.5 marks) | Higher average<br>(50 3DA / 2.0 marks) |
 |---|---|---|---|
 | 60 | 37 | 20 | 9 |
 | 100 | 85 | 61 | 44 |
@@ -123,7 +123,7 @@ So six bulls (three double bulls) counts as 9 marks, the same as three treble 20
 
 What each factor does:
 - **"Above your own average"** means a 60 is a great turn for a 30-average player but routine for a 50-average player, and the points reflect that.
-- **The weighting** gives a weaker player's big turn some extra credit, but a strong player's 180 is still one of the biggest scores of the night.
+- **The weighting** gives a lower-average player's big turn some extra credit, but a higher-average player's 180 is still one of the biggest scores of the night.
 - **The cricket conversion** puts 01 and cricket on the same scale: a 5-mark round is worth about a 100, and a 9-mark round about a 180.
 - **The bull rule** makes bulls worth at least as much as 20s.
 - **The closing bonus** makes a better-than-average closing turn worth 1.5 times the same turn mid-leg, in both 01 and cricket. For example, Mary Mejeur's 56 out in week 2 earned 55 points.
@@ -131,28 +131,28 @@ What each factor does:
 #### How a night is scored
 
 - Add up the points from all your turns that night.
-- **Divide by the number of turns you threw, then multiply by 80** (a typical night). Weaker teams' legs run longer, so their players throw more turns (90–112 a night in weeks 1 and 2, against 61–91 for stronger players). Scoring per turn means more turns don't mean more chances.
+- **Divide by the number of turns you threw, then multiply by 80** (a typical night). Lower-average teams' legs run longer, so their players throw more turns (90–112 a night in weeks 1 and 2, against 61–91 for higher-average players). Scoring per turn means more turns don't mean more chances.
 - **Highest night score wins Player of the Week.**
 
 **Which average is used:** your average from the weeks before that night, so a hot night doesn't lower its own score. In week 1, or a player's first night, there is nothing earlier, so that night's own stats are used. Averages below 25 in 01 or 0.80 marks in cricket are treated as 25 and 0.80, so one very low average can't produce huge points.
 
-**Week 1 side effect:** in week 1 (or a player's first night) a big night also raises the average it's measured against, so it counts a bit less. Larry Shattuck's huge cricket night in week 1 (a 7-mark round, a 6 and three 5s) is an example: it set his own bar at 2.72 marks, the highest in the league, and he finished 8th. From the next week on, every night is measured only against earlier weeks, and one big night gets diluted as the weeks add up. We tested softening this by blending early averages with the league average, but that raised the bar for weaker players and tilted the scores heavily toward stronger players (weaker / middle / stronger 644 / 754 / 913), so we didn't adopt it.
+**Week 1 side effect:** in week 1 (or a player's first night) a big night also raises the average it's measured against, so it counts a bit less. Larry Shattuck's huge cricket night in week 1 (a 7-mark round, a 6 and three 5s) is an example: it set his own bar at 2.72 marks, the highest in the league, and he finished 8th. From the next week on, every night is measured only against earlier weeks, and one big night gets diluted as the weeks add up. We tested softening this by blending early averages with the league average, but that raised the bar for lower-average players and tilted the scores heavily toward higher-average players (lower / middle / higher 644 / 754 / 913), so we didn't adopt it.
 
 #### How we checked it's fair
 
-We scored weeks 1 and 2 (about 3,300 turns) under different weighting strengths and compared the average night score of weaker, middle and stronger players. If the system is fair, the three bars should be about level.
+We scored weeks 1 and 2 (about 3,300 turns) under different weighting strengths and compared the average night score of lower, middle and higher-average players. If the system is fair, the three bars should be about level.
 
 ![Average night score by skill group](reports/potw_fairness.svg)
 
-- **Full weighting (1.0)** tilted toward weaker players by about 20%.
-- **Less weighting (0.5)** starts tilting toward stronger players, because a 50 player's good turns are bigger numbers to begin with.
+- **Full weighting (1.0)** tilted toward lower-average players by about 20%.
+- **Less weighting (0.5)** starts tilting toward higher-average players, because a 50 player's good turns are bigger numbers to begin with.
 - **0.65** puts the three groups within 2 points of each other (782 / 780 / 782), far less than the normal night-to-night swing of any one player (about 200 points).
 
 Things we tried and dropped:
-- **Fixed bars (60+ in 01, 4+ marks in cricket).** Easy for a 50 player and rare for a 30 player, so stronger players dominated.
+- **Fixed bars (60+ in 01, 4+ marks in cricket).** Easy for a 50 player and rare for a 30 player, so higher-average players dominated.
 - **A bar of "1.5× your own average".** Cricket marks come in whole numbers, so the bar jumped at certain averages (1.28 MPR needed 2 marks, 1.34 needed 3). Counting points above your average has no jumps.
 - **30 points per mark.** Cricket earned about 61% of all points, and a 5-mark round was worth far more than a 100 even though both happen about as often.
-- **2× for closing turns in both games.** Stronger players close more cricket legs (usually on bulls), so at 2× they edged ahead by about 1.4%. At 1.5× the groups stay level.
+- **2× for closing turns in both games.** Higher-average players close more cricket legs (usually on bulls), so at 2× they edged ahead by about 1.4%. At 1.5× the groups stay level.
 
 #### Season standings
 
@@ -198,7 +198,7 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 
 **Week 1 (Nov 16)**
 - **120+:** Kristen Rosenbach 140 and 135 · Larry Shattuck 140 and 121 · Karlton Zeitz 140 · Jacob Shaw 132 · April Lapthorne 129 · Julie Dirks 121 · Sierra Rensch 120
-- **6+ marks** (darts in brackets; T = treble, D = double, S = single): Larry Shattuck 7 (T17, T17, S17) and 6 (T20, T20) · Jacob Shaw 7 (T17, T17, S17) · Josh Bieber 7 (T17, T18, S18) · Tammy Bieber 7 (T20, S19, T19) · Shadd Cordrey 6 (T19, T19) · Lynette Baluja 6 (T16, T15)
+- **6+ marks** (darts in brackets): Larry Shattuck 7 (T17, T17, S17) and 6 (T20, T20) · Jacob Shaw 7 (T17, T17, S17) · Josh Bieber 7 (T17, T18, S18) · Tammy Bieber 7 (T20, S19, T19) · Shadd Cordrey 6 (T19, T19) · Lynette Baluja 6 (T16, T15)
 - **Checkouts:** Josh Bieber 93 · Matthew Meyer 70 · Jacob Shaw 65 · Kristen Rosenbach 60
 
 **Week 2 (Nov 23)**
@@ -208,7 +208,7 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 
 #### Keeping it honest
 
-- **A weekly fairness check** (average night score for weaker, middle and stronger players, season to date) will be published with the standings.
+- **A weekly fairness check** (average night score for lower, middle and higher-average players, season to date) will be published with the standings.
 - **If any group drifts more than about 5% from the others for 4 or more weeks,** we re-tune the weighting and say so.
 - **Each player can see their own numbers:** the averages used and what each of their turns earned.
 
@@ -218,7 +218,7 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 |---|---|---|
 | Weighting strength | 0.65 (tested as the most even) | Adjust if the fairness check drifts |
 | Bull value | Single bull 2 marks, double bull 3 | Double bull 4, closer to its size on the board |
-| Closing bonus | 1.5× the winning turn's points, in 01 and cricket (only turns that beat your average) | 2× in both games; stronger players edged ahead about 1.4% |
+| Closing bonus | 1.5× the winning turn's points, in 01 and cricket (only turns that beat your average) | 2× in both games; higher-average players edged ahead about 1.4% |
 | Standings minimum | Half your team's nights, rounded up | A fixed number of nights |
 
 ### 4. Team standings and special cases
@@ -271,11 +271,11 @@ After each night we compare the handicaps actually entered in DartConnect with w
 - **501 doubles:** all correct.
 - **Can't check:** Savages Vol 2 had a bye in week 1 and Samantha Cochran was new, so there were no league stats for games involving them.
 
-**How far off were the singles?** Not by much in any one game, but always in the same direction: **in all 14 games the weaker player started higher than the worksheet gives**, so they got less help than they should have.
+**How far off were the singles?** Not by much in any one game, but always in the same direction: **in all 14 games the lower-average player started higher than the worksheet gives**, so they got less help than they should have.
 
 - Average: **17 points** of help missed per game; range 2 to 29.
 - 4 games were within 10 points; 6 were off by 20 or more.
-- 17 points is about half a turn for a typical player here. It's small in one game, but it always went against the weaker player.
+- 17 points is about half a turn for a typical player here. It's small in one game, but it always went against the lower-average player.
 
 | Match (lower player in **bold**) | Played at | Worksheet | Help missed |
 |---|---|---|---|
