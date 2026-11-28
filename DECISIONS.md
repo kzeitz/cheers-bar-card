@@ -191,9 +191,9 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 
 **Standings after week 2** (N = 1, so best night so far): 1. Sierra Rensch 1,138 · 2. Karlton Zeitz 1,082 · 3. Joe Chavez 1,039 · 4. Scott Mejeur 1,026 · 5. April Lapthorne 951.
 
-**Highlights.** Big turns always earn points; these are just the ones worth a shout-out.
-- **Week 1:** Larry Shattuck had a 7-mark round, a 6-mark round and three 5-mark rounds, plus a 140. Jacob Shaw, Josh Bieber and Tammy Bieber each had a 7-mark round. Kristen Rosenbach threw a 140 and a 135, and Karlton Zeitz a 140.
-- **Week 2:** Josh Bieber and Matthew Meyer each threw a 180. Karlton Zeitz had two 6-mark rounds, and Shadd Cordrey threw a 140.
+**Highlights.** Big turns always earn points; these are just the ones worth a shout-out: 140+, 5+ mark rounds, and checkouts of 60 or more (or at least twice the player's own average).
+- **Week 1:** Larry Shattuck had a 7-mark round, a 6-mark round and three 5-mark rounds, plus a 140. Jacob Shaw, Josh Bieber and Tammy Bieber each had a 7-mark round. Kristen Rosenbach threw a 140 and a 135, and Karlton Zeitz a 140. **Checkouts:** Josh Bieber 93, Matthew Meyer 70, Jacob Shaw 65, Kristen Rosenbach 60.
+- **Week 2:** Josh Bieber and Matthew Meyer each threw a 180. Karlton Zeitz had two 6-mark rounds, and Shadd Cordrey threw a 140. **Checkouts:** Larry Shattuck 81, Sierra Rensch 80 and 63, Josh Bieber 76, and Mary Mejeur 56 (twice her average).
 
 #### Keeping it honest
 
