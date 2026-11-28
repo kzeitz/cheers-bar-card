@@ -218,6 +218,19 @@ Early in the season N is 1, so the standings are just "best night so far". They 
 | Checkout bonus | 2× the out turn's points (only outs that beat your average) | 1.5× or 3×; at 3× stronger players start to edge ahead |
 | Standings minimum | Half your team's nights, rounded up | A fixed number of nights |
 
+### 4. Team standings and special cases
+
+**Team standings** are simply legs won, as DartConnect already shows them. The rest of this item covers the situations the rules above don't answer yet. Each has a suggested rule.
+
+| Situation | Suggested rule |
+|---|---|
+| Two teams tied on legs won | Head-to-head legs won between them first, then legs won against common opponents, then the league director decides |
+| Forfeits and no-shows (a team is a player short) | Forfeited legs count as won by the other team in the team standings. Nobody earns Player of the Week points for a forfeited leg |
+| Subs | Subs can win Player of the Week, because it is about how they threw that night. For the season standings they need the same minimum as everyone (half the nights of the team they play for), so most won't qualify |
+| Makeup matches | Player of the Week counts in the week the match is actually played. Handicaps still use the stats from the night it was scheduled |
+| No turn-by-turn data (paper scoresheet or app failure) | No Player of the Week score for that night, and the night doesn't count against the player's standings |
+| Tie for Player of the Week | Shared |
+
 ## Captain announcement (draft)
 
 > **Subject: New handicap Bar Card – starting Monday**
